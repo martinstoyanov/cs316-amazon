@@ -2,10 +2,12 @@ import React from 'react';
 
 function Home(){
     return(
-        <div>
-            <h1>Mini-Amazon</h1>
-            <h5>Hello! Welcome to Mini-Amazon!</h5>
-        </div>
+        <nav className="left-layout">
+            <h1 className="title">Mini-Amazon</h1>
+            <p>
+                Welcome to our website!
+            </p>
+        </nav>
     )
 }
 
