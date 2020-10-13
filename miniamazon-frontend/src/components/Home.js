@@ -5,7 +5,7 @@ function Home(){
         <nav className="left-layout">
             <h1 className="title">Mini-Amazon</h1>
             <p>
-                Welcome to our website!
+                Welcome to our website! We are excited about our website!
             </p>
         </nav>
     )
