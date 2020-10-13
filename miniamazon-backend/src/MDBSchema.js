@@ -25,17 +25,24 @@
     item_id: Number,
     item_name: String,
     item_description: String,
-    item_price: Number
+    item_price: Number,
+    sold_by: [String], // list of seller_ids
+    category_name: String
   });
 
 // Categories: (category_name)
   const categories = new Schema({
-    category_name: String
+    category_name: String,
+    // recommendations
+    item_id1: Number,
+    item_id2: Number,
+    item_id3: Number
   });
 
 // Carts: (cart_id)
   const carts = new Schema({
-    cart_id: Number
+    cart_id: Number,
+    items: [Number] // item_ids
   });
 
 // Orders: (order_id, cart_id, order_address, order_payment, order_price, order_status, order_date, delivery_date)
@@ -46,7 +53,8 @@
     order_price: Number,
     order_status: String,
     order_date: Date,
-    delivery_date: Date
+    delivery_date: Date,
+    cart_id: Number
   });
 
 // Reviews: (review_id, item_id, user_id, review_rating, review_notes)
@@ -58,34 +66,16 @@
     review_notes: String
   });
 
-// Recommendations: (category_name, item_id1, item_id2, item_id3)
-  const Recommendations = new Schema({
-    category_name: String,
-    item_id1: Number,
-    item_id2: Number,
-    item_id3: Number
-  });
+// // Recommendations: (category_name, item_id1, item_id2, item_id3)
+//   const Recommendations = new Schema({
+//     category_name: String,
+//     item_id1: Number,
+//     item_id2: Number,
+//     item_id3: Number
+//   });
 
-// SoldBy: (item_id, seller_id)
-  const SoldBy = new Schema({
-    item_id: Number,
-    seller_id: String
-  });
-
-// BelongsTo: (item_id, category_name)
-  const BelongsTo = new Schema({
-    item_id: Number,
-    category_name: String
-  });
-
-// AreIn: (item_id, cart_id)
-  const AreIn = new Schema({
-    item_id: Number,
-    cart_id: Number
-  });
-
-// PurchasedBy: (user_id, cart_id)
-  const PurchasedBy = new Schema({
-    user_id: Number,
-    cart_id: Number
-  });
+// // PurchasedBy: (user_id, cart_id)
+//   const PurchasedBy = new Schema({
+//     user_id: Number,
+//     cart_id: Number
+//   });
