@@ -3,8 +3,8 @@
   const mongoose = require('mongoose');
   const { Schema } = mongoose;
 
-  // Carts: (cart_id)
   const carts = new Schema({
-    cart_id: Number,
-    items: [Number] // item_ids
+    cart_id: String,
+    user_id: String,
+    items: [String] // item_ids
   });
