@@ -13,12 +13,12 @@ function Account(){
         <nav className="left-layout">
             <div className="personal-info">
                 <h1>My Account</h1>
-                <h4>User ID: <var>userID</var></h4>
-                <h4>Name: <var>userName</var></h4>
-                <h4>Email: <var>userEmail</var></h4>
-                <h4>Password: <var>userPassword</var></h4>
-                <h4>Account Type: <var>accountType</var></h4>
-            </div> <br/>
+                <h4>User ID: <var>{userID}</var></h4>
+                <h4>Name: <var>{userName}</var></h4>
+                <h4>Email: <var>{userEmail}</var></h4>
+                <h4>Password: <var>{userPassword}</var></h4>
+                <h4>Account Type: <var>{accountType}</var></h4>
+            </div><br/>
             <div>
                 <a href="/account-edit">
                     <button className="btn btn-secondary">Edit My Information</button><br/>
