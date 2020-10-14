@@ -8,6 +8,8 @@ import ProductsList from './components/ProductsList';
 import Account from './components/Account';
 import AccountEdit from './components/AccountEdit';
 import Cart from './components/Cart';
+import PostCheckout from './components/PostCheckout';
+import OrdersList from './components/OrdersList';
 
 function App() {
   return (
@@ -18,8 +20,10 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route path="/Account" component={Account} />
             <Route path="/Account-Edit" component={AccountEdit} />
-            <Route path="/ProductsList" component={ProductsList} />
+            <Route path="/Shop" component={ProductsList} />
             <Route path="/Cart" component={Cart} />
+            <Route path="/Thanks" component={PostCheckout} />
+            <Route path="/Orders" component={OrdersList} />
           </Switch>
       </Router>
     </React.Fragment>

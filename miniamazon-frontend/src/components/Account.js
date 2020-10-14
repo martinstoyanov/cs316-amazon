@@ -20,6 +20,11 @@ function Account(){
                 <h4>Account Type: <var>{accountType}</var></h4>
             </div><br/>
             <div>
+                <a href="/orders">
+                    <button className="btn btn-secondary">My Orders</button>
+                </a>
+            </div><br/>
+            <div>
                 <a href="/account-edit">
                     <button className="btn btn-secondary">Edit My Information</button><br/>
                 </a>
