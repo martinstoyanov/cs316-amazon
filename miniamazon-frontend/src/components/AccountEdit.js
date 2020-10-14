@@ -3,11 +3,11 @@ import '../App.css';
 
 function AccountEdit(){
 
-    var userID;
-    var userName;
-    var userEmail;
-    var userPassword;
-    var accountType;
+    var userID = "compsci316project";
+    var userName = "john appleseed";
+    var userEmail = "john_appleseed123@gmail.com";
+    var userPassword = "goduke123";
+    var accountType = "Buyer";
 
     function setUserName(event) {
         userName = event.target.value;
@@ -48,7 +48,7 @@ function AccountEdit(){
                         <input type = "text" className = "set-user-password" value = {userPassword} onChange = {setUserPassword}/>
                     </td>
                 </tr>
-                <h4>Account Type: </h4>
+                <h4>Account Type: {accountType}</h4>
             </div> <br/>
 
 
@@ -57,7 +57,7 @@ function AccountEdit(){
                     <button className="btn btn-secondary">Save</button><br/>
                 </a>
                 <br/>
-                <a href="/home">
+                <a href="/account">
                     <button className="btn btn-danger">SIGN OUT</button>
                 </a>
             </div>   
