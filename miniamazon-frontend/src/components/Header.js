@@ -34,7 +34,7 @@ export const Header = () => (
         <Nav className="ml-auto">
           <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item> 
           <Nav.Item><Nav.Link href="/account">My Account</Nav.Link></Nav.Item>
-          <Nav.Item><Nav.Link href="/productslist">Shop</Nav.Link></Nav.Item>
+          <Nav.Item><Nav.Link href="/shop">Shop</Nav.Link></Nav.Item>
           <Nav.Item><Nav.Link href="/cart">Cart</Nav.Link></Nav.Item>
         </Nav>
       </Navbar.Collapse>

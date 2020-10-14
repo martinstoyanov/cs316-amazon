@@ -25,33 +25,19 @@ function AccountEdit(){
                 <h1>Edit My Account</h1>
                 <h4>User ID: </h4>
                 <tr>
-                    <td>
-                        <p className = "label">Name:</p>
-                    </td>
-                    <td>
-                        <input type = "text" className = "set-user-name" value = {userName} onChange = {setUserName}/>
-                    </td>
+                    <td><p className = "label">Name:</p></td>
+                    <td><input type = "text" className = "set-user-name" value = {userName} onChange = {setUserName}/></td>
                 </tr>
                 <tr>
-                    <td>
-                        <p className = "label">Email:</p>
-                    </td>
-                    <td>
-                        <input type = "text" className = "set-user-email" value = {userEmail} onChange = {setUserEmail}/>
-                    </td>
+                    <td><p className = "label">Email:</p></td>
+                    <td><input type = "text" className = "set-user-email" value = {userEmail} onChange = {setUserEmail}/></td>
                 </tr>
                 <tr>
-                    <td>
-                        <p className = "label">Password:</p>
-                    </td>
-                    <td>
-                        <input type = "text" className = "set-user-password" value = {userPassword} onChange = {setUserPassword}/>
-                    </td>
+                    <td><p className = "label">Password:</p></td>
+                    <td><input type = "text" className = "set-user-password" value = {userPassword} onChange = {setUserPassword}/></td>
                 </tr>
                 <h4>Account Type: {accountType}</h4>
-            </div> <br/>
-
-
+            </div><br/>
             <div>
                 <a href="/account">
                     <button className="btn btn-secondary">Save</button><br/>

@@ -8,7 +8,7 @@ function Home(){
                 Welcome to our website!
             </p>
             <div>
-                <a href="/productslist">
+                <a href="/shop">
                     <button className="btn btn-secondary">Shop Now!</button><br/>
                 </a>
             </div>
