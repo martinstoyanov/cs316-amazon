@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const Cart = new Schema({
-	user_id: String,
+	user_id: { type: String, default: "test" },
 	items: [String] // item_ids
 });
 
