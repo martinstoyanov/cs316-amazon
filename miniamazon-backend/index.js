@@ -12,7 +12,7 @@ const categoryRouter = require('./routes/categories')
 const cartRouter = require('./routes/carts')
 
 const app = express()
-const apiPort = 3000
+const apiPort = 8888
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
