@@ -133,9 +133,9 @@ import axios from 'axios';
                 <nav className="left-layout">
                     <h1>CART</h1>
                     <h5>Below will list out your cart items.</h5>
-                    <div>
+                    {/* <div>
                         {productList}
-                    </div>
+                    </div> */}
                     <div id="shipping">
                         <h2>CHECKOUT:</h2>
                         <table className="shipping-inputs">
@@ -226,7 +226,8 @@ import axios from 'axios';
                     </div><br/>
                     <div>
                         <a href="/thanks">
-                            <button className="btn btn-secondary" onClick={setCheckedOut}>CHECKOUT!</button><br/>
+                            <button className="btn btn-secondary">CHECKOUT!</button><br/>
+                            {/* <button className="btn btn-secondary" onClick={setCheckedOut}>CHECKOUT!</button><br/> */}
                         </a>
                     </div><br/><br/>
                 </nav>
