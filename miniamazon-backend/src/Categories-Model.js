@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const Category = new Schema({
-	category_name: String,
+	category_name: { type: String, default: "test" },
 	item_ids: [String]
 });
 
