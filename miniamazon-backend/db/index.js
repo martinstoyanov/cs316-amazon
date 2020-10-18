@@ -20,27 +20,27 @@ const db = mongoose.connection
 db.once('connected', async () => {
     console.error("connect success");
 
-    // programmaticaly create DB at 1st run (so we can add dummy data)
-    let user = new User()
-    user.save()
+    // // programmaticaly create DB at 1st run (so we can add dummy data)
+    // let user = new User()
+    // user.save()
 
-    let s = new Seller()
-    s.save()
+    // let s = new Seller()
+    // s.save()
 
-    let r = new Review()
-    r.save()
+    // let r = new Review()
+    // r.save()
 
-    let o = new Order()
-    o.save()
+    // let o = new Order()
+    // o.save()
 
-    let i = new Item()
-    i.save()
+    // let i = new Item()
+    // i.save()
 
-    let c = new Category()
-    c.save()
+    // let c = new Category()
+    // c.save()
 
-    let cart = new Cart()
-    cart.save()
+    // let cart = new Cart()
+    // cart.save()
 
 });
 
