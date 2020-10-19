@@ -1,6 +1,8 @@
 import React from 'react';
-import Product from './Product';
+
 import axios from 'axios';
+import ProductCart from './ProductCart';
+master
 
 /*function Cart(){
     var isCheckedOut = false;
@@ -277,7 +279,7 @@ import axios from 'axios';
         },
     ]
     const productList = products.map(product => 
-        <Product product ={product}></Product>
+        <ProductCart product ={product}></ProductCart>
     )
 
     
