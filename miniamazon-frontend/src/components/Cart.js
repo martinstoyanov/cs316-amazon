@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from './Product';
+import ProductCart from './ProductCart';
 
 function Cart(){
     var isCheckedOut = false;
@@ -114,7 +114,7 @@ function Cart(){
         },
     ]
     const productList = products.map(product => 
-        <Product product ={product}></Product>
+        <ProductCart product ={product}></ProductCart>
     )
 
     return(
