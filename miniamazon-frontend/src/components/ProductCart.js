@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Product({product}){    
+function ProductCart({product}){    
     return(
         <div>
             <h2>
@@ -8,13 +8,10 @@ function Product({product}){
                 Description: {product.item_description} <br/>
                 {product.item_image} <br/>
                 Price: ${product.item_price} 
-                <div > 
-                    <button className="btn btn-secondary">Add to cart</button><br/>
-                </div>
                 <br/>
             </h2> 
         </div>
     )
 }
 
-export default Product;
+export default ProductCart;
