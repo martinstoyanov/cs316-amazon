@@ -31,6 +31,7 @@ import axios from 'axios';
     var billingAddressState = "NC"
     var billingAddressZip = "27706"
 */
+
     
     const serverURL = "http://localhost:8888"
     export default class Cart extends React.Component{
@@ -59,74 +60,98 @@ import axios from 'axios';
               orderDate: "",
               orderDeliveryDate: "",
               orderDateCheckedOut: "",
-              orderPrice: false
+              orderPrice: false,
+              orders: []
             };
+            this.setOrderID = this.setOrderID.bind(this);
+            this.setOrderName = this.setOrderName.bind(this);
+            this.setShippingAddressLine1 = this.setShippingAddressLine1.bind(this);
+            this.setShippingAddressLine2 = this.setShippingAddressLine2.bind(this);
+            this.setShippingAddressCity = this.setShippingAddressCity.bind(this);
+            this.setShippingAddressState = this.setShippingAddressState.bind(this);
+            this.setShippingAddressZip = this.setShippingAddressZip.bind(this);
+            this.setPaymentCardNumber = this.setPaymentCardNumber.bind(this);
+            this.setPaymentCardExpire = this.setPaymentCardExpire.bind(this);
+            this.setPaymentCardSecurityCode = this.setPaymentCardSecurityCode.bind(this);
+            this.setPaymentCardName = this.setPaymentCardName.bind(this);
+            this.setBillingName = this.setBillingName.bind(this);
+            this.setBillingAddressLine1 = this.setBillingAddressLine1.bind(this);
+            this.setBillingAddressLine2 = this.setBillingAddressLine2.bind(this);
+            this.setBillingAddressCity = this.setBillingAddressCity.bind(this);
+            this.setBillingAddressState = this.setBillingAddressState.bind(this);
+            this.setBillingAddressZip = this.setBillingAddressZip.bind(this);
+            this.setOrderPrice= this.setOrderPrice.bind(this);
+            this.setOrderStatus= this.setOrderStatus.bind(this);
+            this.setOrderDate= this.setOrderDate.bind(this);
+            this.setOrderDeliveryDate= this.setOrderDeliveryDate.bind(this);
+            this.setOrderDateCheckedOut= this.setOrderDateCheckedOut.bind(this);
+
         }
          setOrderID(event) {
-            this.state ({orderID: event.target.value})
+            this.setState({orderID: event.target.value})
         }
          setOrderName(event) {
-            this.state ({orderName: event.target.value})
+            this.setState({orderName: event.target.value})
         }
          setShippingAddressLine1(event) {
-            this.state ({shippingAddressLine1: event.target.value})
+            this.setState({shippingAddressLine1: event.target.value})
         }
         setShippingAddressLine2(event) {
-            this.state ({shippingAddressLine2: event.target.value})
+            this.setState({shippingAddressLine2: event.target.value})
         }
          setShippingAddressCity(event) {
-            this.state ({shippingAddressCity: event.target.value})
+            this.setState({shippingAddressCity: event.target.value})
         }
          setShippingAddressState(event) {
-            this.state ({shippingAddressState: event.target.value})
+            this.setState({shippingAddressState: event.target.value})
         }
         setShippingAddressZip(event) {
-            this.state ({shippingAddressZip: event.target.value})
+            this.setState({shippingAddressZip: event.target.value})
         }
         setPaymentCardNumber(event) {
-            this.state ({paymentCardNumber: event.target.value})
+            this.setState({paymentCardNumber: event.target.value})
         }
         setPaymentCardExpire(event) {
-            this.state ({paymentCardExpire: event.target.value})
+            this.setState({paymentCardExpire: event.target.value})
         }
         setPaymentCardSecurityCode(event) {
-            this.state ({paymentCardSecurityCode: event.target.value})
+            this.setState({paymentCardSecurityCode: event.target.value})
         }
         setPaymentCardName(event) {
-            this.state ({paymentCardName: event.target.value})
+            this.setState({paymentCardName: event.target.value})
         }
         setBillingName(event) {
-            this.state ({billingName: event.target.value})
+            this.setState({billingName: event.target.value})
         }
         setBillingAddressLine1(event) {
-            this.state ({billingAddressLine1: event.target.value})
+            this.setState({billingAddressLine1: event.target.value})
         }
         setBillingAddressLine2(event) {
-            this.state ({billingAddressLine2: event.target.value})
+            this.setState({billingAddressLine2: event.target.value})
         }
         setBillingAddressCity(event) {
-            this.state ({billingAddressCity: event.target.value})
+            this.setState({billingAddressCity: event.target.value})
         }
         setBillingAddressState(event) {
-            this.state ({billingAddressState: event.target.value})
+            this.setState({billingAddressState: event.target.value})
         }
         setBillingAddressZip(event) {
-            this.state ({billingAddressZip: event.target.value})
+            this.setState({billingAddressZip: event.target.value})
         }
         setOrderPrice(event) {
-            this.state ({orderPrice: event.target.value})
+            this.setState({orderPrice: event.target.value})
         }
         setOrderStatus(event) {
-            this.state ({orderStatus: event.target.value})
+            this.setState({orderStatus: event.target.value})
         }
         setOrderDate(event) {
-            this.state ({orderDate: event.target.value})
+            this.setState({orderDate: event.target.value})
         }
         setOrderDeliveryDate(event) {
-            this.state ({orderDeliveryDate: event.target.value})
+            this.setState({orderDeliveryDate: event.target.value})
         }
         setOrderDateCheckedOut(event) {
-            this.state ({orderDateCheckedOut: event.target.value})
+            this.setState({orderDateCheckedOut: event.target.value})
         } 
         render(){
             return(
@@ -143,27 +168,27 @@ import axios from 'axios';
                                 <tr><td><p className = "label"><h3>Step 1: Shipping Address</h3></p></td></tr>
                                 <tr id="order-name">
                                     <td><p className = "label">First and Last Name: </p></td>
-                                    <td><input type = "text" className = "set-order-name" onChange = {this.setOrderName}/></td>
+                                    <td><input type = "text" value={this.state.orderName} onChange = {this.setOrderName}/></td>
                                 </tr>
                                 <tr id="shipping-address-line1">
                                     <td><p className = "label">Address Line 1: </p></td>
-                                    <td><input type = "text" className = "set-shipping-address" onChange = {this.setShippingAddressLine1}/></td>
+                                    <td><input type = "text" value={this.state.shippingAddressLine1} onChange = {this.setShippingAddressLine1}/></td>
                                 </tr>
                                 <tr id="shipping-address-line2">
                                     <td><p className = "label">Address Line 2: </p></td>
-                                    <td><input type = "text" className = "set-shipping-address" onChange = {this.setShippingAddressLine2}/></td>
+                                    <td><input type = "text" value={this.state.shippingAddressLine2}  onChange = {this.setShippingAddressLine2}/></td>
                                 </tr>
                                 <tr id="shipping-address-city">
                                     <td><p className = "label">City: </p></td>
-                                    <td><input type = "text" className = "set-shipping-address" onChange = {this.setShippingAddressCity}/></td>
+                                    <td><input type = "text" value={this.state.shippingAddressCity}  onChange = {this.setShippingAddressCity}/></td>
                                 </tr>
                                 <tr id="shipping-address-state">
                                     <td><p className = "label">State: </p></td>
-                                    <td><input type = "text" className = "set-shipping-address" onChange = {this.setShippingAddressState}/></td>
+                                    <td><input type = "text" value={this.state.shippingAddressState}  onChange = {this.setShippingAddressState}/></td>
                                 </tr>
                                 <tr id="shipping-address-zip">
                                     <td><p className = "label">Zip Code: </p></td>
-                                    <td><input type = "text" className = "set-shipping-address" onChange = {this.setShippingAddressZip}/></td>
+                                    <td><input type = "text" value={this.state.shippingAddressZip}  onChange = {this.setShippingAddressZip}/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -175,19 +200,19 @@ import axios from 'axios';
                                 <tr><td><p className = "label"><h3>Step 2: Payment Method</h3></p></td></tr>
                                 <tr id="payment-card-number">
                                     <td><p className = "label">Credit Card Number:</p></td>
-                                    <td><input type = "text" className = "set-payment" onChange = {this.setPaymentCardNumber}/></td>
+                                    <td><input type = "text" value={this.state.paymentCardNumber}  onChange = {this.setPaymentCardNumber}/></td>
                                 </tr>
                                 <tr id="payment-expire">
                                     <td><p className = "label">Expiration Date (MM/YY):</p></td>
-                                    <td><input type = "text" className = "set-payment" onChange = {this.setPaymentExpire}/></td>
+                                    <td><input type = "text" value={this.state.paymentCardExpire} onChange = {this.setPaymentCardExpire}/></td>
                                 </tr>
                                 <tr id="payment-security-code">
                                     <td><p className = "label">Security Code:</p></td>
-                                    <td><input type = "text" className = "set-payment" onChange = {this.setPaymentSecurityCode}/></td>
+                                    <td><input type = "text" value={this.state.paymentCardSecurityCode} onChange = {this.setPaymentCardSecurityCode}/></td>
                                 </tr>
                                 <tr id="payment-name">
                                     <td><p className = "label">Name on Card:</p></td>
-                                    <td><input type = "text" className = "set-payment" onChange = {this.setPaymentName}/></td>
+                                    <td><input type = "text" value={this.state.paymentCardName} onChange = {this.setPaymentCardName}/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -199,27 +224,27 @@ import axios from 'axios';
                                 <tr><td><p className = "label"><h3>Step 3: Billing Information</h3></p></td></tr>
                                 <tr id="billing-name">
                                     <td><p className = "label">First and Last Name: </p></td>
-                                    <td><input type = "text" className = "set-billing-name" onChange = {this.setBillingName}/></td> ********
+                                    <td><input type = "text" value={this.state.billingName} onChange = {this.setBillingName}/></td>
                                 </tr>
                                 <tr id="billing-address-line1">
                                     <td><p className = "label">Address Line 1: </p></td>
-                                    <td><input type = "text" className = "set-billing-address" onChange = {this.setBillingAddressLine1}/></td>
+                                    <td><input type = "text" value={this.state.billingAddressLine1} onChange = {this.setBillingAddressLine1}/></td>
                                 </tr>
                                 <tr id="billing-address-line2">
                                     <td><p className = "label">Address Line 2: </p></td>
-                                    <td><input type = "text" className = "set-billing-address" onChange = {this.setBillingAddressLine2}/></td>
+                                    <td><input type = "text" value={this.state.billingAddressLine2} onChange = {this.setBillingAddressLine2}/></td>
                                 </tr>
                                 <tr id="billing-address-city">
                                     <td><p className = "label">City: </p></td>
-                                    <td><input type = "text" className = "set-billing-address" onChange = {this.setBillingAddressCity}/></td>
+                                    <td><input type = "text" value={this.state.billingAddressCity}  onChange = {this.setBillingAddressCity}/></td>
                                 </tr>
                                 <tr id="billing-address-state">
                                     <td><p className = "label">State: </p></td>
-                                    <td><input type = "text" className = "set-billing-address" onChange = {this.setBillingAddressState}/></td>
+                                    <td><input type = "text" value={this.state.billingAddressState} onChange = {this.setBillingAddressState}/></td>
                                 </tr>
                                 <tr id="billing-address-zip">
                                     <td><p className = "label">Zip Code: </p></td>
-                                    <td><input type = "text" className = "set-billing-address" onChange = {this.setBillingAddressZip}/></td>
+                                    <td><input type = "text" value={this.state.billingAddressZip} onChange = {this.setBillingAddressZip}/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -253,12 +278,13 @@ import axios from 'axios';
     ]
     const productList = products.map(product => 
         <Product product ={product}></Product>
-    )*/
+    )
 
     
     componentDidMount() {
         axios.get(`${serverURL}/items`).then((response) => {
             this.setState({products: response.data.data})
         });
-    }}
+    }*/
+}
 
