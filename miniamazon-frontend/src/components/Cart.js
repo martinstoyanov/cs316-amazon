@@ -36,7 +36,7 @@ import ProductCart from './ProductCart';
 
     
     const serverURL = "http://localhost:8888"
-const userId = "5f8b8eee77a1ab596021f8c4"
+    const userId = "5f8b8eee77a1ab596021f8c4"
 
     export default class Cart extends React.Component{
         constructor(props) {
@@ -98,12 +98,13 @@ const userId = "5f8b8eee77a1ab596021f8c4"
                 axios.get(`${serverURL}/items`).then((response2) => {
                     let items = response1.data.data.items
                     let products = []
-                    items.forEach(i => 
-                        response2.data.data.forEach(product => 
-                            if (i == product._id) {
-                                products.append(product)
-                            })
-                    )
+                    items.forEach(i => {
+                        response2.data.data.forEach(product => {
+                            if (i === product._id) {
+                                products.push(product)
+                            }
+                        })
+                    })
                     this.setState({ products: products })
                 });
             });
