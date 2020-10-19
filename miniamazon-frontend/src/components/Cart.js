@@ -1,5 +1,4 @@
 import React from 'react';
-import Product from './Product';
 
 import axios from 'axios';
 import ProductCart from './ProductCart';
@@ -182,7 +181,7 @@ import ProductCart from './ProductCart';
                 <nav className="left-layout">
                     <h1>CART</h1>
                     <h5>Below will list out your cart items.</h5>
-                    { this.state.products.map(product => <Product key={product._id} product={product}></Product>)}
+                    { this.state.products.map(product => <ProductCart key={product._id} product={product}></ProductCart>)}
                     <div id="shipping">
                         <h2>CHECKOUT:</h2>
                         <table className="shipping-inputs">
