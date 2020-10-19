@@ -4,7 +4,7 @@ import { useAlert } from 'react-alert'
 
 function Product({product}){
 
-    const serverURL = "http://localhost:8888"
+    const serverURL = "http://localhost:3000"
     const userId = "5f8b8eee77a1ab596021f8c4"
     const alert = useAlert()
 

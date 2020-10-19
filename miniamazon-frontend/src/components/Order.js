@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-const serverURL = "http://localhost:8888"
+const serverURL = "http://localhost:3000"
 
 export default class Order extends React.Component{
     constructor(props) {

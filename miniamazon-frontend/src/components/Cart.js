@@ -1,4 +1,5 @@
 import React from 'react';
+import Product from './Product';
 
 import axios from 'axios';
 import ProductCart from './ProductCart';
@@ -34,7 +35,7 @@ import ProductCart from './ProductCart';
 */
 
     
-    const serverURL = "http://localhost:8888"
+    const serverURL = "http://localhost:3000"
     export default class Cart extends React.Component{
         constructor(props) {
             super(props);
@@ -62,7 +63,8 @@ import ProductCart from './ProductCart';
               orderDeliveryDate: "",
               orderDateCheckedOut: "",
               orderPrice: false,
-              orders: []
+              orders: [],
+            products: []
             };
             this.setOrderID = this.setOrderID.bind(this);
             this.setOrderName = this.setOrderName.bind(this);
@@ -87,13 +89,6 @@ import ProductCart from './ProductCart';
             this.setOrderDeliveryDate= this.setOrderDeliveryDate.bind(this);
             this.setOrderDateCheckedOut= this.setOrderDateCheckedOut.bind(this);
 
-        }
-
-        constructor(props) {
-            super(props);
-            this.state = {
-                products: []
-            };
         }
 
         componentDidMount() {
