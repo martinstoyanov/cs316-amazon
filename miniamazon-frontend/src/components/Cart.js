@@ -101,7 +101,7 @@ const userId = "5f8b8eee77a1ab596021f8c4"
                     items.forEach(i => 
                         response2.data.data.forEach(product => 
                             if (i == product._id) {
-                                products.append()
+                                products.append(product)
                             })
                     )
                     this.setState({ products: products })
