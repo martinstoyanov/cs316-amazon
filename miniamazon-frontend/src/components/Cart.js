@@ -2,7 +2,6 @@ import React from 'react';
 
 import axios from 'axios';
 import ProductCart from './ProductCart';
-master
 
 /*function Cart(){
     var isCheckedOut = false;
