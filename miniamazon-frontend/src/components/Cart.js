@@ -35,7 +35,9 @@ import ProductCart from './ProductCart';
 */
 
     
-    const serverURL = "http://localhost:3000"
+    const serverURL = "http://localhost:8888"
+const userId = "5f8b8eee77a1ab596021f8c4"
+
     export default class Cart extends React.Component{
         constructor(props) {
             super(props);
@@ -92,8 +94,18 @@ import ProductCart from './ProductCart';
         }
 
         componentDidMount() {
-            axios.get(`${serverURL}/carts`).then((response) => {
-                this.setState({ products: response.data.data })
+            axios.get(`${serverURL}/cart/${userId}`).then((response1) => {
+                axios.get(`${serverURL}/items`).then((response2) => {
+                    let items = response1.data.data.items
+                    let products = []
+                    items.forEach(i =>
+                        response2.data.data.forEach(product =>
+                            if (i == product._id) {
+                                products.append()
+                            }
+                    )
+                    this.setState({ products: products })
+                });
             });
         }
 
@@ -169,7 +181,7 @@ import ProductCart from './ProductCart';
                 <nav className="left-layout">
                     <h1>CART</h1>
                     <h5>Below will list out your cart items.</h5>
-                    { this.state.products[0].map(product => <Product key={product._id} product={product}></Product>)}
+                    { this.state.products.map(product => <Product key={product._id} product={product}></Product>)}
                     <div id="shipping">
                         <h2>CHECKOUT:</h2>
                         <table className="shipping-inputs">

@@ -2,7 +2,7 @@ import React from 'react';
 import Product from './Product';
 import axios from 'axios';
 
-const serverURL = "http://localhost:3000"
+const serverURL = "http://localhost:8888"
 
 export default class ProductsList extends React.Component{
     constructor(props) {
