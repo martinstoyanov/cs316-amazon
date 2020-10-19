@@ -43,7 +43,7 @@ updateCart = async (req, res) => {
         })
     }
 
-    Cart.findOne({ _id: req.params.cart_id }, (err, cart) => {
+    Cart.findOne({ _id: req.params.id }, (err, cart) => {
         if (err) {
             return res.status(404).json({
                 err,
