@@ -88,6 +88,21 @@ import ProductCart from './ProductCart';
             this.setOrderDateCheckedOut= this.setOrderDateCheckedOut.bind(this);
 
         }
+
+        constructor(props) {
+            super(props);
+            this.state = {
+                products: []
+            };
+        }
+
+        componentDidMount() {
+            axios.get(`${serverURL}/carts`).then((response) => {
+                this.setState({ products: response.data.data })
+            });
+        }
+
+
          setOrderID(event) {
             this.setState({orderID: event.target.value})
         }
@@ -159,9 +174,7 @@ import ProductCart from './ProductCart';
                 <nav className="left-layout">
                     <h1>CART</h1>
                     <h5>Below will list out your cart items.</h5>
-                    {/* <div>
-                        {productList}
-                    </div> */}
+                    { this.state.products[0].map(product => <Product key={product._id} product={product}></Product>)}
                     <div id="shipping">
                         <h2>CHECKOUT:</h2>
                         <table className="shipping-inputs">
