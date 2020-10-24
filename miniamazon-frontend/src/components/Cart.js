@@ -1,38 +1,6 @@
 import React from 'react';
-
 import axios from 'axios';
 import ProductCart from './ProductCart';
-
-/*function Cart(){
-    var isCheckedOut = false;
-
-    var cartID = 123456;
-    var orderID = 987654;
-
-    var orderName = "John Appleseed"
-    var shippingAddressLine1 = "123 CS Lane"
-    var shippingAddressLine2 = "Apt # 111"
-    var shippingAddressCity = "Durham"
-    var shippingAddressState = "NC"
-    var shippingAddressZip = "27708"
-    var orderPrice = 12.3;
-    var orderStatus = "Ordered"
-    var orderDate = "12-1-2020"
-    var deliveryDate = "12-10-2020"
-
-    var paymentCardNumber = "12334566890985"    
-    var paymentExpire = "12-01-2020"
-    var paymentSecurityCode = "123"
-    var paymentName = "Johnny Appleseed"
-
-    var billingName = "John App"
-    var billingAddressLine1 = "123 CompSci Lane"
-    var billingAddressLine2 = "PO: 123"
-    var billingAddressCity = "Durham"
-    var billingAddressState = "NC"
-    var billingAddressZip = "27706"
-*/
-
     
     const serverURL = "http://localhost:8888"
     const userId = "5f8b8eee77a1ab596021f8c4"
@@ -41,32 +9,49 @@ import ProductCart from './ProductCart';
         constructor(props) {
             super(props);
             this.state = {
-              orderID: "",
-              orderName: "",
-              shippingAddressLine1: "",
-              shippingAddressLine2: "",
-              shippingAddressCity: "",
-              shippingAddressState: "",
-              shippingAddressZip: "",
-              paymentCardNumber: "",
-              paymentCardExpire: "",
-              paymentCardSecurityCode: "",
-              paymentCardName: "",
-              billingName: "",
-              billingAddressLine1: "",
-              billingAddressLine2: "",
-              billingAddressCity: "",
-              billingAddressState: "",
-              billingAddressZip: "",
-              orderPrice: 0.0,
-              orderStatus: "",
-              orderDate: "",
-              orderDeliveryDate: "",
-              orderDateCheckedOut: "",
-              orderPrice: false,
-              orders: [],
-            products: []
+                isShippingEntered: false,
+                isPaymentEntered: false,
+                isBillingEntered: false,
+                isBillingSame: false,
+                isCheckingOut: false,
+                isReviewingInformation: false,
+                isCheckoutButton1Visible: true,
+
+                orderID: "",
+                orderName: "",
+                shippingAddressLine1: "",
+                shippingAddressLine2: "",
+                shippingAddressCity: "",
+                shippingAddressState: "",
+                shippingAddressZip: "",
+                paymentCardNumber: "",
+                paymentCardExpire: "",
+                paymentCardSecurityCode: "",
+                paymentCardName: "",
+                billingName: "",
+                billingAddressLine1: "",
+                billingAddressLine2: "",
+                billingAddressCity: "",
+                billingAddressState: "",
+                billingAddressZip: "",
+                orderPrice: 0.0,
+                orderStatus: "",
+                orderDate: "",
+                orderDeliveryDate: "",
+                orderDateCheckedOut: "",
+                orderPrice: false,
+                orders: [],
+                products: []
             };
+
+            this.setShippingEntered = this.setShippingEntered.bind(this);
+            this.setPaymentEntered = this.setPaymentEntered.bind(this);
+            this.setBillingEntered = this.setBillingEntered.bind(this);
+            this.setBillingSame = this.setBillingSame.bind(this);
+            this.setCheckingOut = this.setCheckingOut.bind(this);
+            this.setReviewingInformation = this.setReviewingInformation.bind(this);
+            this.setCheckoutButtonInvisible = this.setCheckoutButtonInvisible.bind(this);
+
             this.setOrderID = this.setOrderID.bind(this);
             this.setOrderName = this.setOrderName.bind(this);
             this.setShippingAddressLine1 = this.setShippingAddressLine1.bind(this);
@@ -89,7 +74,6 @@ import ProductCart from './ProductCart';
             this.setOrderDate= this.setOrderDate.bind(this);
             this.setOrderDeliveryDate= this.setOrderDeliveryDate.bind(this);
             this.setOrderDateCheckedOut= this.setOrderDateCheckedOut.bind(this);
-
         }
 
         componentDidMount() {
@@ -109,23 +93,44 @@ import ProductCart from './ProductCart';
             });
         }
 
+        setShippingEntered(event) {
+            this.setState({isShippingEntered: true})
+        }
+        setPaymentEntered(event) {
+            this.setState({isPaymentEntered: true})
+        }
+        setBillingEntered(event) {
+            this.setState({isBillingEntered: true})
+        }
+        setBillingSame(event) {
+            this.setState({isBillingSame: true})
+        }
+        setCheckingOut(event) {
+            this.setState({isCheckingOut: true})
+        }
+        setReviewingInformation(event) {
+            this.setState({isReviewingInformation: true})
+        }
+        setCheckoutButtonInvisible(event) {
+            this.setState({isCheckoutButton1Visible: false})
+        }
 
-         setOrderID(event) {
+        setOrderID(event) {
             this.setState({orderID: event.target.value})
         }
-         setOrderName(event) {
+        setOrderName(event) {
             this.setState({orderName: event.target.value})
         }
-         setShippingAddressLine1(event) {
+        setShippingAddressLine1(event) {
             this.setState({shippingAddressLine1: event.target.value})
         }
         setShippingAddressLine2(event) {
             this.setState({shippingAddressLine2: event.target.value})
         }
-         setShippingAddressCity(event) {
+        setShippingAddressCity(event) {
             this.setState({shippingAddressCity: event.target.value})
         }
-         setShippingAddressState(event) {
+        setShippingAddressState(event) {
             this.setState({shippingAddressState: event.target.value})
         }
         setShippingAddressZip(event) {
@@ -176,14 +181,36 @@ import ProductCart from './ProductCart';
         setOrderDateCheckedOut(event) {
             this.setState({orderDateCheckedOut: event.target.value})
         } 
+
         render(){
-            return(
-                <nav className="left-layout">
-                    <h1>CART</h1>
-                    <h5>Below will list out your cart items.</h5>
-                    { this.state.products.map(product => <ProductCart key={product._id} product={product}></ProductCart>)}
+
+            const isShippingEntered = this.state.isShippingEntered;
+            const isPaymentEntered = this.state.isPaymentEntered;
+            const isBillingEntered = this.state.isBillingEntered;
+            const isBillingSame = this.state.isBillingSame;
+            const isReviewingInformation = this.state.isReviewingInformation;
+            const isCheckingOut = this.state.isCheckingOut;
+
+            const isCheckoutButton1Visible = this.isCheckoutButton1Visible;
+
+            let shippingAddress;
+            let paymentMethod;
+            let billingAddress;
+            let reviewInformation;
+
+            let checkoutButton1;
+
+            // if (isCheckoutButton1Visible) {
+            //     checkoutButton1 = 
+            //     <nav>
+            //         <button className="btn btn-secondary" onClick={this.setCheckingOut}><b>CHECKOUT</b></button>
+            //     </nav>
+            // }
+
+            if (isCheckingOut) {
+                shippingAddress = 
+                <nav>
                     <div id="shipping">
-                        <h2>CHECKOUT:</h2>
                         <table className="shipping-inputs">
                             <tbody>
                                 <tr><td><p className = "label"><h3>Step 1: Shipping Address</h3></p></td></tr>
@@ -213,8 +240,16 @@ import ProductCart from './ProductCart';
                                 </tr>
                             </tbody>
                         </table>
+                        <div>
+                            <button className="btn btn-secondary" onClick={this.setShippingEntered}><b>NEXT</b></button>
+                        </div>
                     </div><br/>
-        
+                </nav>
+            }
+
+            if(isShippingEntered) {
+                paymentMethod = 
+                <nav>
                     <div id="payment">
                         <table className="payment-inputs">
                             <tbody>
@@ -237,9 +272,22 @@ import ProductCart from './ProductCart';
                                 </tr>
                             </tbody>
                         </table>
+                        <div>
+                            <button className="btn btn-secondary" onClick={this.setPaymentEntered}><b>NEXT</b></button>
+                        </div>
                     </div><br/>
-        
+                </nav>
+            }
+
+            if(isPaymentEntered) {
+                billingAddress =
+                <nav>
                     <div id="billing">
+                        <div>
+                            <button className="btn btn-secondary" onClick={this.setBillingSame}><b>NEXT</b></button>
+                            {/* need to make this a checkbox */}
+                            {/* need to hide below info when billing is the same */}
+                        </div>
                         <table className="billing-inputs">
                             <tbody>
                                 <tr><td><p className = "label"><h3>Step 3: Billing Information</h3></p></td></tr>
@@ -271,41 +319,46 @@ import ProductCart from './ProductCart';
                         </table>
                     </div><br/>
                     <div>
-                        <a href="/thanks">
-                            <button className="btn btn-secondary">CHECKOUT!</button><br/>
-                            {/* <button className="btn btn-secondary" onClick={setCheckedOut}>CHECKOUT!</button><br/> */}
-                        </a>
-                    </div><br/><br/>
+                        <button className="btn btn-secondary" onClick={this.setBillingEntered}><b>REVIEW MY ORDER</b></button><br/><br/>
+                    </div>
+                </nav>
+            }
+
+            if (isBillingEntered) {
+                reviewInformation = 
+                <nav>
+                    <div id="products">
+                        { this.state.products.map(product => <ProductCart key={product._id} product={product}></ProductCart>)}<br/>
+                    </div>
+                    <div id="info">
+                        {/* Need to implement displaying order info */}
+                    </div>
+                    <a href="/thanks">
+                        <button className="btn btn-secondary"><b>CHECKOUT!</b></button><br/><br/>
+                    </a>
+                </nav>
+            }
+
+            return(
+                <nav className="left-layout">
+                    <h1>CART</h1>
+                    <h5>Below will list out your cart items.</h5>
+                    { this.state.products.map(product => <ProductCart key={product._id} product={product}></ProductCart>)}<br/>
+
+                    <nav>
+                        <button className="btn btn-secondary" onClick={this.setCheckingOut}><b>CHECKOUT</b></button><br/><br/>
+                    </nav>
+
+                    <div>
+                        {shippingAddress}
+                        {paymentMethod}
+                        {billingAddress}
+                        {reviewInformation}
+                    </div>
+
                 </nav>
             )
         }
     
-
-    /*const products = [
-        {
-            itemID: 1,
-            itemName: "item 1",
-            itemImage: "something",
-            itemDescription: "This is a cool product #1",
-            itemPrice: 12
-        },
-        {
-            itemID: 2,
-            itemName: "item 2",
-            itemImage: "something",
-            itemDescription: "This is a cool product #2",
-            itemPrice: 12
-        },
-    ]
-    const productList = products.map(product => 
-        <ProductCart product ={product}></ProductCart>
-    )
-
-    
-    componentDidMount() {
-        axios.get(`${serverURL}/items`).then((response) => {
-            this.setState({products: response.data.data})
-        });
-    }*/
 }
 
