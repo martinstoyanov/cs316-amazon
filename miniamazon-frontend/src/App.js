@@ -24,6 +24,7 @@ function App() {
             <Route path="/Cart" component={Cart} />
             <Route path="/Thanks" component={PostCheckout} />
             <Route path="/Orders" component={OrdersList} />
+            <Route path="/SellerList" component={OrdersList} />
           </Switch>
       </Router>
     </React.Fragment>
