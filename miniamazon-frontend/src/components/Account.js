@@ -1,13 +1,33 @@
 import React from 'react';
 import '../App.css';
 
+
+
 function Account(){
     
     var userID = "compsci316project";
     var userName = "john appleseed";
     var userEmail = "john_appleseed123@gmail.com";
     var userPassword = "goduke123";
-    var accountType = "Buyer";
+    var accountType = "Seller";
+
+    function displayMyProducts(){
+        if (accountType == "Seller")
+        {
+            return(
+            <div>
+                <br/>
+                <a href="/account/seller/products">
+                    <button className="btn btn-secondary">View/Edit My Products</button><br/>
+                </a>
+            </div>
+            )
+        }
+        else
+        {
+            return (<div></div>)
+        }
+    }
 
     return(
         <nav className="left-layout">
@@ -23,6 +43,8 @@ function Account(){
                 <a href="/orders">
                     <button className="btn btn-secondary">My Orders</button>
                 </a>
+                
+                {displayMyProducts()}
             </div><br/>
             <div>
                 <a href="/account-edit">

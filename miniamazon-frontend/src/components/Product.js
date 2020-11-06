@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { useAlert } from 'react-alert'
+//should convert this to a react.component and 
+//add in constructor to take in parameters you passed in
 
 function Product({product}){
 
@@ -36,6 +38,13 @@ function Product({product}){
                     <button className="btn btn-secondary" onClick={addToCart}>Add to cart</button><br/>
                 </div>
                 <br/>
+                <a href= "/account/seller/edit">
+                    <button className="btn btn-secondary">Edit This Product</button>
+                    {/*the href should include product id & sellerid to avoid an overlap
+                    /account/seller/edit/pid/sid */}
+                        
+                    <br/>
+                </a>
             </h2> 
         </div>
     )

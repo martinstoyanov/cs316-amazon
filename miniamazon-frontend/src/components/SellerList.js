@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import Product from './Product';
+//import SellerEdit from '.SellerEdit';
+//this is not specific to one seller's products. must fix
     
     const serverURL = "http://localhost:8888"
     //const userId = "5f8b8eee77a1ab596021f8c4"
@@ -18,9 +20,10 @@ import Product from './Product';
             axios.get(`${serverURL}/items`).then((response) => {
                 this.setState({products: response.data.data})
             });
+            //need (set sellerid)
         }
     
-        
+    
         render() {
             return(
                 <nav className="left-layout">
@@ -29,7 +32,7 @@ import Product from './Product';
                         Here are the products you sell.
                     </p>
                     <div>
-                        {this.state.products.map(product => <Product key={product._id} product ={product}></Product>)}
+                        {this.state.products.map(product => <Product key={product._id} product ={product} sellerID= {this.state.sellerID}></Product>)}
                     </div>
                     
                 </nav>

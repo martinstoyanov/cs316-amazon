@@ -20,14 +20,14 @@ function App() {
         <Header />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/Account" component={Account} />
-            <Route path="/Account-Edit" component={AccountEdit} />
-            <Route path="/Shop" component={ProductsList} />
-            <Route path="/Cart" component={Cart} />
-            <Route path="/Thanks" component={PostCheckout} />
-            <Route path="/Orders" component={OrdersList} />
-            <Route path="/SellerList" component={SellerList} />
-            <Route path="/SellerEdit" component={SellerEdit} />
+            <Route exact path="/Account" component={Account} />
+            <Route exact path="/Account-Edit" component={AccountEdit} />
+            <Route exact path="/Shop" component={ProductsList} />
+            <Route exact path="/Cart" component={Cart} />
+            <Route exact path="/Thanks" component={PostCheckout} />
+            <Route exact path="/Orders" component={OrdersList} />
+            <Route exact path="/account/seller/products" component={SellerList} />
+            <Route exact path="/account/seller/edit" component={SellerEdit} />
           </Switch>
       </Router>
     </React.Fragment>
