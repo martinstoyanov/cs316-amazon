@@ -10,6 +10,8 @@ import AccountEdit from './components/AccountEdit';
 import Cart from './components/Cart';
 import PostCheckout from './components/PostCheckout';
 import OrdersList from './components/OrdersList';
+import SellerList from './components/SellerList';
+import SellerEdit from './components/SellerEdit';
 
 function App() {
   return (
@@ -24,7 +26,8 @@ function App() {
             <Route path="/Cart" component={Cart} />
             <Route path="/Thanks" component={PostCheckout} />
             <Route path="/Orders" component={OrdersList} />
-            <Route path="/SellerList" component={OrdersList} />
+            <Route path="/SellerList" component={SellerList} />
+            <Route path="/SellerEdit" component={SellerEdit} />
           </Switch>
       </Router>
     </React.Fragment>

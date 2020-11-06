@@ -24,7 +24,7 @@ import Product from './Product';
         render() {
             return(
                 <nav className="left-layout">
-                    <h1 className="title">PRODUCTS</h1>
+                    <h1 className="title">Your Products</h1>
                     <p>
                         Here are the products you sell.
                     </p>

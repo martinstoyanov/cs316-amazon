@@ -5,26 +5,20 @@ import SellerList from './SellerList';
     const serverURL = "http://localhost:8888"
     //const userId = "5f8b8eee77a1ab596021f8c4"
 
-    export default class Seller extends React.Component{
+    export default class SellerEdit extends React.Component{
         constructor(props) {
             super(props);
             this.state = {
-                isShippingEntered: false,
-                isPaymentEntered: false,
-                isBillingEntered: false,
-                isBillingSame: false,
-                isCheckingOut: false,
-                isReviewingInformation: false,
-                isCheckoutButton1Visible: true,
+                isEditing: true,
 
                 sellerID: "",
                 sellerName: "",
                 sellerEmail: "",
-                shippingAddressLine1: "",
-                shippingAddressLine2: "",
-                shippingAddressCity: "",
-                shippingAddressState: "",
-                shippingAddressZip: "",
+                returnAddressLine1: "",
+                returnAddressLine2: "",
+                returnAddressCity: "",
+                returnAddressState: "",
+                returnAddressZip: "",
                 paymentCardNumber: "",
                 paymentCardExpire: "",
                 paymentCardSecurityCode: "",
@@ -42,23 +36,16 @@ import SellerList from './SellerList';
                 orderDateCheckedOut: "",
                 orderPrice: false,
                 orders: [],
-                products: []
+                sellerlist: []
             };
-            this.setShippingEntered = this.setShippingEntered.bind(this);
-            this.setPaymentEntered = this.setPaymentEntered.bind(this);
-            this.setBillingEntered = this.setBillingEntered.bind(this);
-            this.setBillingSame = this.setBillingSame.bind(this);
-            this.setCheckingOut = this.setCheckingOut.bind(this);
-            this.setReviewingInformation = this.setReviewingInformation.bind(this);
-            this.setCheckoutButtonInvisible = this.setCheckoutButtonInvisible.bind(this);
 
             this.setOrderID = this.setOrderID.bind(this);
             this.setOrderName = this.setOrderName.bind(this);
-            this.setShippingAddressLine1 = this.setShippingAddressLine1.bind(this);
-            this.setShippingAddressLine2 = this.setShippingAddressLine2.bind(this);
-            this.setShippingAddressCity = this.setShippingAddressCity.bind(this);
-            this.setShippingAddressState = this.setShippingAddressState.bind(this);
-            this.setShippingAddressZip = this.setShippingAddressZip.bind(this);
+            this.setReturnAddressLine1 = this.setShippingAddressLine1.bind(this);
+            this.setReturnAddressLine2 = this.setShippingAddressLine2.bind(this);
+            this.setReturnAddressCity = this.setShippingAddressCity.bind(this);
+            this.setReturnAddressState = this.setShippingAddressState.bind(this);
+            this.setReturnAddressZip = this.setShippingAddressZip.bind(this);
             this.setPaymentCardNumber = this.setPaymentCardNumber.bind(this);
             this.setPaymentCardExpire = this.setPaymentCardExpire.bind(this);
             this.setPaymentCardSecurityCode = this.setPaymentCardSecurityCode.bind(this);
