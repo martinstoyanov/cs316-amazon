@@ -43,9 +43,10 @@ export default class Header extends React.Component
   } 
 
   search(event){
+    // var items = [{name: 'Laptop', price: 2500}, {name: 'Phone', price: 1500}, {name: 'Car', price: 10000}];
+    //this.props.updateItems(items, this.state.searchTerm);
     
-    
-    //this.setState({searchResults: [... this.state.searchResults, 'test']})
+    this.setState({searchResults: [... this.state.searchResults, 'test']})
     axios.get(`${serverURL}/items/name`,{ params: {
       name: this.state.searchTerm
     }}).then((response) => {

@@ -10,20 +10,23 @@ import AccountEdit from './components/AccountEdit';
 import Cart from './components/Cart';
 import PostCheckout from './components/PostCheckout';
 import OrdersList from './components/OrdersList';
+import Item from './components/Item';
 import SearchResults from './components/SearchResults';
 
 function App() {
   // test data passed in for SearchResults page
   const [items, setItems] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const updateItems = newItems => {
+  const updateItems = (newItems, newTerm) => {
     setItems(newItems)
+    setSearchTerm(newTerm);
   }
 
   useEffect(() => {
     if(items.length > 0) {
-      window.location = '/Search';
-      alert(items.length);
+      window.location = `/Search/${searchTerm}`;
+      //alert(items.length);
     }
   }, [items]); 
 
@@ -39,9 +42,10 @@ function App() {
             <Route path="/Cart" component={Cart} />
             <Route path="/Thanks" component={PostCheckout} />
             <Route path="/Orders" component={OrdersList} />
-            <Route path="/Search"  
+            <Route path="/Items/:Id" component={Item} />
+            <Route path="/Search/:key"  
                    render={(props) => (
-                      <SearchResults {...props} items={items} />
+                      <SearchResults {...props} key={props.location.pathname} items={items} />
                    )} />
           </Switch>
       </Router>
