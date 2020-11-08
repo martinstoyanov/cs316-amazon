@@ -32,7 +32,7 @@ export default class Header extends React.Component
     super(props);
     this.state = {
       searchTerm: '',
-      searchResults : ['test', 'test', 'test']
+      searchResults : []
     }
     this.search = this.search.bind(this)
     this.handleSearchInputChange = this.handleSearchInputChange.bind(this);
@@ -40,14 +40,18 @@ export default class Header extends React.Component
 
   handleSearchInputChange(event){
     this.setState({searchTerm: event.target.value})
-  }
+  } 
 
   search(event){
-   // this.setState({searchResults: [... this.state.searchResults, 'test']})
+    
+    
+    //this.setState({searchResults: [... this.state.searchResults, 'test']})
     axios.get(`${serverURL}/items/name`,{ params: {
       name: this.state.searchTerm
     }}).then((response) => {
-        this.setState({apidata: response.data.data})
+        //this.setState({apidata: response.data.data})
+      // var items = [{name: 'Laptop', price: 2500}, {name: 'Phone', price: 1500}, {name: 'Car', price: 10000}];
+      this.props.updateItems(response.data.data)
     });
     //this.setState({searchResults: [... this.searchResults, this.state.searchTerm]})
     event.preventDefault();

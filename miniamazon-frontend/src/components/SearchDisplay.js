@@ -6,7 +6,7 @@ function SearchDisplay(props){
   return (
     <div>
     {searchResults.map( (text, i) => (
-          <h1 key = {"lol" + i}> {text}</h1>
+          <h1 key = {"" + i}> {text}</h1>
           )) 
     }
     </div>
