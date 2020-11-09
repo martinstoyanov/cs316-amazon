@@ -14,11 +14,6 @@ function ReviewModal() {
     const handleShow = () => setShow(true);
     const [rating, setRating] = React.useState(0);
     const [reviewtext, setReviewText] = React.useState(0);
-    // const reviewtext = React.useRef("UYUH");
-
-    // function setDescription() {
-
-    // }
     
     function addtoReview() {
         handleClose();
@@ -78,10 +73,9 @@ function ReviewModal() {
                         <tr id="review-text">
                             <td><p className = "label">Description:</p></td>
                             <td><textarea rows={8} cols={40} 
-                            onChange={(event, newValue1) => {
-                                setReviewText(newValue1)
+                            onChange={(event) => {
+                                setReviewText(event.target.value)
                             }}
-                            // ref={setReviewText} 
                             />
                             </td>
                         </tr>
