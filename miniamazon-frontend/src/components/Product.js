@@ -39,6 +39,11 @@ function Product({product}){
                     <button className="btn btn-secondary" onClick={addToCart}>Add to cart</button><br/>
                 </div>
                 <ReviewModal></ReviewModal>
+                <div>
+                    <a href={"/items/" + product._id}>
+                        <button className="btn btn-secondary">View Full Details</button>
+                    </a>
+                </div>
                 <br/>
             </h2> 
         </div>
