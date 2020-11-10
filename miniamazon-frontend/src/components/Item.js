@@ -17,10 +17,9 @@ class Items extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`${serverURL}/items/${this.state.id}`,{ params: {
-            id: this.state.id
-        }}).then((response) => {
+        axios.get(`${serverURL}/item/${this.state.id}`).then((response) => {
             this.setState({item: response.data.data});
+            console.log(response.data.data);
         });
     }
 
@@ -29,10 +28,10 @@ class Items extends React.Component {
             <div>
                 <div>
                     <div>
-                        Name: {this.state.item.name}
+                        Name: {this.state.item.item_name}
                     </div>
                     <div>
-                        Price: {this.state.item.price}
+                        Price: {this.state.item.item_price}
                     </div>
                 </div>
             </div>
