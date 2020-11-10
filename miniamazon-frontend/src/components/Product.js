@@ -2,9 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { useAlert } from 'react-alert'
 
-import ReviewModal from './ReviewModal';
-
-
 function Product({product}){
 
     const serverURL = "http://localhost:8888"
@@ -38,7 +35,6 @@ function Product({product}){
                 <div>
                     <button className="btn btn-secondary" onClick={addToCart}>Add to cart</button><br/>
                 </div>
-                <ReviewModal></ReviewModal>
                 <div>
                     <a href={"/items/" + product._id}>
                         <button className="btn btn-secondary">View Full Details</button>

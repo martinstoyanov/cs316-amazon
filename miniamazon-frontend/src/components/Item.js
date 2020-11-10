@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import ReviewModal from './ReviewModal';
+
 const serverURL = "http://localhost:8888"
 
 class Items extends React.Component {
@@ -26,14 +28,20 @@ class Items extends React.Component {
     render() {
         return (
             <div>
-                <div>
+                <nav className="left-layout">
+                    <h1 className="title">{this.state.item.item_name}: ${this.state.item.item_price}</h1>
+                    <h4 className="title">{this.state.item.item_description}</h4>
+                    <h6 className="title">Item #{this.state.item._id}</h6>
+                    <p>
+                        Pictures to be added soon! And other fun things!
+                    </p>
+                    <ReviewModal></ReviewModal><br/><br/><br/>
                     <div>
-                        Name: {this.state.item.item_name}
+                        <a href="/shop">
+                            <button className="btn btn-secondary">Go Back to Products</button><br/>
+                        </a>
                     </div>
-                    <div>
-                        Price: {this.state.item.item_price}
-                    </div>
-                </div>
+                </nav>
             </div>
         ); 
     }

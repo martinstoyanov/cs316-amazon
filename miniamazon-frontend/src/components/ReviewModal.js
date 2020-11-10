@@ -49,10 +49,7 @@ function ReviewModal() {
   
     return (
       <>
-        <Button variant="primary" onClick={handleShow}>
-            Leave a review!
-        </Button>
-  
+        <button className="btn btn-secondary" onClick={handleShow}>Leave a review!</button>
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>Leave a Review!</Modal.Title>
