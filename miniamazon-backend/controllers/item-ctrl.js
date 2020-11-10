@@ -105,18 +105,20 @@ getItemById = async (req, res) => {
 }
 
 getItemsByName = async (req, res) => {
+    
     await Item.find({ _id: req.params.item_name }, (err, items) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-
-        if (!items.length) {
+        console.log('asdffdfs')
+        if (items.length < 1) {
             return res
                 .status(404)
                 .json({ success: false, error: `Item not found when searching by name` })
         }
         return res.status(200).json({ success: true, data: items })
     }).catch(err => console.log(err))
+
 }
 
 getItems = async (req, res) => {
