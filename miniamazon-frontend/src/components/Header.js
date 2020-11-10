@@ -40,19 +40,15 @@ export default class Header extends React.Component
 
   handleSearchInputChange(event){
     this.setState({searchTerm: event.target.value})
-  } 
+  }
 
-  search(event){
-    // var items = [{name: 'Laptop', price: 2500}, {name: 'Phone', price: 1500}, {name: 'Car', price: 10000}];
-    //this.props.updateItems(items, this.state.searchTerm);
-    
-    this.setState({searchResults: [... this.state.searchResults, 'test']})
+  search(event) {
     axios.get(`${serverURL}/items/name`,{ params: {
       name: this.state.searchTerm
     }}).then((response) => {
-        //this.setState({apidata: response.data.data})
-      // var items = [{name: 'Laptop', price: 2500}, {name: 'Phone', price: 1500}, {name: 'Car', price: 10000}];
-      this.props.updateItems(response.data.data)
+        // parse the json in the output
+        this.setState({searchResults: ['test']})
+        this.props.updateItems(response.data.data)
     });
     //this.setState({searchResults: [... this.searchResults, this.state.searchTerm]})
     event.preventDefault();
