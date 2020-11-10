@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import ReviewModal from './ReviewModal';
+import Rating from '@material-ui/lab/Rating';
+import Review from './Review';
 
 const serverURL = "http://localhost:8888"
 
@@ -14,7 +16,8 @@ class Items extends React.Component {
         var id = parts[parts.length - 1];
         this.state = {
             id: id,
-            item: {}
+            item: {},
+            reviews: []
         }
     }
 
@@ -23,6 +26,35 @@ class Items extends React.Component {
             this.setState({item: response.data.data});
             console.log(response.data.data);
         });
+        axios.get(`${serverURL}/review/${this.state.item._id}`).then((response1) => {
+            axios.get(`${serverURL}/reviews`).then((response2) => {
+                let reviewItems = response1.data.data.reviews
+                let reviews = []
+                reviewItems.forEach(i => {
+                    response2.data.data.forEach(review => {
+                        if (i === review._id) {
+                            reviews.push(review)
+                        }
+                    })
+                })
+                this.setState({ reviews: reviews })
+            });
+        });
+
+        // axios.get(`${serverURL}/cart/${userId}`).then((response1) => {
+        //     axios.get(`${serverURL}/items`).then((response2) => {
+        //         let items = response1.data.data.items
+        //         let products = []
+        //         items.forEach(i => {
+        //             response2.data.data.forEach(product => {
+        //                 if (i === product._id) {
+        //                     products.push(product)
+        //                 }
+        //             })
+        //         })
+        //         this.setState({ products: products })
+        //     });
+        // });
     }
 
     render() {
@@ -35,13 +67,23 @@ class Items extends React.Component {
                     <p>
                         Pictures to be added soon! And other fun things!
                     </p>
-                    <ReviewModal></ReviewModal><br/><br/><br/>
+                    <ReviewModal product ={this.state.item}></ReviewModal><br/><br/>
                     <div>
                         <a href="/shop">
-                            <button className="btn btn-secondary">Go Back to Products</button><br/>
+                            <button className="btn btn-secondary">Go Back to Products</button>
                         </a>
                     </div>
                 </nav>
+
+                <nav className="left-layout">
+                    <h1>Reviews</h1>
+                    <h5>Average Rating:</h5>
+                    <Rating name="read-only" value={4} readOnly />
+                    <h5>Here are the reviews for this product.</h5>
+                    { this.state.reviews.map(review => <Review key={review._id} review={review}></Review>)}<br/>
+
+                </nav>
+
             </div>
         ); 
     }
