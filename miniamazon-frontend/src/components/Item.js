@@ -22,24 +22,21 @@ class Items extends React.Component {
     }
 
     componentDidMount() {
+        //first, retrieve item object from database
         axios.get(`${serverURL}/item/${this.state.id}`).then((response) => {
             this.setState({item: response.data.data});
-            console.log(response.data.data);
+            let reviews = []
+
+            //for each review in item.reviews, retrieve review object from database and append to this.state.reviews for display
+            response.data.data.reviews.forEach(review_id => {
+                axios.get(`${serverURL}/review/${review_id}`).then((r) => {
+                    let review = r.data.data
+                    reviews.push(review)
+                    this.setState({ reviews: reviews })
+                });
+            })
         });
-        axios.get(`${serverURL}/review/${this.state.item._id}`).then((response1) => {
-            axios.get(`${serverURL}/reviews`).then((response2) => {
-                let reviewItems = response1.data.data.reviews
-                let reviews = []
-                reviewItems.forEach(i => {
-                    response2.data.data.forEach(review => {
-                        if (i === review._id) {
-                            reviews.push(review)
-                        }
-                    })
-                })
-                this.setState({ reviews: reviews })
-            });
-        });
+
 
         // axios.get(`${serverURL}/cart/${userId}`).then((response1) => {
         //     axios.get(`${serverURL}/items`).then((response2) => {
@@ -75,7 +72,7 @@ class Items extends React.Component {
                     </div>
                 </nav>
 
-                <nav className="left-layout">
+                <nav className="left-   ">
                     <h1>Reviews</h1>
                     <h5>Average Rating:</h5>
                     <Rating name="read-only" value={4} readOnly />

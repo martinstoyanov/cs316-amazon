@@ -30,7 +30,8 @@ function ReviewModal({product}) {
 
         axios.post(`${serverURL}/review`, 
         {item_id: product._id, user_id: userId, review_rating: rating, review_notes: reviewtext}).then((response) => {
-            if (response.status === 200) {
+            //need to also add review id created to the item's list of review ids and update database
+            if (response.status === 201) {
                 alert.show('Review Successfully Posted!')
             }
             else {
