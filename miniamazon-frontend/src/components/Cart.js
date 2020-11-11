@@ -114,6 +114,22 @@ export default class Cart extends React.Component{
             let seller = s.data.data
             seller.balance += p.item_price * p.count
             const s_res = await axios.put(`${serverURL}/user/${seller._id}`, seller)
+
+            const so = await axios.get(`${serverURL}/seller/${sellerId}`)
+            let seller_object = so.data.data
+            let seen = false
+            seller_object.items_sold.forEach(i => {
+                if (i[0] === p._id) {
+                    let count = parseInt(i[1])
+                    count += p.count
+                    i[1] = count.toString()
+                    seen = true
+                }
+            })
+            if (!seen) {
+                seller_object.items_sold.push([p._id, p.count])
+            }
+            const so_res = await axios.put(`${serverURL}/seller/${seller_object._id}`, seller_object)
         }
 
         user.balance -= this.state.orderPrice
