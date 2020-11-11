@@ -30,12 +30,37 @@ function ReviewModal({product}) {
 
         axios.post(`${serverURL}/review`, 
         {item_id: product._id, user_id: userId, review_rating: rating, review_notes: reviewtext}).then((response) => {
-            if (response.status === 200) {
+            let review = response.data
+            console.log(product)
+            console.log(review)
+            console.log(response.data.data)
+            console.log(response.data.review_id)
+            
+
+            if (response.status === 201) {
                 alert.show('Review Successfully Posted!')
             }
             else {
                 alert.show('An error occured')
             }
+
+            axios.get(`${serverURL}/item/${product._id}`).then(response => {
+                let item = response.data.data
+                console.log(item)
+                // get review id from response of previous post
+                item.reviews.push(review.review_id)
+                console.log(item)
+                // error when trying to push
+                axios.put(`${serverURL}/item/${product._id}`, item).then(response => {
+                    if (response.status === 200) {
+                        alert.show('Review successfully added!')
+                    }
+                    else {
+                        alert.show('An error occured')
+                    }
+                })
+            })
+
         });
     }
   
