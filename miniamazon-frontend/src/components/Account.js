@@ -25,6 +25,11 @@ function Account(){
                 </a>
             </div><br/>
             <div>
+                <a href="/balance">
+                    <button className="btn btn-secondary">Balance</button><br/>
+                </a>
+            </div><br />
+            <div>
                 <a href="/account-edit">
                     <button className="btn btn-secondary">Edit My Information</button><br/>
                 </a>

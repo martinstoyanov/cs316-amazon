@@ -5,7 +5,8 @@ create table Users(
 user_id VARCHAR(32) not null primary key,
 username VARCHAR(32) not null,
 user_email VARCHAR(32) not null,
-user_password VARCHAR(32) not null
+user_password VARCHAR(32) not null,
+balance decimal default 0.0
 );
 
 -- # Sellers: (seller_id, seller_name, seller_email, seller_password)
