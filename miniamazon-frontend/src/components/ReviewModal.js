@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import { useAlert } from 'react-alert'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal';
 import Rating from '@material-ui/lab/Rating';
@@ -7,11 +8,13 @@ import Rating from '@material-ui/lab/Rating';
 const serverURL = "http://localhost:8888"
 const userId = "5f8b8eee77a1ab596021f8c4"
 
-function ReviewModal() {
-    const [show, setShow] = useState(false);
-  
+function ReviewModal({product}) {
+
+    const alert = useAlert()
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const [show, setShow] = useState(false);
     const [rating, setRating] = React.useState(0);
     const [reviewtext, setReviewText] = React.useState(0);
     
@@ -25,40 +28,25 @@ function ReviewModal() {
         // push
         // put///
 
-        axios.post(`${serverURL}/review`, {item_id: '123456789', user_id: userId, review_rating: rating, review_notes: reviewtext}).then((response1) => {
-            console.log(response1);
-          }, (error) => {
-            console.log(error);
+        axios.post(`${serverURL}/review`, 
+        {item_id: product._id, user_id: userId, review_rating: rating, review_notes: reviewtext}).then((response) => {
+            if (response.status === 200) {
+                alert.show('Review Successfully Posted!')
+            }
+            else {
+                alert.show('An error occured')
+            }
         });
-
-        // axios.get(`${serverURL}/cart/${userId}`).then((response1) => {
-        //     axios.get(`${serverURL}/items`).then((response2) => {
-        //         let items = response1.data.data.items
-        //         let products = []
-        //         items.forEach(i => {
-        //             response2.data.data.forEach(product => {
-        //                 if (i === product._id) {
-        //                     products.push(product)
-        //                 }
-        //             })
-        //         })
-        //         this.setState({ products: products })
-        //     });
-        // });
     }
   
     return (
       <>
-        <Button variant="primary" onClick={handleShow}>
-            Leave a review!
-        </Button>
-  
+        <button className="btn btn-secondary" onClick={handleShow}>Leave a review!</button>
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Leave a Review!</Modal.Title>
+                <Modal.Title>Leave a Review For: <b>{product.item_name}</b></Modal.Title>
             </Modal.Header>
             <Modal.Body>
-            <p>List Product Name</p>
                 <table className="review-inputs">
                     <tbody>
                         <tr id="rating">
@@ -83,8 +71,8 @@ function ReviewModal() {
                 </table>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>Cancel</Button>
-                <Button variant="primary" onClick={addtoReview}>Submit Review!</Button>
+                <Button variant="danger" onClick={handleClose}>Cancel</Button>
+                <Button variant="primary" onClick={addtoReview}>Submit My Review!</Button>
           </Modal.Footer>
         </Modal>
       </>
