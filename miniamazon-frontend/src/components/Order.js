@@ -7,51 +7,28 @@ export default class Order extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            orderID: "",
-            orderAddress: "",
-            orderPayment: "",
-            orderPrice: "",
-            orderStatus: "",
-            orderDate: "",
-            orderDeliveryDate: ""
+            order: this.props.order
         };
     }
-    
 
-/*function Order({order}){
-    return(
-        <div>
-            <h2>
-                Order Number: {order.orderID} <br/>
-                Shipping Address: {order.orderAddress} <br/>
-                Payment Method: {order.orderPayment} <br/>
-                Total Price: ${order.orderPrice} <br/>
-                Status: {order.orderStatus} <br/>
-                Order Date: {order.orderDate} <br/>
-                Explected/Actual Delivery Date: {order.orderDeliveryDate} <br/>
-            </h2><br/>
-        </div> 
-    )
-}
+    componentDidMount() {
+        console.log(this.state.order)
+    }
 
-export default Order;*/
-componentDidMount() {
-    axios.get(`${serverURL}/items`).then((response) => {
-        this.setState({orders: response.data.data})
-    });
-}
-render() {
-    return(
-        <nav className="left-layout">
-            <h1 className="title">Orders</h1>
-            <p>
-                Here are your orders.
-            </p>
+    render() {
+        return(
             <div>
-                 {/* {this.state.orders.map(order => <Order key={order._id} order ={order}></Order>)}  */}
-            </div>
-
-        </nav>
-    )
-}
+                <h2>
+                    <a href={"/order-history/" + this.state.order._id}>
+                        <div> Order Number: {this.state.order._id} </div>
+                    </a>
+                    Shipping Address: {this.state.order.order_address} <br/>
+                    Payment Method: {this.state.order.order_payment} <br/>
+                    Total Price: ${this.state.order.order_price} <br/>
+                    Status: {this.state.order.order_status} <br/>
+                    Order Date: {this.state.order.order_date} <br/>
+                </h2><br/>
+            </div> 
+        )
+    }
 }

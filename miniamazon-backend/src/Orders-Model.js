@@ -18,7 +18,8 @@ const Order = new Schema({
     // `Date.now()` returns the current unix timestamp as a number
     default: Date.now
   },
-  cart_id: { type: String, default: "test" }
+  user_id: { type: String, default: "test" },
+  items: [[String, String]] // item_ids and count
 });
 
 module.exports = mongoose.model('orders', Order)

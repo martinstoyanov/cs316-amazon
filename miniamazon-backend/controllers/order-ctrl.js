@@ -56,7 +56,8 @@ updateOrder = async (req, res) => {
         order.order_status = body.order_status
         order.order_date = body.order_date
         order.delivery_date = body.delivery_date
-        order.cart_id = body.cart_id
+        order.user_id = body.user_id
+        order.items = body.items
         order
             .save()
             .then(() => {

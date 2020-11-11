@@ -21,7 +21,13 @@ export default class ProductCart extends React.Component{
         axios.get(`${serverURL}/cart/${userId}`).then(response => {
             let cart = response.data.data
 
-            const index = cart.items.indexOf(this.state.product._id)
+            //const index = cart.items.indexOf(this.state.product._id)
+            let index = -1
+            for(var i = 0; i < cart.items.length; i++) {
+                if (cart.items[i][0] === this.state.product._id) {
+                    index = i
+                }
+            }
             if (index > -1) {
                 cart.items.splice(index, 1);
             }
@@ -50,7 +56,11 @@ export default class ProductCart extends React.Component{
                     </div>
                     <div style={{fontSize: 18}}> {this.state.product.item_description}</div>
                     {this.state.product.item_image} <br/>
-                    <div>
+                    <a href={"/items/" + this.state.product._id}>
+                        <button className="btn btn-secondary">View Full Details</button>
+                    </a>
+                    <div style={{fontSize: 18}}> Count: {this.state.product.count}</div>
+                    <div style={{marginTop: 20}}>
                         <button className="btn btn-secondary" onClick={this.removeItem}>Remove</button><br/>
                     </div>
                 </div> 
