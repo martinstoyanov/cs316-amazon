@@ -55,6 +55,7 @@ updateUser = async (req, res) => {
         user.user_email = body.user_email
         user.user_password = body.user_password
         user.balance = body.balance
+        user.orders = body.orders
         user
             .save()
             .then(() => {

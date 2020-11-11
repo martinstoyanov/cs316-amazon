@@ -6,6 +6,7 @@ const User = new Schema({
 	username: {type: String, default: "test"},
 	user_email: { type: String, default: "test" },
 	user_password: { type: String, default: "test" },
+	orders: [String],
 	balance: { type: Number, default: 0.0 }
 });
 

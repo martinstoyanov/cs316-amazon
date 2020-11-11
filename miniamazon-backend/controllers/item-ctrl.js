@@ -43,7 +43,7 @@ updateItem = async (req, res) => {
         })
     }
 
-    Item.findOne({ _id: req.params.item_id }, (err, item) => {
+    Item.findOne({ _id: req.body._id }, (err, item) => {
         if (err) {
             return res.status(404).json({
                 err,
@@ -55,6 +55,7 @@ updateItem = async (req, res) => {
         item.item_price = body.item_price
         item.sold_by = body.sold_by
         item.category_name = body.category_name
+        item.quantity = body.quantity
         item
             .save()
             .then(() => {
