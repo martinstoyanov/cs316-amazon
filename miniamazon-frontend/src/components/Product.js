@@ -26,12 +26,14 @@ function Product({product}){
     }
 
     return(
-        <div>
-            <h2>
-                Item name: {product.item_name} <br/>
-                Description: {product.item_description} <br/>
+        <div style={{marginBottom: 50}}>
+            <div>
+                <div style={{display: 'flex', width: 500, justifyContent: 'space-between'}}>
+                    <div style={{fontSize: 24}}> {product.item_name}</div>
+                    <div style={{fontSize: 22}}> ${product.item_price} </div>
+                </div>
+                <div style={{fontSize: 18}}> {product.item_description}</div>
                 {product.item_image} <br/>
-                Price: ${product.item_price} 
                 <div>
                     <button className="btn btn-secondary" onClick={addToCart}>Add to cart</button><br/>
                 </div>
@@ -41,7 +43,7 @@ function Product({product}){
                     </a>
                 </div>
                 <br/>
-            </h2> 
+            </div>
         </div>
     )
 }
