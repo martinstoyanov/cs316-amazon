@@ -12,7 +12,18 @@ function Product({product}){
         axios.get(`${serverURL}/cart/${userId}`).then(response => {
             let cart = response.data.data
 
-            cart.items.push(product._id)
+            let seen = false
+            cart.items.forEach(i => {
+                if (i[0] === product._id) {
+                    let count = parseInt(i[1])
+                    count += 1
+                    i[1] = count.toString()
+                    seen = true
+                }
+            })
+            if (!seen) {
+                cart.items.push([product._id, "1"])
+            }
 
             axios.put(`${serverURL}/cart/${userId}`, cart).then(response => {
                 if (response.status === 200) {

@@ -45,7 +45,9 @@ export default class Cart extends React.Component{
             orderDateCheckedOut: "",
             orderPrice: false,
             orders: [],
-            products: []
+            products: [],
+            items: [],
+            cart: {}
         };
 
         this.setShippingEntered = this.setShippingEntered.bind(this);
@@ -86,23 +88,87 @@ export default class Cart extends React.Component{
         })
     }
 
+    checkout = async() => {
+        const u = await axios.get(`${serverURL}/user/${userId}`);
+        let user = u.data.data
+
+        if (user.balance < this.state.orderPrice) {
+            alert("Not enough funds in account to purchase")
+            return
+        }
+
+        for (var i = 0; i < this.state.products.length; i++) {
+            let p = this.state.products[i]
+            if (p.quantity < parseInt(p.count)) {
+                alert("Not enough of " + p.item_name + " left in stock")
+                return
+            }
+        }
+
+        for (var i = 0; i < this.state.products.length; i++) {
+            let p = this.state.products[i]
+            p.quantity -= parseInt(p.count)
+            const res = await axios.put(`${serverURL}/item/${p._id}`, p)
+            let sellerId = p.sold_by
+            const s = await axios.get(`${serverURL}/user/${sellerId}`)
+            let seller = s.data.data
+            seller.balance += p.item_price * p.count
+            const s_res = await axios.put(`${serverURL}/user/${seller._id}`, seller)
+        }
+
+        user.balance -= this.state.orderPrice
+        axios.put(`${serverURL}/user/${user._id}`, user).then((res) => {
+            var currentdate = new Date(); 
+            var datetime = "Last Sync: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+
+            let order = {
+                order_address: this.state.shippingAddressLine1 + " " + this.state.shippingAddressLine2 + ", " + this.state.shippingAddressCity
+                    + ", " + this.state.shippingAddressState + " " + this.state.shippingAddressZip,
+                order_payment: this.state.paymentCardNumber,
+                order_price: this.state.orderPrice,
+                order_status: "placed",
+                user_id: userId,
+                items: this.state.items,
+                order_date: datetime,
+                delivery_date: datetime
+            }
+
+            axios.post(`${serverURL}/order`, order).then((response) => {
+                user.orders.push(response.data.order_id)
+                axios.put(`${serverURL}/user/${user._id}`, user).then((res) => {
+                    this.state.cart.items = []
+                    axios.put(`${serverURL}/cart/${this.state.cart._id}`, this.state.cart).then((res) => {
+                        window.location.href = '/thanks'
+                    })
+                })
+            });
+        })
+
+    }
+
     componentDidMount() {
         this.setState({ initialRender: true })
         axios.get(`${serverURL}/cart/${userId}`).then((response1) => {
-            axios.get(`${serverURL}/items`).then((response2) => {
-                let items = response1.data.data.items
-                let products = []
-                let total = 0.0
-                items.forEach(i => {
-                    response2.data.data.forEach(product => {
-                        if (i === product._id) {
-                            products.push(product)
-                            total += product.item_price
-                        }
-                    })
+            this.setState({cart: response1.data.data})
+            let items = response1.data.data.items
+            this.setState({items: items})
+            let products = []
+            let total = 0.0
+
+            items.forEach(i => {
+                axios.get(`${serverURL}/item/${i[0]}`).then((p) => {
+                    let item = p.data.data
+                    item.count = i[1]
+                    products.push(item)
+                    total += item.item_price * item.count
+                    this.setState({ products: products, orderPrice: total})
                 })
-                this.setState({ products: products, orderPrice: total})
-            });
+            })
         });
     }
 
@@ -364,9 +430,7 @@ export default class Cart extends React.Component{
                 <div id="info">
                     {/* Need to implement displaying order info */}
                 </div>
-                <a href="/thanks">
-                    <button className="btn btn-secondary"><b>CHECKOUT!</b></button><br/><br/>
-                </a>
+                <button className="btn btn-secondary" onClick={this.checkout}><b>CHECKOUT!</b></button><br/><br/>
             </nav>
         }
 
