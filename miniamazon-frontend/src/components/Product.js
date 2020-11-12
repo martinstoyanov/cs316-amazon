@@ -26,6 +26,7 @@ function Product({product}){
             })
         })
     }
+    
 
     return(
         <div>
@@ -38,13 +39,7 @@ function Product({product}){
                     <button className="btn btn-secondary" onClick={addToCart}>Add to cart</button><br/>
                 </div>
                 <br/>
-                <a href= "/account/seller/edit">
-                    <button className="btn btn-secondary">Edit This Product</button>
-                    {/*the href should include product id & sellerid to avoid an overlap
-                    /account/seller/edit/pid/sid */}
-                        
-                    <br/>
-                </a>
+                
             </h2> 
         </div>
     )
