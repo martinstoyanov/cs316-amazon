@@ -25,6 +25,7 @@ export default class SoldList extends React.Component{
                 axios.get(`${serverURL}/item/${item[0]}`).then((i) => {
                     let product_history = i.data.data
                     product_history.count = item[1]
+                    product_history.order_date = item[2]
                     p.push(product_history)
                     this.setState({items: p})
                 })
@@ -39,7 +40,7 @@ export default class SoldList extends React.Component{
             <nav className="left-layout">
                 <h1 className="title">Items Sold</h1>
                 <div>
-                    {this.state.items.map(product => <ProductHistory key={product._id} product ={product}></ProductHistory>)}
+                    {this.state.items.map(product => <ProductHistory key={product._id} product ={product} ></ProductHistory>)}
                 </div>
             </nav>
         )   

@@ -8,6 +8,11 @@ function Product({product}){
     const userId = "5f8b8eee77a1ab596021f8c4"
     const alert = useAlert()
 
+    if (product.item_description.length > 250) {
+        let description_short = product.item_description.slice(0, 250) + "..."
+        product.item_description = description_short
+    }
+
     function addToCart(e) {
         axios.get(`${serverURL}/cart/${userId}`).then(response => {
             let cart = response.data.data
@@ -39,19 +44,18 @@ function Product({product}){
     return(
         <div style={{marginBottom: 50}}>
             <div>
-                <div style={{display: 'flex', width: 500, justifyContent: 'space-between'}}>
-                    <div style={{fontSize: 24}}> {product.item_name}</div>
+                <div style={{display: 'flex', width: 700, justifyContent: 'space-between'}}>
+                    <a href={"/items/" + product._id}>
+                        <div style={{fontSize: 24}}> {product.item_name}</div>
+                    </a>
                     <div style={{fontSize: 22}}> ${product.item_price} </div>
                 </div>
-                <div style={{fontSize: 18}}> {product.item_description}</div>
-                {product.item_image} <br/>
-                <div>
-                    <button className="btn btn-secondary" onClick={addToCart}>Add to cart</button><br/>
+                <div style={{fontSize: 18, width: 700}}> {product.item_description}</div>
+                <div style={{marginTop: 20}}>
+                    <img src={product.image_url}/> <br/>
                 </div>
-                <div>
-                    <a href={"/items/" + product._id}>
-                        <button className="btn btn-secondary">View Full Details</button>
-                    </a>
+                <div style={{marginTop: 25}}>
+                    <button className="btn btn-secondary" onClick={addToCart}>Add to cart</button><br/>
                 </div>
                 <br/>
             </div>

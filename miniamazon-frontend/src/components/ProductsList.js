@@ -14,7 +14,7 @@ export default class ProductsList extends React.Component{
 
     componentDidMount() {
         axios.get(`${serverURL}/items`).then((response) => {
-            this.setState({products: response.data.data})
+            this.setState({products: response.data.data.slice(0, 20)})
         });
     }
 
