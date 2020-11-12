@@ -12,6 +12,7 @@ import PostCheckout from './components/PostCheckout';
 import OrdersList from './components/OrdersList';
 import Item from './components/Item';
 import SearchResults from './components/SearchResults';
+import ReviewsAccount from './components/ReviewsAccount';
 import OrderHistory from './components/OrderHistory';
 import Balance from './components/Balance';
 import SoldList from './components/SoldList';
@@ -48,6 +49,7 @@ function App() {
             <Route path="/Balance" component={Balance} />
             <Route path="/Sold-Items" component={SoldList} />
             <Route path="/Items/:Id" component={Item} />
+            <Route path="/Reviews" component={ReviewsAccount} />
             <Route path="/Order-History/:Id" component={OrderHistory} />
             <Route path="/Search/:key"  
                    render={(props) => (

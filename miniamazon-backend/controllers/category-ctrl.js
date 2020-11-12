@@ -43,7 +43,7 @@ updateCategory = async (req, res) => {
         })
     }
 
-    Category.findOne({ _id: req.params.category_id }, (err, category) => {
+    Category.findOne({ _id: req.body._id }, (err, category) => {
         if (err) {
             return res.status(404).json({
                 err,

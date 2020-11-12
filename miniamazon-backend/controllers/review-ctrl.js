@@ -43,7 +43,7 @@ updateReview = async (req, res) => {
         })
     }
 
-    Review.findOne({ _id: req.params.review_id }, (err, review) => {
+    Review.findOne({ _id: req.body._id }, (err, review) => {
         if (err) {
             return res.status(404).json({
                 err,

@@ -39,7 +39,7 @@ class Items extends React.Component {
                     reviews.push(review)
                     sumRating += review.review_rating
                     numRatings = numRatings + 1 
-                    this.setState({ reviews: reviews, avgReview: (sumRating / numRatings) })
+                    this.setState({ reviews: reviews, avgReview: (sumRating / numRatings) })             
                 });
             })
         });
@@ -67,7 +67,7 @@ class Items extends React.Component {
                     </div>
                 </nav>
 
-                <nav className="left-   ">
+                <nav className="left-layout">
                     <h1>Reviews</h1>
                     <h5>Average Rating:</h5>
                     <Rating name="half-rating-read" value={this.state.avgReview} readOnly />
