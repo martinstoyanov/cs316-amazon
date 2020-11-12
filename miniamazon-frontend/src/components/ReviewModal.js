@@ -31,13 +31,49 @@ function ReviewModal({product}) {
         axios.post(`${serverURL}/review`, 
         {item_id: product._id, user_id: userId, review_rating: rating, review_notes: reviewtext}).then((response) => {
             //need to also add review id created to the item's list of review ids and update database
+
+            let reviewId = response.data.review_id
+
             if (response.status === 201) {
                 alert.show('Review Successfully Posted!')
             }
             else {
                 alert.show('An error occured')
             }
+
+            axios.get(`${serverURL}/item/${product._id}`).then(response => {
+                let item = response.data.data
+
+                item.reviews.push(reviewId)
+                console.log(item)
+    
+                axios.put(`${serverURL}/item/${product._id}`, item).then(response => {
+                    if (response.status === 200) {
+                        alert.show('Review successfully added!')
+                    }
+                    else {
+                        alert.show('An error occured')
+                    }
+                })
+            })
         });
+
+        // function addToCart(e) {
+        //     axios.get(`${serverURL}/cart/${userId}`).then(response => {
+        //         let cart = response.data.data
+    
+        //         cart.items.push(product._id)
+    
+        //         axios.put(`${serverURL}/cart/${userId}`, cart).then(response => {
+        //             if (response.status === 200) {
+        //                 alert.show('Item successfully added to cart!')
+        //             }
+        //             else {
+        //                 alert.show('An error occured')
+        //             }
+        //         })
+        //     })
+        // }
     }
   
     return (
