@@ -118,16 +118,24 @@ export default class Cart extends React.Component{
             const so = await axios.get(`${serverURL}/seller/${sellerId}`)
             let seller_object = so.data.data
             let seen = false
+            let currentdate = new Date(); 
+            let datetime = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
             seller_object.items_sold.forEach(i => {
                 if (i[0] === p._id) {
                     let count = parseInt(i[1])
-                    count += p.count
+                    count += parseInt(p.count)
                     i[1] = count.toString()
+                    i[2] = datetime
                     seen = true
                 }
             })
             if (!seen) {
-                seller_object.items_sold.push([p._id, p.count])
+                seller_object.items_sold.push([p._id, p.count, datetime])
             }
             const so_res = await axios.put(`${serverURL}/seller/${seller_object._id}`, seller_object)
         }
@@ -135,7 +143,7 @@ export default class Cart extends React.Component{
         user.balance -= this.state.orderPrice
         axios.put(`${serverURL}/user/${user._id}`, user).then((res) => {
             var currentdate = new Date(); 
-            var datetime = "Last Sync: " + currentdate.getDate() + "/"
+            var datetime = currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
                 + currentdate.getFullYear() + " @ "  
                 + currentdate.getHours() + ":"  

@@ -28,6 +28,7 @@ export default class OrderHistory extends React.Component{
                 axios.get(`${serverURL}/item/${item[0]}`).then((i) => {
                     let product_history = i.data.data
                     product_history.count = item[1]
+                    product_history.order_date = this.state.cart.order_date
                     p.push(product_history)
                     this.setState({products: p})
                 })

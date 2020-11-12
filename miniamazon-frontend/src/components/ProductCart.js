@@ -14,7 +14,12 @@ export default class ProductCart extends React.Component{
     }
 
     componentDidMount() {
-        console.log(this.props.product)
+        let product = this.state.product
+        if (product.item_description.length > 250) {
+            let description_short = product.item_description.slice(0, 250) + "..."
+            product.item_description = description_short
+            this.setState({product: product})
+        }
     }
 
     removeItem = () => {
@@ -50,15 +55,16 @@ export default class ProductCart extends React.Component{
         return(
             <div style={{marginBottom: 50}}>
                 <div>
-                    <div style={{display: 'flex', width: 500, justifyContent: 'space-between'}}>
-                        <div style={{fontSize: 24}}> {this.state.product.item_name}</div>
+                    <div style={{display: 'flex', width: 700, justifyContent: 'space-between'}}>
+                        <a href={"/items/" + this.state.product._id}>
+                            <div style={{fontSize: 24}}> {this.state.product.item_name}</div>
+                        </a>
                         <div style={{fontSize: 22}}> ${this.state.product.item_price} </div>
                     </div>
-                    <div style={{fontSize: 18}}> {this.state.product.item_description}</div>
-                    {this.state.product.item_image} <br/>
-                    <a href={"/items/" + this.state.product._id}>
-                        <button className="btn btn-secondary">View Full Details</button>
-                    </a>
+                    <div style={{fontSize: 18, width: 700}}> {this.state.product.item_description}</div>
+                    <div style={{marginTop: 20}}>
+                        <img src={this.state.product.image_url}/> <br/>
+                    </div>
                     <div style={{fontSize: 18}}> Quantity: {this.state.product.count}</div>
                     <div style={{marginTop: 20}}>
                         <button className="btn btn-secondary" onClick={this.removeItem}>Remove</button><br/>
