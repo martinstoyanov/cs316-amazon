@@ -28,7 +28,7 @@ export default class ProductHistory extends React.Component{
                     <div style={{fontSize: 18}}> {this.state.product.item_description}</div>
                     <div style={{fontSize: 18}}> Date ordered: {this.state.product.item_description}</div>
                     {this.state.product.item_image} <br/>
-                    <div style={{fontSize: 18}}> Count: {this.state.product.count}</div>
+                    <div style={{fontSize: 18}}> Quantity: {this.state.product.count}</div>
                     <a href={"/items/" + this.state.product._id}>
                         <button className="btn btn-secondary">View Full Details</button>
                     </a>

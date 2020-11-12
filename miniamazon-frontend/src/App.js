@@ -14,6 +14,7 @@ import Item from './components/Item';
 import SearchResults from './components/SearchResults';
 import OrderHistory from './components/OrderHistory';
 import Balance from './components/Balance';
+import SoldList from './components/SoldList';
 
 function App() {
   // test data passed in for SearchResults page
@@ -45,6 +46,7 @@ function App() {
             <Route path="/Thanks" component={PostCheckout} />
             <Route path="/Orders" component={OrdersList} />
             <Route path="/Balance" component={Balance} />
+            <Route path="/Sold-Items" component={SoldList} />
             <Route path="/Items/:Id" component={Item} />
             <Route path="/Order-History/:Id" component={OrderHistory} />
             <Route path="/Search/:key"  

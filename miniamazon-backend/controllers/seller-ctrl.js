@@ -43,18 +43,15 @@ updateSeller = async (req, res) => {
         })
     }
 
-    Seller.findOne({ _id: req.params.seller_id }, (err, seller) => {
+    Seller.findOne({ _id: req.body._id }, (err, seller) => {
         if (err) {
             return res.status(404).json({
                 err,
                 message: 'Seller not found!',
             })
         }
-        seller.seller_name = body.seller_name
-        seller.seller_description = body.seller_description
-        seller.seller_price = body.seller_price
-        seller.sold_by = body.sold_by
-        seller.category_name = body.category_name
+        seller.items_sold = body.items_sold
+        seller.items = body.items
         seller
             .save()
             .then(() => {

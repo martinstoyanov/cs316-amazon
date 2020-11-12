@@ -59,7 +59,7 @@ export default class ProductCart extends React.Component{
                     <a href={"/items/" + this.state.product._id}>
                         <button className="btn btn-secondary">View Full Details</button>
                     </a>
-                    <div style={{fontSize: 18}}> Count: {this.state.product.count}</div>
+                    <div style={{fontSize: 18}}> Quantity: {this.state.product.count}</div>
                     <div style={{marginTop: 20}}>
                         <button className="btn btn-secondary" onClick={this.removeItem}>Remove</button><br/>
                     </div>
