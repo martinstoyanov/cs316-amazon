@@ -17,8 +17,11 @@ class Items extends React.Component {
         this.state = {
             id: id,
             item: {},
-            reviews: []
-        }
+            reviews: [],
+            avgReview: 0.0
+        };
+
+        this.setAvgReview = this.setAvgReview.bind(this);
     }
 
     componentDidMount() {
@@ -26,32 +29,24 @@ class Items extends React.Component {
         axios.get(`${serverURL}/item/${this.state.id}`).then((response) => {
             this.setState({item: response.data.data});
             let reviews = []
+            let sumRating = 0.0
+            let numRatings = 0.0
 
             //for each review in item.reviews, retrieve review object from database and append to this.state.reviews for display
             response.data.data.reviews.forEach(review_id => {
                 axios.get(`${serverURL}/review/${review_id}`).then((r) => {
                     let review = r.data.data
                     reviews.push(review)
-                    this.setState({ reviews: reviews })
+                    sumRating += review.review_rating
+                    numRatings = numRatings + 1 
+                    this.setState({ reviews: reviews, avgReview: (sumRating / numRatings) })
                 });
             })
         });
+    }
 
-
-        // axios.get(`${serverURL}/cart/${userId}`).then((response1) => {
-        //     axios.get(`${serverURL}/items`).then((response2) => {
-        //         let items = response1.data.data.items
-        //         let products = []
-        //         items.forEach(i => {
-        //             response2.data.data.forEach(product => {
-        //                 if (i === product._id) {
-        //                     products.push(product)
-        //                 }
-        //             })
-        //         })
-        //         this.setState({ products: products })
-        //     });
-        // });
+    setAvgReview(event) {
+        this.setState({avgReview: event.target.value})
     }
 
     render() {
@@ -75,7 +70,7 @@ class Items extends React.Component {
                 <nav className="left-   ">
                     <h1>Reviews</h1>
                     <h5>Average Rating:</h5>
-                    <Rating name="read-only" value={4} readOnly />
+                    <Rating name="half-rating-read" value={this.state.avgReview} readOnly />
                     <h5>Here are the reviews for this product.</h5>
                     { this.state.reviews.map(review => <Review key={review._id} review={review}></Review>)}<br/>
 
