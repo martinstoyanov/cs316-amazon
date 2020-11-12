@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState, useCallback } from "react";
 import { useAlert } from 'react-alert'
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
@@ -17,25 +17,30 @@ function ReviewEdit({review}){
     const [show, setShow] = useState(false);
     const [rating, setRating] = React.useState(review.review_rating);
     const [reviewtext, setReviewText] = React.useState(0);
+    const [productName, setProductName] = useState([]);
+
+    const loadProductName = useCallback(() => {
+        axios.get(`${serverURL}/item/${review.item_id}`).then((response) => {
+            setProductName(response.data.data.item_name);
+        });
+      }, []);
+    
+    
+    useEffect(() => {
+        loadProductName();
+    }, [loadProductName]);
 
     function editReview() {
         handleClose();
 
         axios.get(`${serverURL}/review/${review._id}`).then(response => {
             let review = response.data.data
-            console.log(review)
 
             let updatedRating = rating
             let updatedText = reviewtext
 
-            console.log(updatedRating)
-            console.log(updatedText)
-
             review.review_rating = updatedRating
-            console.log(review)
-
             review.review_notes = updatedText
-            console.log(review)
 
             axios.put(`${serverURL}/review/${review._id}`, review).then(response => {
                 if (response.status === 200) {
@@ -49,14 +54,16 @@ function ReviewEdit({review}){
     }
 
     return(
-        
         <div>
-            <h2>
-                <b>Product ID:</b><br/> {review.item_id} <br/>
+            <h3>
+                <b>Product:</b><br/>
+                <a href={"/items/" + review.item_id}>
+                    <div style={{fontSize: 24}}> {productName}</div>
+                </a>
                 <b>Your Rating:</b><br/> {review.review_rating} <br/>
                 <b>Your Description:</b><br/> {review.review_notes}<br/>
                 <br/>
-            </h2> 
+            </h3> 
             <button className="btn btn-secondary" onClick={handleShow}>Edit This Review</button><br/><br/><br/>
             <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
