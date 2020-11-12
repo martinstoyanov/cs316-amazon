@@ -54,6 +54,9 @@ export default class Account extends React.Component{
                 <div>
                     <a href="/orders">
                         <button className="btn btn-secondary">My Orders</button>
+                    </a><br/><br/>
+                    <a href="/reviews">
+                        <button className="btn btn-secondary">My Reviews</button><br/>
                     </a>
                 </div><br/>
                 {sellerHistory}
