@@ -43,7 +43,7 @@ updateItem = async (req, res) => {
         })
     }
 
-    Item.findOne({ _id: req.params.item_id }, (err, item) => {
+    Item.findOne({ _id: req.body._id }, (err, item) => {
         if (err) {
             return res.status(404).json({
                 err,
