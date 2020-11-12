@@ -10,6 +10,7 @@ const Item = new Schema({
   item_price: { type: Number, default: 5 },
   quantity: { type: Number, default: 5 },
   sold_by: { type: String, default: "test" }, // list of seller_ids
-  category_name: { type: String, default: "test" }
+  category_name: { type: String, default: "test" },
+  reviews: [String] // item_ids
 });
 module.exports = mongoose.model('items', Item)

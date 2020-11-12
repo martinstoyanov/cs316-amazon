@@ -55,6 +55,7 @@ updateItem = async (req, res) => {
         item.item_price = body.item_price
         item.sold_by = body.sold_by
         item.category_name = body.category_name
+        item.reviews = body.reviews
         item.quantity = body.quantity
         item
             .save()
