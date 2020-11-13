@@ -106,7 +106,7 @@ getCategories = async (req, res) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-        if (!categorys.length) {
+        if (!categories.length) {
             return res
                 .status(404)
                 .json({ success: false, error: `Category not found` })
