@@ -42,10 +42,47 @@ class Items extends React.Component {
                     numRatings = numRatings + 1 
                     this.setState({ reviews: reviews, avgReview: (sumRating / numRatings) })       
                     item.avg_rating = this.state.avgReview
-                    console.log(item)
 
+                    //Sends the average rating to the item
                     axios.put(`${serverURL}/item/${this.state.id}`, item).then(response => {
                     })
+
+                    //Check if avg rating is greater than any of the 3 recommended, if so, replace the lowest one
+                    axios.get(`${serverURL}/category/${item.category_name}`).then((response) => {
+                    let category = response.data.data
+                    console.log(category)
+
+                    let item1_rating = category.item1_avg_rating
+                    let item2_rating = category.item2_avg_rating
+                    let item3_rating = category.item3_avg_rating
+                    
+                    if (item.avg_rating > item1_rating) {
+                        category.item1_id = item._id
+                        category.item1_avg_rating = item.avg_rating
+                        console.log(category)
+                        //Sends the updated recommended id and rating to category
+                        axios.put(`${serverURL}/category/${category._id}`, category).then(response => {
+                            console.log(response)
+                        })
+                    }
+                    
+                    else if (item.avg_rating > item2_rating) {
+                        category.item2_id = item._id
+                        category.item2_avg_rating = item.avg_rating
+                        //Sends the updated recommended id and rating to category
+                        axios.put(`${serverURL}/category/${item.category_name}`, category).then(response => {
+                        })
+                    }
+
+                    else if (item.avg_rating > item3_rating) {
+                        category.item3_id = item._id
+                        category.item3_avg_rating = item.avg_rating
+
+                        //Sends the updated recommended id and rating to category
+                        axios.put(`${serverURL}/category/${item.category_name}`, category).then(response => {
+                        })
+                    }
+                });
                 });
             })
         });
@@ -74,10 +111,10 @@ class Items extends React.Component {
                 </nav>
 
                 <nav className="left-layout">
-                    <h1>Reviews</h1>
-                    <h5>Average Rating:</h5>
+                    <h2>Reviews</h2>
+                    <h3>Average Rating:</h3>
                     <Rating name="half-rating-read" value={this.state.avgReview} readOnly />
-                    <h5>Here are the reviews for this product.</h5>
+                    <h4>Here are the reviews for this product.</h4>
                     { this.state.reviews.map(review => <Review key={review._id} review={review}></Review>)}<br/>
 
                 </nav>
