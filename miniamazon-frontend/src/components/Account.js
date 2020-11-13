@@ -2,6 +2,12 @@ import React from 'react';
 import '../App.css';
 import axios from 'axios';
 
+var userID = "compsci316project";
+var userName = "john appleseed";
+var userEmail = "john_appleseed123@gmail.com";
+var userPassword = "goduke123";
+var accountType = "Buyer";
+
 const serverURL = "http://localhost:8888"
 //const userId = "5f8b8eee77a1ab596021f8c4"
 const userId = "5fac34d597cfaed9d08608a3"
@@ -10,7 +16,7 @@ export default class Account extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            isSeller: false
+            isSeller: true
         }
     }
 
@@ -29,12 +35,14 @@ export default class Account extends React.Component{
         if (this.state.isSeller) {
             sellerHistory = 
             <div>
+                
               <a href="/account/seller/products">
+              
                     <button className="btn btn-secondary">View/Edit My Products</button><br/>
                 </a> <br/>
                 <a href="/sold-items">
                     <button className="btn btn-secondary">Sold Items</button><br/>
-                </a><br />
+                </a><br/>
             </div>
         }
         return(
@@ -48,7 +56,6 @@ export default class Account extends React.Component{
                     <h4>Account Type: <var>{accountType}</var></h4>
                 </div><br/>
                 <div>
-              {displayMyProducts}
                     <a href="/orders">
                         <button className="btn btn-secondary">My Orders</button>
                     </a><br/><br/>
@@ -56,6 +63,7 @@ export default class Account extends React.Component{
                         <button className="btn btn-secondary">My Reviews</button><br/>
                     </a>
                 </div><br/>
+                {sellerHistory}
                 <div>
                     <a href="/balance">
                         <button className="btn btn-secondary">Balance</button><br/>

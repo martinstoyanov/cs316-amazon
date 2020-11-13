@@ -44,7 +44,7 @@ function App() {
         <Header updateItems={updateItems} />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/Account" component={Account} />
+            <Route exact path="/Account" component={Account} />
             <Route path="/Account-Edit" component={AccountEdit} />
             <Route path="/Shop" component={ProductsList} />
             <Route path="/Cart" component={Cart} />
@@ -52,7 +52,7 @@ function App() {
             <Route path="/Orders" component={OrdersList} />
             <Route exact path="/account/seller/products" component={SellerList} />
             <Route exact path="/account/seller/add-products" component={SellerAdd} />
-            <Route  path="/account/seller/delete/:ID" component={SellerDelete} />
+            <Route path="/account/seller/delete/:ID" component={SellerDelete} />
             <Route exact path="/account/seller/edit/:ID" component={SellerEdit} />
             <Route path="/Balance" component={Balance} />
             <Route path="/Sold-Items" component={SoldList} />

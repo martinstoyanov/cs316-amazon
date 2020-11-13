@@ -62,6 +62,7 @@ function Product({product}){
                 </div>
                 <br/>
         </div>
+        </div>
     )
 }
 
