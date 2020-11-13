@@ -27,6 +27,7 @@ class Items extends React.Component {
     componentDidMount() {
         //first, retrieve item object from database
         axios.get(`${serverURL}/item/${this.state.id}`).then((response) => {
+            let item = response.data.data
             this.setState({item: response.data.data});
             let reviews = []
             let sumRating = 0.0
@@ -39,7 +40,12 @@ class Items extends React.Component {
                     reviews.push(review)
                     sumRating += review.review_rating
                     numRatings = numRatings + 1 
-                    this.setState({ reviews: reviews, avgReview: (sumRating / numRatings) })             
+                    this.setState({ reviews: reviews, avgReview: (sumRating / numRatings) })       
+                    item.avg_rating = this.state.avgReview
+                    console.log(item)
+
+                    axios.put(`${serverURL}/item/${this.state.id}`, item).then(response => {
+                    })
                 });
             })
         });

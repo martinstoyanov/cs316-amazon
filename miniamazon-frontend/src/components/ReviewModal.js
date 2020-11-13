@@ -35,7 +35,7 @@ function ReviewModal({product}) {
             let reviewId = response.data.review_id
 
             if (response.status === 201) {
-                alert.show('Review Successfully Posted!')
+                alert.show('Review successfully posted!')
             }
             else {
                 alert.show('An error occured')
@@ -49,7 +49,7 @@ function ReviewModal({product}) {
     
                 axios.put(`${serverURL}/item/${product._id}`, item).then(response => {
                     if (response.status === 200) {
-                        alert.show('Review successfully added!')
+                        alert.show('Review successfully added to item!')
                     }
                     else {
                         alert.show('An error occured')

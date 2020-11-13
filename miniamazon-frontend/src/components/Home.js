@@ -17,7 +17,7 @@ export default class Home extends React.Component{
     
     componentDidMount() {
         //first, retrieve category object from database
-        // axios.get(`${serverURL}/category`).then((response) => {
+        // axios.get(`${serverURL}/categories/`).then((response) => {
         //     console.log(response)
         //     // then, for each category get the item_ids and ratings of rec1, rec2, and rec3 
         //     // and items by the item_id and display them under each category!
@@ -52,6 +52,12 @@ export default class Home extends React.Component{
                     <a href="/shop">
                         <button className="btn btn-secondary">Shop Now!</button><br/>
                     </a>
+                </div>
+                <div className="left-layout" id="recommended-items">
+                    <p>
+                        Your Recommended Items
+                    </p>
+
                 </div>
             </nav>
         )
