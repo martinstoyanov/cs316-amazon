@@ -9,16 +9,15 @@ const Order = new Schema({
   order_price: { type: Number, default: 5 },
   order_status: { type: String, default: "test" },
   order_date: {
-    type: Date,
-    // `Date.now()` returns the current unix timestamp as a number
-    default: Date.now
+    type: String,
   },
   delivery_date: {
     type: Date,
     // `Date.now()` returns the current unix timestamp as a number
     default: Date.now
   },
-  cart_id: { type: String, default: "test" }
+  user_id: { type: String, default: "test" },
+  items: [[String, String]] // item_ids and count
 });
 
 module.exports = mongoose.model('orders', Order)

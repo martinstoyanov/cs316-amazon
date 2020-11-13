@@ -43,7 +43,7 @@ updateItem = async (req, res) => {
         })
     }
 
-    Item.findOne({ _id: req.params.item_id }, (err, item) => {
+    Item.findOne({ _id: req.body._id }, (err, item) => {
         if (err) {
             return res.status(404).json({
                 err,
@@ -55,6 +55,9 @@ updateItem = async (req, res) => {
         item.item_price = body.item_price
         item.sold_by = body.sold_by
         item.category_name = body.category_name
+        item.reviews = body.reviews
+        item.quantity = body.quantity
+        item.avg_rating = body.avg_rating
         item
             .save()
             .then(() => {
@@ -104,6 +107,23 @@ getItemById = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+getItemsByName = async (req, res) => {
+    
+    await Item.find({ _id: req.params.item_name }, (err, items) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        console.log('asdffdfs')
+        if (items.length < 1) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Item not found when searching by name` })
+        }
+        return res.status(200).json({ success: true, data: items })
+    }).catch(err => console.log(err))
+
+}
+
 getItems = async (req, res) => {
     await Item.find({}, (err, items) => {
         if (err) {
@@ -124,4 +144,5 @@ module.exports = {
     deleteItem,
     getItems,
     getItemById,
+    getItemsByName
 }
