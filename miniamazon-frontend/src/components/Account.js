@@ -12,12 +12,11 @@ const serverURL = "http://localhost:8888"
 //const userId = "5f8b8eee77a1ab596021f8c4"
 const userId = "5fac34d597cfaed9d08608a3"
 
-
 export default class Account extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            isSeller: false
+            isSeller: true
         }
     }
 
@@ -30,15 +29,20 @@ export default class Account extends React.Component{
             console.log(err)
         })
     }
-
+    
     render() {
         let sellerHistory
         if (this.state.isSeller) {
             sellerHistory = 
             <div>
+                
+              <a href="/account/seller/products">
+              
+                    <button className="btn btn-secondary">View/Edit My Products</button><br/>
+                </a> <br/>
                 <a href="/sold-items">
                     <button className="btn btn-secondary">Sold Items</button><br/>
-                </a><br />
+                </a><br/>
             </div>
         }
         return(

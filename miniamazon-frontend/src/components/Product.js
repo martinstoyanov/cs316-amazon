@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { useAlert } from 'react-alert'
+//should convert this to a react.component and 
+//add in constructor to take in parameters you passed in
 
 function Product({product}){
 
@@ -40,6 +42,7 @@ function Product({product}){
             })
         })
     }
+    
 
     return(
         <div style={{marginBottom: 50}}>
@@ -58,7 +61,7 @@ function Product({product}){
                     <button className="btn btn-secondary" onClick={addToCart}>Add to cart</button><br/>
                 </div>
                 <br/>
-            </div>
+        </div>
         </div>
     )
 }
