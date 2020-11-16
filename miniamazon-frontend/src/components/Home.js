@@ -41,7 +41,7 @@ export default class Home extends React.Component{
                     <h4>
                         Your Recommended Items:<br/><br/>
                     </h4>
-                    {this.state.categories.map(category => <Category key={category._id} category ={category}></Category>)}
+                    {this.state.categories.map(category => <Category key={category._id} category ={category}> </Category>)}
                 </div>
             </nav>
         )
