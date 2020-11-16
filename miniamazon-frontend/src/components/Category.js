@@ -39,10 +39,21 @@ export default class Category extends React.Component{
         return(
             <div>
                 <h4>
-                    Category: <b>{this.state.category.name}</b><br/>
-                    Item 1 ID: <b>{this.state.category.item1_id}</b><br/>
-                    Item 2 ID: <b>{this.state.category.item2_id}</b><br/>
-                    Item 3 ID: <b>{this.state.category.item3_id}</b><br/>
+                    Category: 
+                    <b>{this.state.category.name}</b><br/>
+                    Item 1: 
+                    <a href={"/items/" + this.state.category.item1_id}>
+                        <h3 style={{fontSize: 24}}>{this.state.category.item1_id}</h3>
+                    </a>
+                    Item 2: 
+                    <a href={"/items/" + this.state.category.item2_id}>
+                        <h3 style={{fontSize: 24}}>{this.state.category.item2_id}</h3>
+                    </a>
+                    Item 3: 
+                    <a href={"/items/" + this.state.category.item3_id}>
+                        <h3 style={{fontSize: 24}}>{this.state.category.item3_id}</h3>
+                    </a>
+
                     {/* <Product key={this.state.category.item1_id} product ={this.state.product1}></Product> */}
                     {/* <Product key={this.state.category.item2_id} product ={this.state.product2}></Product> */}
                     {/* <Product key={this.state.category.item3_id} product ={this.state.product3}></Product> */}
