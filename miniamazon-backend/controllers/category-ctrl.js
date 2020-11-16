@@ -51,7 +51,13 @@ updateCategory = async (req, res) => {
             })
         }
         category.category_name = body.category_name
-        category.item_ids = body.item_ids
+        category.item1_id = body.item1_id
+        category.item1_avg_rating = body.item1_avg_rating
+        category.item2_id = body.item2_id
+        category.item2_avg_rating = body.item2_avg_rating
+        category.item3_id = body.item3_id
+        category.item3_avg_rating = body.item3_avg_rating
+        
         category
             .save()
             .then(() => {
@@ -106,7 +112,7 @@ getCategories = async (req, res) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-        if (!categorys.length) {
+        if (!categories.length) {
             return res
                 .status(404)
                 .json({ success: false, error: `Category not found` })
