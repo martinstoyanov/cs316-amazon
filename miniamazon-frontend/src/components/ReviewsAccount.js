@@ -32,13 +32,13 @@ export default class ReviewsAccount extends React.Component{
 
         return(
             <nav className="left-layout">
-                <h1 className="title">Your Reviews</h1>
+                <h1 className="yellow-font"><b>Your Reviews</b></h1><br/>
                 <div>
                     {this.state.reviews.map(review => <ReviewEdit key={review._id} review={review}></ReviewEdit>)}
                 </div>
                 <div>
                     <a href="/shop">
-                        <button className="btn btn-secondary">Continue Shopping</button><br/><br/>
+                        <button className="button button1">Continue Shopping</button><br/><br/>
                     </a>
                 </div> 
             </nav>

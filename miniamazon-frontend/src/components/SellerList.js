@@ -35,14 +35,12 @@ import SellerProduct from './SellerProduct';
                     <div>
                         <br/>
                         <a href="/account/seller/add-products">
-                            <button className="btn btn-secondary">Add A New Product</button><br/>
+                            <button className="btn btn-success">Add A New Product</button><br/>
                         </a>
                         <br/>
                     </div>
-                    <h1 className="title">Your Products</h1>
-                    <p>
-                        Here are the products you sell.
-                    </p>
+                    <h1 className="blue-font"><b>Your Products</b></h1><br/>
+                    {/* <h4 className="yellow-font">Here are the products you sell.</h4> */}
                     <div>
                         {this.state.products.map(product => <SellerProduct key={product._id} product ={product} sellerID= {this.state.sellerID}></SellerProduct>)}
                     </div>

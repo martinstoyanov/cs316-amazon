@@ -53,13 +53,13 @@ export default class ProductCart extends React.Component{
     }   
     render() {
         return(
-            <div style={{marginBottom: 50}}>
+            <div className= "product-border" style={{marginBottom: 50}}>
                 <div>
                     <div style={{display: 'flex', width: 700, justifyContent: 'space-between'}}>
-                        <a href={"/items/" + this.state.product._id}>
-                            <div style={{fontSize: 24}}> {this.state.product.item_name}</div>
+                        <a className="blue-font" href={"/items/" + this.state.product._id}>
+                            <div style={{fontSize: 24}}><b>{this.state.product.item_name}</b></div>
                         </a>
-                        <div style={{fontSize: 22}}> ${this.state.product.item_price} </div>
+                        <div style={{fontSize: 22}}> <b>${this.state.product.item_price}</b></div>
                     </div>
                     <div style={{fontSize: 18, width: 700}}> {this.state.product.item_description}</div>
                     <div style={{marginTop: 20}}>
@@ -67,7 +67,7 @@ export default class ProductCart extends React.Component{
                     </div>
                     <div style={{fontSize: 18}}> Quantity: {this.state.product.count}</div>
                     <div style={{marginTop: 20}}>
-                        <button className="btn btn-secondary" onClick={this.removeItem}>Remove</button><br/>
+                        <button className="btn btn-danger" onClick={this.removeItem}>Remove</button><br/>
                     </div>
                 </div> 
             </div>

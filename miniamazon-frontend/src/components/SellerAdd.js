@@ -22,9 +22,9 @@ import { Redirect } from 'react-router-dom';
                 productID: "",
                 item_name: "",
                 item_description: "",
-                item_url: "", //I am not sure how to implement this
+                item_url: "", 
                 item_price: 0.0,
-                sold_by: "", //this should be set to current user
+                sold_by: "", 
                 category_name: "",
                 quantity: 0
             };
@@ -92,7 +92,7 @@ import { Redirect } from 'react-router-dom';
         this.setState({item_price: event.target.value})
     }
     setSoldBy(event) {
-        this.setState({soldby: event.target.value})/* idk if we need this if we keep up with userid through something else */
+        this.setState({soldby: event.target.value})
     }
     setCategoryName(event) {
         this.setState({category_name: event.target.value})
@@ -104,25 +104,19 @@ import { Redirect } from 'react-router-dom';
     addToSellerList(e) {
        
         axios.post(`${serverURL}/item`, {
-            item_name: this.state.item_name,sold_by: this.state.userId, 
+            item_name: this.state.item_name,
+            sold_by: userId, 
             item_description: this.state.item_description, 
-            category_name: this.state.category_name, item_price: this.state.item_price, 
+            item_url: this.state.item_url,
+            category_name: this.state.category_name, 
+            item_price: this.state.item_price, 
             quantity: this.state.quantity})
             .then((response1) => {
                 console.log(response1);
+                
             }, (error) => {
-                 //use this to verify what is  this.state.id
         
             });
-            
-        // axios.put(`${serverURL}/item/${this.state.productID}`, this.state.productID).then(response => {
-        //     if (response.status === 200) {
-        //         alert.show('Item successfully added to your list!')
-        //     }
-        //     else {
-        //         alert.show('An error occured')
-        //     }
-        // })
 
         window.location.replace("/account/seller/products");
     }
@@ -145,16 +139,19 @@ import { Redirect } from 'react-router-dom';
                 <div id="addingProduct">
                     <table className="addingProducts-inputs">
                         <tbody>
-                            <tr><td><p className = "label"><h3>Step 1: Enter New Product Info</h3></p></td></tr>
+                            <tr><td><p className = "label"><h3 className="yellow-font"><b>New Product Information</b></h3></p></td></tr>
                             <tr id="product-name">
-                                <td><p className = "label">Product Name: </p></td>
+                                <td><p className="label">Product Name: </p></td>
                                 <td><input type = "text" value={this.state.item_name} onChange = {this.setProductName}/></td>
                             </tr>
                             <tr id="product-description">
                                 <td><p className = "label">Product Description: </p></td>
                                 <td><input type = "text" value={this.state.item_description} onChange = {this.setItemDescription}/></td>
                             </tr>
-                            {/* I need to add sellerID (soldBy) and picture (itemURL)*/}
+                            <tr id="product-image">
+                                <td><p className = "label">Product image url: </p></td>
+                                <td><input type = "text" value={this.state.item_url} onChange = {this.setProductURL}/></td>
+                            </tr>
                             <tr id="product-price">
                                 <td><p className = "label">Price: </p></td>
                                 <td><input type = "text"  onChange = {this.setItemPrice}/></td>
@@ -177,22 +174,23 @@ import { Redirect } from 'react-router-dom';
             informationEntered = 
             <nav>
             
-                <button className="btn btn-secondary" onClick = {this.addToSellerList.bind(this)}><b>Add Product!</b></button><br/><br/> 
-                {/* At this point the product should be in our database*/}
+                <button className="btn btn-success" onClick = {this.addToSellerList.bind(this)}><b>Add Product!</b></button><br/><br/> 
             
             </nav>
         }
 
 
         return(
-            <nav className="left-layout">
-                <h1>Add A New Product</h1>
-                <h5>Please fill out the information below.</h5>
-                <div>
-                    {productInfo}
-                    {informationEntered}
-                </div>
-            </nav>
+            <div>
+                <nav className="left-layout">
+                    <h1 className="blue-font"><b>Add A New Product</b></h1><br/>
+                    {/* <h5 className="yellow-font">Please fill out the information below.</h5><br/> */}
+                    <div>
+                        {productInfo}
+                        {informationEntered}
+                    </div>
+                </nav>
+            </div>
         )
     }
     

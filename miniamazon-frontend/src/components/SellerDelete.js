@@ -96,17 +96,24 @@ export default class SellerDelete extends React.Component{
 
             return(
                 <nav className="left-layout">
-                    <h1>Are you sure you want to delete this item?</h1>
-                    <h5>This cannot be undone.</h5>
-                    <h2>
-                    Item name: {this.state.product.item_name} <br/>
-                    Description: {this.state.product.item_description} <br/>
-                        {this.state.product.item_image} <br/>
-                    Price: ${this.state.product.item_price} 
-                    <br/>
-                    </h2>
+                    <h2 className="red-font"><b>Are you sure you want to delete this item?</b></h2> <br/>
+                    <h4 className="red-font"><b>This cannot be undone.</b></h4> <br/>
+                    <div className= "product-border" style={{marginBottom: 40}}>
                     <div>
-                        <button className="btn btn-secondary" onClick = {this.deleteFromSellerList.bind(this)}><b>Delete This Product</b></button><br/><br/> 
+                        <div style={{display: 'flex', width: 600, justifyContent: 'space-between'}}>
+                            <a href={"/items/" + product._id}>
+                                <div className="blue-font" style={{fontSize: 24}}> <b>{product.item_name}</b></div>
+                            </a>
+                            <div style={{fontSize: 22}}> <b>${product.item_price}</b></div>
+                        </div>
+                        <div style={{fontSize: 18, width: 700}}> {product.item_description}</div>
+                        <div style={{marginTop: 20}}>
+                            <img src={product.image_url}/> <br/>
+                        </div>
+                    </div>
+                    <div>
+                        <button className="btn btn-danger" onClick = {this.deleteFromSellerList.bind(this)}><b>Delete This Product</b></button><br/><br/> 
+                    </div>
                     </div>
                 </nav>
             )

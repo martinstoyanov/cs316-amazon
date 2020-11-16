@@ -21,26 +21,26 @@ function AccountEdit(){
 
     return(
         <nav className="left-layout">
-            <div className="personal-info">
-                <h1>Edit My Account</h1>
-                <h4>User ID: </h4>
+            <div>
+                <h1 className="yellow-font"><b>Edit My Account</b></h1><br/>
+                {/* <h4>User ID: </h4> */}
                 <tr>
-                    <td><p className = "label">Name:</p></td>
+                    <td><p className = "label"><b>Name:</b></p></td>
                     <td><input type = "text" className = "set-user-name" value = {userName} onChange = {setUserName}/></td>
                 </tr>
                 <tr>
-                    <td><p className = "label">Email:</p></td>
+                    <td><p className = "label"><b>Email:</b></p></td>
                     <td><input type = "text" className = "set-user-email" value = {userEmail} onChange = {setUserEmail}/></td>
                 </tr>
                 <tr>
-                    <td><p className = "label">Password:</p></td>
+                    <td><p className = "label"><b>Password:</b></p></td>
                     <td><input type = "text" className = "set-user-password" value = {userPassword} onChange = {setUserPassword}/></td>
                 </tr>
-                <h4>Account Type: {accountType}</h4>
+                {/* <h4>Account Type: {accountType}</h4> */}
             </div><br/>
             <div>
                 <a href="/account">
-                    <button className="btn btn-secondary">Save</button><br/>
+                    <button className="button button1">Save</button><br/>
                 </a>
                 <br/>
                 <a href="/account">

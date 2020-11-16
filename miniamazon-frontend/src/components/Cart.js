@@ -323,10 +323,10 @@ export default class Cart extends React.Component{
         // }
 
         if (isCheckingOut && !isShippingEntered) {
-            nextButtonShipping = <button className="btn btn-secondary" onClick={this.setShippingEntered}><b>NEXT</b></button>
+            nextButtonShipping = <button className="button button2" onClick={this.setShippingEntered}><b>NEXT</b></button>
         }
         if (isShippingEntered && !isPaymentEntered) {
-            nextButtonPayment = <button className="btn btn-secondary" onClick={this.setPaymentEntered}><b>NEXT</b></button>
+            nextButtonPayment = <button className="button button2" onClick={this.setPaymentEntered}><b>NEXT</b></button>
         }
 
         if (isCheckingOut) {
@@ -335,36 +335,36 @@ export default class Cart extends React.Component{
                 <div id="shipping">
                     <table className="shipping-inputs">
                         <tbody>
-                            <tr><td><p className = "label"><h3>Step 1: Shipping Address</h3></p></td></tr>
+                            <tr><td><p className="blue-font"><h3><b>Step 1: Shipping Address</b></h3></p></td></tr><br/>
                             <tr id="order-name">
-                                <td><p className = "label">First and Last Name: </p></td>
+                                <td><h4 className = "label">First and Last Name:</h4></td>
                                 <td><input type = "text" value={this.state.orderName} onChange = {this.setOrderName}/></td>
-                            </tr>
+                            </tr><br/>
                             <tr id="shipping-address-line1">
-                                <td><p className = "label">Address Line 1: </p></td>
+                                <td><h4 className = "label">Address Line 1: </h4></td>
                                 <td><input type = "text" value={this.state.shippingAddressLine1} onChange = {this.setShippingAddressLine1}/></td>
-                            </tr>
+                            </tr><br/>
                             <tr id="shipping-address-line2">
-                                <td><p className = "label">Address Line 2: </p></td>
+                                <td><h4 className = "label">Address Line 2: </h4></td>
                                 <td><input type = "text" value={this.state.shippingAddressLine2}  onChange = {this.setShippingAddressLine2}/></td>
-                            </tr>
+                            </tr><br/>
                             <tr id="shipping-address-city">
-                                <td><p className = "label">City: </p></td>
+                                <td><h4 className = "label">City: </h4></td>
                                 <td><input type = "text" value={this.state.shippingAddressCity}  onChange = {this.setShippingAddressCity}/></td>
-                            </tr>
+                            </tr><br/>
                             <tr id="shipping-address-state">
-                                <td><p className = "label">State: </p></td>
+                                <td><h4 className = "label">State: </h4></td>
                                 <td><input type = "text" value={this.state.shippingAddressState}  onChange = {this.setShippingAddressState}/></td>
-                            </tr>
+                            </tr><br/>
                             <tr id="shipping-address-zip">
-                                <td><p className = "label">Zip Code: </p></td>
+                                <td><h4 className = "label">Zip Code: </h4></td>
                                 <td><input type = "text" value={this.state.shippingAddressZip}  onChange = {this.setShippingAddressZip}/></td>
-                            </tr>
+                            </tr><br/>
                         </tbody>
                     </table>
                     <div>
                         {nextButtonShipping}
-                    </div>
+                    </div><br/><br/>
                 </div><br/>
             </nav>
         }
@@ -375,28 +375,28 @@ export default class Cart extends React.Component{
                 <div id="payment">
                     <table className="payment-inputs">
                         <tbody>
-                            <tr><td><p className = "label"><h3>Step 2: Payment Method</h3></p></td></tr>
+                            <tr><td><p className="blue-font"><h3><b>Step 2: Payment Method</b></h3></p></td></tr><br/>
                             <tr id="payment-card-number">
-                                <td><p className = "label">Credit Card Number:</p></td>
+                                <td><h4 className = "label">Credit Card Number:</h4></td>
                                 <td><input type = "text" value={this.state.paymentCardNumber}  onChange = {this.setPaymentCardNumber}/></td>
-                            </tr>
+                            </tr><br/>
                             <tr id="payment-expire">
-                                <td><p className = "label">Expiration Date (MM/YY):</p></td>
+                                <td><h4 className = "label">Expiration Date (MM/YY):</h4></td>
                                 <td><input type = "text" value={this.state.paymentCardExpire} onChange = {this.setPaymentCardExpire}/></td>
-                            </tr>
+                            </tr><br/>
                             <tr id="payment-security-code">
-                                <td><p className = "label">Security Code:</p></td>
+                                <td><h4 className = "label">Security Code:</h4></td>
                                 <td><input type = "text" value={this.state.paymentCardSecurityCode} onChange = {this.setPaymentCardSecurityCode}/></td>
-                            </tr>
+                            </tr><br/>
                             <tr id="payment-name">
-                                <td><p className = "label">Name on Card:</p></td>
+                                <td><h4 className = "label">Name on Card:</h4></td>
                                 <td><input type = "text" value={this.state.paymentCardName} onChange = {this.setPaymentCardName}/></td>
-                            </tr>
+                            </tr><br/>
                         </tbody>
                     </table>
                     <div>
                         {nextButtonPayment}
-                    </div>
+                    </div><br/><br/>
                 </div><br/>
             </nav>
         }
@@ -411,37 +411,37 @@ export default class Cart extends React.Component{
                     </div>
                     <table className="billing-inputs">
                         <tbody>
-                            <tr><td><p className = "label"><h3>Step 3: Billing Information</h3></p></td></tr>
+                            <tr><td><p className="blue-font"><h3><b>Step 3: Billing Information</b></h3></p></td></tr><br/>
                             <tr id="billing-name">
-                                <td><p className = "label">First and Last Name: </p></td>
+                                <td><h4 className = "label">First and Last Name: </h4></td>
                                 <td><input type = "text" value={this.state.billingName} onChange = {this.setBillingName}/></td>
-                            </tr>
+                            </tr><br/>
                             <tr id="billing-address-line1">
-                                <td><p className = "label">Address Line 1: </p></td>
+                                <td><h4 className = "label">Address Line 1: </h4></td>
                                 <td><input type = "text" value={this.state.billingAddressLine1} onChange = {this.setBillingAddressLine1}/></td>
-                            </tr>
+                            </tr><br/>
                             <tr id="billing-address-line2">
-                                <td><p className = "label">Address Line 2: </p></td>
+                                <td><h4 className = "label">Address Line 2: </h4></td>
                                 <td><input type = "text" value={this.state.billingAddressLine2} onChange = {this.setBillingAddressLine2}/></td>
-                            </tr>
+                            </tr><br/>
                             <tr id="billing-address-city">
-                                <td><p className = "label">City: </p></td>
+                                <td><h4 className = "label">City: </h4></td>
                                 <td><input type = "text" value={this.state.billingAddressCity}  onChange = {this.setBillingAddressCity}/></td>
-                            </tr>
+                            </tr><br/>
                             <tr id="billing-address-state">
-                                <td><p className = "label">State: </p></td>
+                                <td><h4 className = "label">State: </h4></td>
                                 <td><input type = "text" value={this.state.billingAddressState} onChange = {this.setBillingAddressState}/></td>
-                            </tr>
+                            </tr><br/>
                             <tr id="billing-address-zip">
-                                <td><p className = "label">Zip Code: </p></td>
+                                <td><h4 className = "label">Zip Code: </h4></td>
                                 <td><input type = "text" value={this.state.billingAddressZip} onChange = {this.setBillingAddressZip}/></td>
-                            </tr>
+                            </tr><br/>
                         </tbody>
                     </table>
                 </div><br/>
                 <div>
-                    <button className="btn btn-secondary" onClick={this.setBillingEntered}><b>REVIEW MY ORDER</b></button><br/><br/>
-                </div>
+                    <button className="button button2" onClick={this.setBillingEntered}><b>REVIEW MY ORDER</b></button>
+                </div><br/><br/>
             </nav>
         }
 
@@ -454,19 +454,19 @@ export default class Cart extends React.Component{
                 <div id="info">
                     {/* Need to implement displaying order info */}
                 </div>
-                <button className="btn btn-secondary" onClick={this.checkout}><b>CHECKOUT!</b></button><br/><br/>
+                <button className="button button2" onClick={this.checkout}><b>CHECKOUT!</b></button><br/><br/>
             </nav>
         }
 
         return(
             <nav className="left-layout">
-                <h1 style={{marginBottom: 50}}>Your Items</h1>
+                <h1 className="yellow-font" style={{marginBottom: 50}}><b>Your Items</b></h1>
                 { this.state.products.map(product => <ProductCart key={product._id} product={product} handler = {this.handler}></ProductCart>)}<br/>
-                <div style={{marginBottom: 50, fontSize: 24}}>Total: ${this.state.orderPrice}</div>
+                <div style={{marginBottom: 50, fontSize: 24}}><h2><b>Total: ${this.state.orderPrice}</b></h2></div>
 
                 <nav>
-                    <button className="btn btn-secondary" onClick={this.setCheckingOut}><b>CHECKOUT</b></button><br/><br/>
-                </nav>
+                    <button className="button button2" onClick={this.setCheckingOut}><b>CHECKOUT</b></button><br/>
+                </nav><br/><br/><br/><br/>
 
                 <div>
                     {shippingAddress}
