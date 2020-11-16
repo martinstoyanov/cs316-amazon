@@ -37,7 +37,7 @@ export default class Home extends React.Component{
 
                         <button className="button button3">Shop Now!</button><br/><br/><br/>
                     </a>
-                </div<br/>
+                </div><br/>
                 <div id="recommended-items">
                     <h3 className="blue-font">
                         <b>Your Recommended Items</b>
