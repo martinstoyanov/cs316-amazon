@@ -23,8 +23,6 @@ import SellerList from './SellerList'; //should get products from here
                 quantity: 0
             };
 
-            /* I AM NOT SURE IF I NEED THIS BECAUSE TECHNICALLY I 
-            AM NOT WRITING NEW INFO, JUST UPDATING SOME INFO*/
 
 
             this.setProductID = this.setProductID.bind(this);
@@ -87,23 +85,15 @@ import SellerList from './SellerList'; //should get products from here
             axios.put(`${serverURL}/item/${this.state.productID}`, {
                 item_name: this.state.item_name,sold_by: this.state.userId, 
                 item_description: this.state.item_description, 
+                item_url: this.state.item_url,
+                sold_by: userId,
                 category_name: this.state.category_name, item_price: this.state.item_price, 
                 quantity: this.state.quantity})
                 .then((response1) => {
                     console.log(response1);
                 }, (error) => {
-                     //use this to verify what is  this.state.id
             
                 });
-                
-            // axios.put(`${serverURL}/item/${this.state.productID}`, this.state.productID).then(response => {
-            //     if (response.status === 200) {
-            //         alert.show('Item successfully added to your list!')
-            //     }
-            //     else {
-            //         alert.show('An error occured')
-            //     }
-            // })
     
             window.location.replace("/account/seller/products");
         }
@@ -127,7 +117,10 @@ import SellerList from './SellerList'; //should get products from here
                                 <td><p className = "label"><b>Product Description:</b> </p></td>
                                 <td><input type = "text" defaultValue={this.state.product.item_description} onChange = {this.setItemDescription}/></td>
                             </tr>
-                            {/* I need to add sellerID (soldBy) and picture (itemURL)*/}
+                            <tr id="product-Image">
+                                <td><p className = "label"><b>Product Image:</b> </p></td>
+                                <td><input type = "text" defaultValue={this.state.product.item_url} onChange = {this.setProductURL}/></td>
+                            </tr>
                             <tr id="product-price">
                                 <td><p className = "label"><b>Price: </b></p></td>
                                 <td><input type = "text"  defaultValue = {this.state.product.item_price} onChange = {this.setItemPrice}/></td>
@@ -150,9 +143,5 @@ import SellerList from './SellerList'; //should get products from here
             )
         } 
 
-          //need some sort of save button that 
-          //saves the changes to the product in the 
-          //database and return to my product list (similar to a tag so you 
-          //can go back to your lift of buttons)
           
     }
