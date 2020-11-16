@@ -35,7 +35,7 @@ import SellerProduct from './SellerProduct';
                     <div>
                         <br/>
                         <a href="/account/seller/add-products">
-                            <button className="btn btn-secondary">Add A New Product</button><br/>
+                            <button className="btn btn-success">Add A New Product</button><br/>
                         </a>
                         <br/>
                     </div>

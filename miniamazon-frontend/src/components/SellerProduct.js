@@ -7,7 +7,7 @@ function SellerProduct({product}){
      
     return(
         <div>
-            <h2>
+            <p className= "product-border" >
                 Item name: {product.item_name} <br/>
                 Description: {product.item_description} <br/>
                 {product.item_image} <br/>
@@ -22,11 +22,11 @@ function SellerProduct({product}){
                     <br/>
                 </a>
                 <a href= {"/account/seller/delete/"+ product._id}>
-                    <button className="btn btn-secondary"> Delete This Product</button>
+                    <button className="btn btn-danger"> Delete This Product</button>
                     <br/>
                 </a>
                 
-            </h2> 
+            </p> 
         </div>
     )
 }

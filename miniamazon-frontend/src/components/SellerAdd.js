@@ -110,6 +110,7 @@ import { Redirect } from 'react-router-dom';
             quantity: this.state.quantity})
             .then((response1) => {
                 console.log(response1);
+                
             }, (error) => {
                  //use this to verify what is  this.state.id
         
@@ -177,7 +178,7 @@ import { Redirect } from 'react-router-dom';
             informationEntered = 
             <nav>
             
-                <button className="btn btn-secondary" onClick = {this.addToSellerList.bind(this)}><b>Add Product!</b></button><br/><br/> 
+                <button className="btn btn-success" onClick = {this.addToSellerList.bind(this)}><b>Add Product!</b></button><br/><br/> 
                 {/* At this point the product should be in our database*/}
             
             </nav>

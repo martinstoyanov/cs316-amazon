@@ -114,7 +114,7 @@ import SellerList from './SellerList'; //should get products from here
 
             return(
                 
-                <nav>
+                <nav className="left-layout">
                 <div id="updatingProduct">
                     <table className="updatingProducts-inputs">
                         <tbody>
@@ -144,7 +144,7 @@ import SellerList from './SellerList'; //should get products from here
                     </table>
                 </div><br/>
                 <div>
-                    <button className="btn btn-secondary" onClick = {this.updateToSellerList.bind(this)}><b>Update Product</b></button><br/><br/>
+                    <button className="btn btn-info" onClick = {this.updateToSellerList.bind(this)}><b>Update Product</b></button><br/><br/>
                 </div>
             </nav>
             )

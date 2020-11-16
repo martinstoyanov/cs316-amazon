@@ -45,9 +45,9 @@ function Product({product}){
     
 
     return(
-        <div style={{marginBottom: 50}}>
+        <div className= "product-border" style={{marginBottom: 40}}>
             <div>
-                <div style={{display: 'flex', width: 700, justifyContent: 'space-between'}}>
+                <div style={{display: 'flex', width: 600, justifyContent: 'space-between'}}>
                     <a href={"/items/" + product._id}>
                         <div style={{fontSize: 24}}> {product.item_name}</div>
                     </a>
@@ -58,7 +58,7 @@ function Product({product}){
                     <img src={product.image_url}/> <br/>
                 </div>
                 <div style={{marginTop: 25}}>
-                    <button className="btn btn-secondary" onClick={addToCart}>Add to cart</button><br/>
+                    <button className="btn btn-success" onClick={addToCart}>Add to cart</button><br/>
                 </div>
                 <br/>
         </div>

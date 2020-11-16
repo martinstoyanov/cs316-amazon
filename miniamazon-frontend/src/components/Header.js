@@ -59,7 +59,15 @@ export default class Header extends React.Component
     return (
       <Styles>
         <Navbar expand="lg">
-          <Navbar.Brand href="/">Mini-Amazon</Navbar.Brand>
+          <Navbar.Brand href="/"> 
+            <img 
+              src= "miniamazon-frontend/noamazon.png"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+              alt="NoAmazon logo"
+            />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Form className="form-center" onSubmit={this.search}>
             <FormControl type="text" value = {this.state.searchTerm}  onChange = {this.handleSearchInputChange} placeholder="Search" className="" />

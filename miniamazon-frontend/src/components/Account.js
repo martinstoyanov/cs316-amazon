@@ -34,14 +34,14 @@ export default class Account extends React.Component{
         let sellerHistory
         if (this.state.isSeller) {
             sellerHistory = 
-            <div>
+            <div >
                 
-              <a href="/account/seller/products">
+              <a className= ".button1:hover " href="/account/seller/products">
               
-                    <button className="btn btn-secondary">View/Edit My Products</button><br/>
+                    <button className="button button2">View/Edit My Products</button><br/>
                 </a> <br/>
                 <a href="/sold-items">
-                    <button className="btn btn-secondary">Sold Items</button><br/>
+                    <button className="button button2">Sold Items</button><br/>
                 </a><br/>
             </div>
         }
@@ -55,26 +55,26 @@ export default class Account extends React.Component{
                     <h4>Password: <var>{userPassword}</var></h4>
                     <h4>Account Type: <var>{accountType}</var></h4>
                 </div><br/>
-                <div>
-                    <a href="/orders">
-                        <button className="btn btn-secondary">My Orders</button>
-                    </a><br/><br/>
-                    <a href="/reviews">
-                        <button className="btn btn-secondary">My Reviews</button><br/>
-                    </a>
-                </div><br/>
                 {sellerHistory}
                 <div>
-                    <a href="/balance">
-                        <button className="btn btn-secondary">Balance</button><br/>
+                    <a className= ".button1:hover " href="/orders">
+                        <button class="button button1">My Orders</button>
+                    </a><br/><br/>
+                    <a href="/reviews">
+                        <button className="button button1">My Reviews</button><br/>
+                    </a>
+                </div><br/>
+                <div>
+                    <a className= ".button1:hover " href="/balance">
+                        <button className="button button1">Balance</button><br/>
                     </a>
                 </div><br />
                 <div>
-                    <a href="/account-edit">
-                        <button className="btn btn-secondary">Edit My Information</button><br/>
+                    <a className= ".button1:hover " href="/account-edit">
+                        <button className="button button1">Edit My Information</button><br/>
                     </a>
                     <br/>
-                    <a href="/home">
+                    <a className= ".button1:hover " href="/home">
                         <button className="btn btn-danger">SIGN OUT</button>
                     </a>
                 </div>   

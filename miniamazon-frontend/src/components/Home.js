@@ -45,18 +45,18 @@ export default class Home extends React.Component{
         return(
             <nav className="left-layout">
                 <h1 className="title">Mini-Amazon</h1>
-                <p>
+                <h3>
                     Welcome to our website!
-                </p>
+                </h3>
                 <div>
                     <a href="/shop">
-                        <button className="btn btn-secondary">Shop Now!</button><br/>
+                        <button className="button button3">Shop Now!</button><br/>
                     </a>
-                </div>
-                <div className="left-layout" id="recommended-items">
-                    <p>
+                </div><br/>
+                <div id="recommended-items">
+                    <h3>
                         Your Recommended Items
-                    </p>
+                    </h3>
 
                 </div>
             </nav>

@@ -106,7 +106,7 @@ export default class SellerDelete extends React.Component{
                     <br/>
                     </h2>
                     <div>
-                        <button className="btn btn-secondary" onClick = {this.deleteFromSellerList.bind(this)}><b>Delete This Product</b></button><br/><br/> 
+                        <button className="btn btn-danger" onClick = {this.deleteFromSellerList.bind(this)}><b>Delete This Product</b></button><br/><br/> 
                     </div>
                 </nav>
             )
