@@ -96,15 +96,14 @@ export default class SellerDelete extends React.Component{
 
             return(
                 <nav className="left-layout">
-                    <h1>Are you sure you want to delete this item?</h1>
-                    <h5>This cannot be undone.</h5>
-                    <h2>
-                    Item name: {this.state.product.item_name} <br/>
-                    Description: {this.state.product.item_description} <br/>
+                    <h2 className="red-font"><b>Are you sure you want to delete this item?</b></h2> <br/>
+                    <h4 className="red-font"><b>This cannot be undone.</b></h4> <br/>
+                    <h5>
+                        <b>Item name:</b> {this.state.product.item_name} <br/><br/>
+                        <b>Description: </b>{this.state.product.item_description}<br/><br/>
                         {this.state.product.item_image} <br/>
-                    Price: ${this.state.product.item_price} 
-                    <br/>
-                    </h2>
+                        <b>Price: ${this.state.product.item_price}</b><br/><br/>
+                    </h5>
                     <div>
                         <button className="btn btn-danger" onClick = {this.deleteFromSellerList.bind(this)}><b>Delete This Product</b></button><br/><br/> 
                     </div>

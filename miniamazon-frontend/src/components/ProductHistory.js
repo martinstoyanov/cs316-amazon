@@ -29,16 +29,16 @@ export default class ProductHistory extends React.Component{
                 <div>
                     <div style={{display: 'flex', width: 700, justifyContent: 'space-between'}}>
                         <a href={"/items/" + this.state.product._id}>
-                            <div style={{fontSize: 24}}> {this.state.product.item_name}</div>
+                            <div className="blue-font" style={{fontSize: 24}}> <b>{this.state.product.item_name}</b></div><br/>
                         </a>
-                        <div style={{fontSize: 22}}> ${this.state.product.item_price} </div>
+                        <div style={{fontSize: 22}}> <b>${this.state.product.item_price}</b></div><br/>
                     </div>
-                    <div style={{fontSize: 18, width: 700}}> {this.state.product.item_description}</div>
+                    <div style={{fontSize: 18, width: 700}}> {this.state.product.item_description}</div><br/>
                     <div style={{marginTop: 20}}>
                         <img src={this.state.product.image_url}/> <br/>
                     </div>
-                    <div style={{fontSize: 18, marginTop: 20}}> Date ordered: {this.state.product.order_date}</div>
-                    <div style={{fontSize: 18}}> Quantity: {this.state.product.count}</div>
+                    <div style={{fontSize: 18, marginTop: 20}}> Date ordered: <b>{this.state.product.order_date}</b></div><br/>
+                    <div style={{fontSize: 18}}> Quantity: <b>{this.state.product.count}</b></div><br/>
                 </div> 
             </div>
         )      

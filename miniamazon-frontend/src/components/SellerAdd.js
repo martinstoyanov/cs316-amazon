@@ -146,9 +146,9 @@ import { Redirect } from 'react-router-dom';
                 <div id="addingProduct">
                     <table className="addingProducts-inputs">
                         <tbody>
-                            <tr><td><p className = "label"><h3>Step 1: Enter New Product Info</h3></p></td></tr>
+                            <tr><td><p className = "label"><h3 className="yellow-font"><b>New Product Information</b></h3></p></td></tr>
                             <tr id="product-name">
-                                <td><p className = "label">Product Name: </p></td>
+                                <td><p className="label">Product Name: </p></td>
                                 <td><input type = "text" value={this.state.item_name} onChange = {this.setProductName}/></td>
                             </tr>
                             <tr id="product-description">
@@ -186,14 +186,16 @@ import { Redirect } from 'react-router-dom';
 
 
         return(
-            <nav className="left-layout">
-                <h1>Add A New Product</h1>
-                <h5>Please fill out the information below.</h5>
-                <div>
-                    {productInfo}
-                    {informationEntered}
-                </div>
-            </nav>
+            <div>
+                <nav className="left-layout">
+                    <h1 className="blue-font"><b>Add A New Product</b></h1><br/>
+                    {/* <h5 className="yellow-font">Please fill out the information below.</h5><br/> */}
+                    <div>
+                        {productInfo}
+                        {informationEntered}
+                    </div>
+                </nav>
+            </div>
         )
     }
     

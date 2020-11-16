@@ -47,13 +47,13 @@ export default class Account extends React.Component{
         }
         return(
             <nav className="left-layout">
-                <div className="personal-info">
-                    <h1>My Account</h1>
-                    <h4>User ID: <var>{userID}</var></h4>
-                    <h4>Name: <var>{userName}</var></h4>
-                    <h4>Email: <var>{userEmail}</var></h4>
-                    <h4>Password: <var>{userPassword}</var></h4>
-                    <h4>Account Type: <var>{accountType}</var></h4>
+                <div className="blue-font">
+                    <h1><b>My Account</b></h1><br/>
+                    <h4>User ID: <var className="yellow-font"><b>{userID}</b></var></h4>
+                    <h4>Name: <var className="yellow-font"><b>{userName}</b></var></h4>
+                    <h4>Email: <var className="yellow-font"><b>{userEmail}</b></var></h4>
+                    <h4>Password: <var className="yellow-font"><b>{userPassword}</b></var></h4>
+                    <h4>Account Type: <var className="yellow-font"><b>{accountType}</b></var></h4>
                 </div><br/>
                 {sellerHistory}
                 <div>

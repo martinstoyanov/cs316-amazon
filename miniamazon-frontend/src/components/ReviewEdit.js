@@ -55,25 +55,25 @@ function ReviewEdit({review}){
 
     return(
         <div>
-            <h3>
+            <h4>
                 <b>Product:</b><br/>
-                <a href={"/items/" + review.item_id}>
-                    <div style={{fontSize: 24}}> {productName}</div>
-                </a>
-                <b>Your Rating:</b><br/> {review.review_rating} <br/>
-                <b>Your Description:</b><br/> {review.review_notes}<br/>
+                <a className="blue-font" href={"/items/" + review.item_id}>
+                    <div style={{fontSize: 24}}><b>{productName}</b></div>
+                </a><br/>
+                <b>Your Rating:</b><br/><b className="yellow-font">{review.review_rating}</b> <br/><br/>
+                <b>Your Description:</b><br/><b className="yellow-font">{review.review_notes}</b><br/>
                 <br/>
-            </h3> 
-            <button className="btn btn-secondary" onClick={handleShow}>Edit This Review</button><br/><br/><br/>
+            </h4> 
+            <button className="button button2" onClick={handleShow}>Edit This Review</button><br/><br/><br/>
             <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Edit Review</Modal.Title>
+                <Modal.Title className="yellow-font"><b>Edit Review</b></Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <table className="review-inputs">
                     <tbody>
                         <tr id="rating">
-                            <td><p className = "label">Rating:</p></td>
+                            <td><p className="blue-font"><b>Rating:</b></p></td>
                             <Rating name="size-large" value={review.review_rating} size="large"
                                 value={rating}
                                 onChange={(event, newValue) => {
@@ -82,7 +82,7 @@ function ReviewEdit({review}){
                             />
                         </tr>
                         <tr id="review-text">
-                            <td><p className = "label">Description:</p></td>
+                            <td><p className="blue-font"><b>Description:</b></p></td>
                             <td><textarea rows={8} cols={40} defaultValue={review.review_notes}
                             onChange={(event) => {
                                 setReviewText(event.target.value)
@@ -95,7 +95,7 @@ function ReviewEdit({review}){
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="danger" onClick={handleClose}>Cancel</Button>
-                <Button variant="primary" onClick={editReview}>Submit My Changes!</Button>
+                <button className="button button2" onClick={editReview}>Submit My Changes!</button>
           </Modal.Footer>
         </Modal>
         </div>

@@ -38,7 +38,7 @@ export default class SoldList extends React.Component{
     render() {
         return(
             <nav className="left-layout">
-                <h1 className="title">Items Sold</h1>
+                <h1 className="yellow-font"><b>Items Sold</b></h1><br/>
                 <div>
                     {this.state.items.map(product => <ProductHistory key={product._id} product ={product} ></ProductHistory>)}
                 </div>

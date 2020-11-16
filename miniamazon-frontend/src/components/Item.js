@@ -59,25 +59,26 @@ class Items extends React.Component {
         return (
             <div>
                 <nav className="left-layout">
-                    <h1 className="title">{this.state.item.item_name}: ${this.state.item.item_price}</h1>
-                    <h4 className="title">{this.state.item.item_description}</h4>
-                    <h6 className="title">Item #{this.state.item._id}</h6>
-                    <p>
+                    <h1 className="blue-font"><b>{this.state.item.item_name}:</b></h1>
+                    <h5 className="title">Item #{this.state.item._id}</h5><br/>
+                    <h1 className="yellow-font">${this.state.item.item_price}</h1><br/>
+                    <h4 className="title">{this.state.item.item_description}</h4><br/><br/>
+                    {/* <p>
                         Pictures to be added soon! And other fun things!
-                    </p>
+                    </p> */}
                     <ReviewModal product ={this.state.item}></ReviewModal><br/><br/>
                     <div>
                         <a href="/shop">
-                            <button className="btn btn-secondary">Go Back to Products</button>
+                            <button className="button button1">Go Back to Products</button>
                         </a>
                     </div>
                 </nav>
 
                 <nav className="left-layout">
-                    <h1>Reviews</h1>
-                    <h5>Average Rating:</h5>
-                    <Rating name="half-rating-read" value={this.state.avgReview} readOnly />
-                    <h5>Here are the reviews for this product.</h5>
+                    <h1 className="yellow-font"><b>Reviews</b></h1><br/>
+                    <h4><b>Average Rating:</b></h4>
+                    <Rating name="half-rating-read" value={this.state.avgReview} readOnly /><br/><br/>
+                    <h5><b>Here are the reviews for this product.</b></h5><br/>
                     { this.state.reviews.map(review => <Review key={review._id} review={review}></Review>)}<br/>
 
                 </nav>

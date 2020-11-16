@@ -22,10 +22,10 @@ export default class ProductsList extends React.Component{
     render() {
         return(
             <nav className="left-layout">
-                <h1 className="title">PRODUCTS</h1>
-                <p>
+                <h1 className="yellow-font"><b>Shop</b></h1><br/>
+                <h5 className="blue-font">
                     Here are the products we have.
-                </p>
+                </h5><br/>
                 <div>
                     {this.state.products.map(product => <Product key={product._id} product ={product}></Product>)}
                 </div>

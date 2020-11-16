@@ -118,33 +118,33 @@ import SellerList from './SellerList'; //should get products from here
                 <div id="updatingProduct">
                     <table className="updatingProducts-inputs">
                         <tbody>
-                            <tr><td><p className = "label"><h3>Enter Updated Product Info</h3></p></td></tr>
+                            <tr><td><p className="yellow-font"><h1><b>Update Product</b></h1></p></td></tr><br/>
                             <tr id="product-name">
-                                <td><p className = "label">Product Name: </p></td>
+                                <td><p className = "label"><b>Product Name:</b> </p></td>
                                 <td><input type = "text" defaultValue= {this.state.product.item_name} onChange = {this.setProductName}/></td>
                             </tr>
                             <tr id="product-description">
-                                <td><p className = "label">Product Description: </p></td>
+                                <td><p className = "label"><b>Product Description:</b> </p></td>
                                 <td><input type = "text" defaultValue={this.state.product.item_description} onChange = {this.setItemDescription}/></td>
                             </tr>
                             {/* I need to add sellerID (soldBy) and picture (itemURL)*/}
                             <tr id="product-price">
-                                <td><p className = "label">Price: </p></td>
+                                <td><p className = "label"><b>Price: </b></p></td>
                                 <td><input type = "text"  defaultValue = {this.state.product.item_price} onChange = {this.setItemPrice}/></td>
                             </tr>
                             <tr id="product-category">
-                                <td><p className = "label">Category: </p></td>
+                                <td><p className = "label"><b>Category:</b> </p></td>
                                 <td><input type = "text" defaultValue={this.state.product.category_name}  onChange = {this.setCategoryName}/></td>
                             </tr>
                             <tr id="product-quantity">
-                                <td><p className = "label">Quantity: </p></td>
+                                <td><p className = "label"><b>Quantity:</b> </p></td>
                                 <td><input type = "text"  defaultValue={this.state.product.quantity} onChange = {this.setItemQuantity}/></td>
                             </tr>
                         </tbody>
                     </table>
                 </div><br/>
                 <div>
-                    <button className="btn btn-info" onClick = {this.updateToSellerList.bind(this)}><b>Update Product</b></button><br/><br/>
+                    <button className="button button1" onClick = {this.updateToSellerList.bind(this)}><b>Update Product</b></button><br/><br/>
                 </div>
             </nav>
             )

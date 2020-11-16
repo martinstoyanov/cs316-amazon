@@ -111,3 +111,21 @@
 var {
   font-style: italic;
 }
+
+.blue-font {
+  color: #146eb4
+}
+.yellow-font {
+  color: #ff9900
+}
+.red-font {
+  color: red
+}
+
+body {
+  background-color: #fff;
+  background-image: url(/backgroundduke.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}

@@ -3,13 +3,13 @@ import React from 'react';
 function PostCheckout(){
     return(
         <nav className="left-layout">
-            <h1 className="title">Thanks for your order!</h1>
-            <p>
-                You can check the status of your order below
-            </p>
+            <h1 className="yellow-font"><b>Thanks for your order!</b></h1>
+            <h4>
+                You can check the status of your order below.
+            </h4>
             <div>
                 <a href="/orders">
-                    <button className="btn btn-secondary">My Orders</button><br/>
+                    <button className="button button1">My Orders</button><br/>
                 </a>
             </div>
 

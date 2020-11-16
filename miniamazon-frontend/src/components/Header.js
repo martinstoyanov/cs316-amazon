@@ -8,13 +8,13 @@ const serverURL = "http://localhost:8888"
 const Styles = styled.div`
   .navbar { background-color: #222; }
   a, .navbar-nav, .navbar-light .nav-link {
-    color: #c0b3f2;
+    color: #ff9900;
     &:hover { color: white; }
     font-family: 'Cormorant Garamond', Garamond, Georgia, 'Times New Roman', Times, serif;
   }
   .navbar-brand {
     font-size: 1.4em;
-    color: #c0b3f2;
+    color: #ff9900;
     &:hover { color: white; }
     font-family: 'Cormorant Garamond', Garamond, Georgia, 'Times New Roman', Times, serif;
   }
@@ -61,11 +61,10 @@ export default class Header extends React.Component
         <Navbar expand="lg">
           <Navbar.Brand href="/"> 
             <img 
-              src= "miniamazon-frontend/noamazon.png"
-              width="30"
-              height="30"
+              src= "./kamazon.png"
+              height="40"
               className="d-inline-block align-top"
-              alt="NoAmazon logo"
+              alt="Kamazon"
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
@@ -75,10 +74,10 @@ export default class Header extends React.Component
 
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item> 
-              <Nav.Item><Nav.Link href="/account">My Account</Nav.Link></Nav.Item>
-              <Nav.Item><Nav.Link href="/shop">Shop</Nav.Link></Nav.Item>
-              <Nav.Item><Nav.Link href="/cart">Cart</Nav.Link></Nav.Item>
+              <Nav.Item><Nav.Link href="/"><b>Home</b></Nav.Link></Nav.Item> 
+              <Nav.Item><Nav.Link href="/account"><b>My Account</b></Nav.Link></Nav.Item>
+              <Nav.Item><Nav.Link href="/shop"><b>Shop</b></Nav.Link></Nav.Item>
+              <Nav.Item><Nav.Link href="/cart"><b>Cart</b></Nav.Link></Nav.Item>
             </Nav>
           </Navbar.Collapse>
         </Navbar>  

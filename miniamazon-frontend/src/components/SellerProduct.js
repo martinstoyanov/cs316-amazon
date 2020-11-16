@@ -14,7 +14,7 @@ function SellerProduct({product}){
                 Price: ${product.item_price} 
                 <br/>
                 <a href= {"/account/seller/edit/"+ product._id}>
-                    <button className="btn btn-secondary">Edit This Product</button>
+                    <button className="button button1">Edit This Product</button>
                     {/*the href should include product id & sellerid to avoid an overlap
                     /account/seller/edit/pid/sid */}
                     
