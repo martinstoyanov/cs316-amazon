@@ -42,7 +42,7 @@ export default class OrderHistory extends React.Component{
                 <h1 className="title">Items</h1>
                 <div>
                     <a href="/shop">
-                        <button className="btn btn-secondary">Continue Shopping</button><br/><br/>
+                        <button className="button button1">Continue Shopping</button><br/><br/>
                     </a>
                 </div>
                 <div>

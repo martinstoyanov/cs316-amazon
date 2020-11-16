@@ -78,16 +78,16 @@ function ReviewModal({product}) {
   
     return (
       <>
-        <button className="btn btn-secondary" onClick={handleShow}>Leave a review!</button>
+        <button className="button button2" onClick={handleShow}>Leave a review!</button>
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Leave a Review For: <b>{product.item_name}</b></Modal.Title>
+                <Modal.Title><b>Leave a Review For: </b><b className="yellow-font">{product.item_name}</b></Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <table className="review-inputs">
                     <tbody>
                         <tr id="rating">
-                            <td><p className = "label">Rating:</p></td>
+                            <td><p className="blue-font"><b>Rating:</b></p></td>
                             <Rating name="size-large" defaultValue={null} size="large"
                                 value={rating}
                                 onChange={(event, newValue) => {
@@ -96,7 +96,7 @@ function ReviewModal({product}) {
                             />
                         </tr>
                         <tr id="review-text">
-                            <td><p className = "label">Description:</p></td>
+                            <td><p className="blue-font"><b>Description:</b></p></td>
                             <td><textarea rows={8} cols={40} 
                             onChange={(event) => {
                                 setReviewText(event.target.value)
@@ -109,7 +109,7 @@ function ReviewModal({product}) {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="danger" onClick={handleClose}>Cancel</Button>
-                <Button variant="primary" onClick={addtoReview}>Submit My Review!</Button>
+                <button className="button button2" onClick={addtoReview}>Submit My Review!</button>
           </Modal.Footer>
         </Modal>
       </>

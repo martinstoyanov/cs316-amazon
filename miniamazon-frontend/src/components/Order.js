@@ -18,16 +18,17 @@ export default class Order extends React.Component{
     render() {
         return(
             <div>
-                <h2>
-                    <a href={"/order-history/" + this.state.order._id}>
-                        <div> Order Number: {this.state.order._id} </div>
-                    </a>
-                    Shipping Address: {this.state.order.order_address} <br/>
-                    Payment Method: {this.state.order.order_payment} <br/>
-                    Total Price: ${this.state.order.order_price} <br/>
-                    Status: {this.state.order.order_status} <br/>
-                    Order Date: {this.state.order.order_date} <br/>
-                </h2><br/>
+                <h3 >
+                    Order Number: 
+                    <a className="blue-font" href={"/order-history/" + this.state.order._id}>
+                        <b>{this.state.order._id} </b>
+                    </a><br/>
+                    Shipping Address: <b>{this.state.order.order_address}</b> <br/>
+                    Payment Method: <b>{this.state.order.order_payment} </b><br/>
+                    Total Price: <b>${this.state.order.order_price}</b> <br/>
+                    Status: <b>{this.state.order.order_status}</b> <br/>
+                    Order Date: <b>{this.state.order.order_date}</b> <br/>
+                </h3><br/>
             </div> 
         )
     }

@@ -28,19 +28,20 @@ export default class Home extends React.Component{
     render() {
         return(
             <nav className="left-layout">
-                <h1 className="title">Mini-Amazon</h1>
-                <p>
-                    Welcome to our website!
-                </p>
+                <h1 className="yellow-font"><b>Kamazon</b></h1><br/>
+                <h3 className="blue-font">
+                    Welcome to our website! Click the button below to shop for thousands of products! :)
+                </h3><br/>
                 <div>
                     <a href="/shop">
-                        <button className="btn btn-secondary">Shop Now!</button><br/><br/><br/>
+
+                        <button className="button button3">Shop Now!</button><br/><br/><br/>
                     </a>
-                </div>
+                </div<br/>
                 <div id="recommended-items">
-                    <h4>
-                        Your Recommended Items:<br/><br/>
-                    </h4>
+                    <h3 className="blue-font">
+                        <b>Your Recommended Items</b>
+                    </h3>
                     {this.state.categories.map(category => <Category key={category._id} category ={category}> </Category>)}
                 </div>
             </nav>

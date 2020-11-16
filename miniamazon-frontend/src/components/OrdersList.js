@@ -30,13 +30,13 @@ export default class OrdersList extends React.Component{
     render() {
         return(
             <nav className="left-layout">
-                <h1 className="title">Your Orders</h1>
+                <h1 className="yellow-font"><b>Your Orders</b></h1><br/>
                 <div>
                     {this.state.orders.map(order => <Order key={order._id} order ={order}></Order>)}
                 </div>
                 <div>
                     <a href="/shop">
-                        <button className="btn btn-secondary">Continue Shopping</button><br/><br/>
+                        <button className="button button1">Continue Shopping</button><br/><br/>
                     </a>
                 </div>
             </nav>
