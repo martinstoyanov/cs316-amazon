@@ -46,10 +46,24 @@ export default class Header extends React.Component
   search = () => {
       axios.get(`${serverURL}/items/name/${this.state.searchTerm}`).then((response) => {
       var arr = [];
-      arr.push(response.data.data[0]._id);
-      console.log(response.data.data[0]._id);
-      console.log(arr.length);
-      this.state.searchResults = arr;
+      
+      console.log(response.data.data);
+
+      var i;
+      for (i = 0; i < Math.min(5, response.data.data.length); i++) {
+        arr.push(response.data.data[i]._id);
+        arr.push(response.data.data[i].item_name);
+      }
+
+      // console.log(arr);
+
+      const rows = arr.reduce(function (rows, key, index) { 
+        return (index % 2 == 0 ? rows.push([key]) 
+          : rows[rows.length-1].push(key)) && rows;
+      }, []);
+
+      this.state.searchResults = rows;
+      // console.log(rows);
       return arr;
     });
 }
@@ -83,7 +97,7 @@ export default class Header extends React.Component
         </Navbar>
         <div>
               {this.state.searchResults.map(name => <Name name = {name}/>)}
-          </div>
+        </div>
       </Styles>
     )
   }
