@@ -18,7 +18,9 @@ class Items extends React.Component {
             id: id,
             item: {},
             reviews: [],
-            avgReview: 0.0
+            avgReview: 0.0,
+            seller: "",
+            image_url: ""
         };
 
         this.setAvgReview = this.setAvgReview.bind(this);
@@ -28,6 +30,10 @@ class Items extends React.Component {
         //first, retrieve item object from database
         axios.get(`${serverURL}/item/${this.state.id}`).then((response) => {
             let item = response.data.data
+
+            this.state.seller = item.sold_by;
+            this.state.image_url = item.image_url;
+
             this.setState({item: response.data.data});
             let reviews = []
             let sumRating = 0.0
@@ -56,15 +62,21 @@ class Items extends React.Component {
     }
 
     render() {
+        // console.log(this.state.image_url);
         return (
             <div>
                 <nav className="left-layout">
                     <h1 className="title">{this.state.item.item_name}: ${this.state.item.item_price}</h1>
                     <h4 className="title">{this.state.item.item_description}</h4>
                     <h6 className="title">Item #{this.state.item._id}</h6>
-                    <p>
+                    <h6 className="title">Seller: {this.state.seller}</h6>
+                    {/* <p>
                         Pictures to be added soon! And other fun things!
-                    </p>
+                    </p> */}
+                    <div style={{marginTop: 20}}>
+                        <img src={this.state.image_url}/> <br/>
+                    </div>
+                    <h6 className="title"></h6>
                     <ReviewModal product ={this.state.item}></ReviewModal><br/><br/>
                     <div>
                         <a href="/shop">
