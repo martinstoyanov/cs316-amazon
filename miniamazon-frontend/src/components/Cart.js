@@ -170,7 +170,9 @@ export default class Cart extends React.Component{
                         window.location.href = '/thanks'
                     })
                 })
-            });
+            }).catch((err) => {
+                console.log(err)
+            })
         })
 
     }

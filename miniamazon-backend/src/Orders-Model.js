@@ -12,9 +12,8 @@ const Order = new Schema({
     type: String,
   },
   delivery_date: {
-    type: Date,
+    type: String,
     // `Date.now()` returns the current unix timestamp as a number
-    default: Date.now
   },
   user_id: { type: String, default: "test" },
   items: [[String, String]] // item_ids and count
