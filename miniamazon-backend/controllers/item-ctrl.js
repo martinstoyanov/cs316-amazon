@@ -103,12 +103,14 @@ getItemById = async (req, res) => {
                 .status(404)
                 .json({ success: false, error: `Item not found` })
         }
+        console.log(item);
         return res.status(200).json({ success: true, data: item })
     }).catch(err => console.log(err))
 }
 
 getItemsByName = async (req, res) => {
-    await Item.find({ item_name: req.params.name }, (err, items) => {
+    const regex = new RegExp(req.params.name, 'i')
+    await Item.find({ item_name: { $regex: regex}}, (err, items) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
