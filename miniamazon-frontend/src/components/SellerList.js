@@ -5,7 +5,7 @@ import SellerProduct from './SellerProduct';
 //this is not specific to one seller's products. must fix
     
     const serverURL = "http://localhost:8888"
-    const userId = localStorage
+    const userId = localStorage.getItem('token')
 
     export default class SellerList extends React.Component{
         constructor(props) {

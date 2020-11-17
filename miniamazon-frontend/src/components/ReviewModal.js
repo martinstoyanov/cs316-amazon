@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import Rating from '@material-ui/lab/Rating';
 
 const serverURL = "http://localhost:8888"
-const userId = "5f8b8eee77a1ab596021f8c4"
+const userId = localStorage.getItem('token')
 
 function ReviewModal({product}) {
 

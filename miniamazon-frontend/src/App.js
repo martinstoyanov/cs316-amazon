@@ -32,6 +32,7 @@ function App() {
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [message, setMessage] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const axios = require('axios');
 
@@ -56,8 +57,9 @@ function App() {
       .then(
         res => {
           setMessage(res.data.message)
-          if (res.data.user_id) {
+          if (res.data.id) {
             localStorage.setItem('token', res.data.id);
+            setLoggedIn(true)
           }
           console.log(res); //debugging purposes
           // <Redirect to="/" /> 
@@ -84,7 +86,11 @@ function App() {
       .then(
         res => {
           setMessage(res.data.message)
-          localStorage.setItem('token', res.data.user_id);
+          if (res.data.user_id) {
+            localStorage.setItem('token', res.data.user_id);
+            setLoggedIn(true)
+          }
+
           console.log(res.data.user_id)
           
           console.log(res); //debugging purposes
@@ -101,8 +107,9 @@ function App() {
 
 
   const handle_logout = () => {
+    console.log('LOGOUT')
     localStorage.removeItem('token') 
-    window.history.go()
+    setLoggedIn(false)
   }
 
   const handleClose = (event, reason) => {
@@ -124,10 +131,10 @@ function App() {
           autoHideDuration={3000}
           message={message}
         ></Snackbar>
-        <Header updateItems={updateItems} />
+        <Header updateItems={updateItems} loggedIn={(localStorage.getItem('token'))} />
           <Switch>
             <Route exact path="/" >
-            {localStorage.getItem('token') ?  <Home/> :<Redirect from = '/' to='/login'></Redirect>}
+            {localStorage.getItem('token') ?  <Home/> : <Redirect from = '/' to='/login'></Redirect>}
             </Route>
             <Route exact path="/Account" component={Account} />
             <Route path="/Account-Edit" component={AccountEdit} />
@@ -146,14 +153,16 @@ function App() {
             <Route path="/Order-History/:Id" component={OrderHistory} />
             <Route path="/items/:Id" component={Name} />
             <Route path="/login">
-            <SignIn handle_login={handle_login} />
+              {!loggedIn ? <SignIn handle_login={handle_login} /> : <Redirect from='/login' to='/'></Redirect>}
             </Route>
             <Route path="/register">
-              <Register handle_signup={handle_signup} />
+              {!loggedIn ? <Register handle_signup={handle_signup} /> : <Redirect from='/register' to='/'></Redirect>} 
             </Route>
-            <Route path="/logout">
-              <Register handle_signup={handle_logout} />
-            </Route>
+          <Route path="/logout" render={() => {
+            handle_logout()
+            return <Redirect from='/logout' to='/login' />;
+          }} />
+
           </Switch>
       </Router>
     </React.Fragment>
