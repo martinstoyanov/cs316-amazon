@@ -24,6 +24,8 @@ import Name from './components/Name';
 import SignIn from './components/SignIn';
 import Register from './components/Register';
 import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -58,11 +60,13 @@ function App() {
           // <Redirect to="/" /> 
           // window.history.back();
 
-          // window.location.replace("http://whalescale-one.vercel.app/");
+          // window.location.replace("http://localhost:3000");
         }
       ).catch(function (error) {
         console.log('User cannot log in.');
+        setMessage('Cannot log in.')
         console.log(error);
+        // window.location.replace("http://localhost:3000");
       })
   }
 
@@ -77,7 +81,7 @@ function App() {
           console.log(res.data.user_id)
           
           console.log(res); //debugging purposes
-          // window.location.replace("localhost:3000");
+          // window.location.replace("http://localhost:3000");
           // window.history.back();
 
           // <Redirect to="/" />
@@ -91,6 +95,12 @@ function App() {
     window.history.go()
   }
 
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setMessage('')
+  }
   return (
     <React.Fragment>
       <Router>
@@ -100,9 +110,12 @@ function App() {
             horizontal: 'left',
           }}
           open={(message)}
-          autoHideDuration={6000}
+          onClose={handleClose}
+          autoHideDuration={3000}
           message={message}
-        ></Snackbar>
+        ><IconButton size="small" aria-label="close" color="inherit" onClick={this.handleClose}>
+            <CloseIcon fontSize="small" />
+          </IconButton></Snackbar>
         <Header updateItems={updateItems} />
           <Switch>
             <Route exact path="/" component={Home} />
@@ -123,7 +136,7 @@ function App() {
             <Route path="/Order-History/:Id" component={OrderHistory} />
             <Route path="/items/:Id" component={Name} />
             <Route path="/login">
-              <SignIn handle_login={handle_login} />
+            <SignIn handle_login={handle_login} />
             </Route>
             <Route path="/register">
               <Register handle_signup={handle_signup} />

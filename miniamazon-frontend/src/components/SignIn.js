@@ -92,7 +92,7 @@ class SignIn extends React.Component {
     }
   
     const handleClick=(e, data) => {
-      this.setState({open: true});
+    //   this.setState({open: true});
       this.props.handle_login(e, data);
     }
      
