@@ -106,7 +106,7 @@ class SignIn extends React.Component {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Login to your Kamazon account
         </Typography>
           <form onSubmit = {handleClick} className={classes.form} noValidate>
             <TextField
@@ -147,7 +147,7 @@ class SignIn extends React.Component {
               onClick={e => handleClick(e, this.state.credentials)}
               className={classes.submit}
             >
-              Sign In
+              Login
           </Button>
           <Snackbar
             anchorOrigin={{
@@ -161,7 +161,7 @@ class SignIn extends React.Component {
             action={
               <React.Fragment>
                 <Button color='secondary' size='small' onClick={this.handleClose}>
-                  Proceed to Dashboard
+                  Proceed to Kamazon
                 </Button>
                 <IconButton size="small" aria-label="close" color="inherit" onClick={this.handleClose}>
                   <CloseIcon fontSize="small" />
