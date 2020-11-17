@@ -25,7 +25,7 @@ export default class ProductHistory extends React.Component{
 
     render() {
         return(
-            <div style={{marginBottom: 50}}>
+            <div style={{marginBottom: 50, paddingTop: 40, paddingLeft: 40}}>
                 <div>
                     <div style={{display: 'flex', width: 700, justifyContent: 'space-between'}}>
                         <a href={"/items/" + this.state.product._id}>

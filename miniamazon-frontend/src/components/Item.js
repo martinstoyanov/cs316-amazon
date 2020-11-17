@@ -114,7 +114,7 @@ class Items extends React.Component {
                     <ReviewModal product ={this.state.item}></ReviewModal><br/><br/>
                     <div>
                         <a href="/shop">
-                            <button className="btn btn-secondary">Go Back to Products</button>
+                            <button className="button button2">Go Back to Products</button>
                         </a>
                     </div>
                 </nav>

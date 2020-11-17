@@ -53,7 +53,7 @@ export default class ProductCart extends React.Component{
     }   
     render() {
         return(
-            <div className= "product-border" style={{marginBottom: 50}}>
+            <div className= "product-border" style={{marginBottom: 50, paddingTop: 40, paddingLeft: 40}}>
                 <div>
                     <div style={{display: 'flex', width: 700, justifyContent: 'space-between'}}>
                         <a className="blue-font" href={"/items/" + this.state.product._id}>
@@ -66,7 +66,7 @@ export default class ProductCart extends React.Component{
                         <img src={this.state.product.image_url}/> <br/>
                     </div>
                     <div style={{fontSize: 18}}> Quantity: {this.state.product.count}</div>
-                    <div style={{marginTop: 20}}>
+                    <div style={{marginTop: 20, marginBottom: 40}}>
                         <button className="btn btn-danger" onClick={this.removeItem}>Remove</button><br/>
                     </div>
                 </div> 

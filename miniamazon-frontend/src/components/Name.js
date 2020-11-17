@@ -12,7 +12,7 @@ class Name extends Component {
             <div>
                 <h3></h3>
                 <a href={""+str1}>
-                    <button className="btn btn-secondary">{str2}</button><br/>
+                    <button className="button button1">{str2}</button><br/>
                 </a>
             </div>
         )
