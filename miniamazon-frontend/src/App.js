@@ -53,9 +53,9 @@ function App() {
     axios.post(API_URL + '/login', data)
       .then(
         res => {
-          setMessage(res.message)
+          setMessage(res.data.message)
           if (res.data.user_id) {
-            localStorage.setItem('token', res.data.user_id);
+            localStorage.setItem('token', res.data.id);
           }
           console.log(res); //debugging purposes
           // <Redirect to="/" /> 
