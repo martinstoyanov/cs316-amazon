@@ -1,8 +1,9 @@
 import React from 'react';
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 import styled from 'styled-components';
-import SearchDisplay from './SearchDisplay'
 import axios from 'axios';
+import SearchContainer from './SearchContainer.jsx'
+import Name from './Name'
 
 const serverURL = "http://localhost:8888"
 const Styles = styled.div`
@@ -42,18 +43,17 @@ export default class Header extends React.Component
     this.setState({searchTerm: event.target.value})
   }
 
-  search(event) {
-    axios.get(`${serverURL}/items/name`,{ params: {
-      name: this.state.searchTerm
-    }}).then((response) => {
-        // parse the json in the output
-        this.setState({searchResults: ['test']})
-        this.props.updateItems(response.data.data)
+  search = () => {
+      axios.get(`${serverURL}/items/name/${this.state.searchTerm}`).then((response) => {
+      var arr = [];
+      arr.push(response.data.data[0]._id);
+      console.log(response.data.data[0]._id);
+      console.log(arr.length);
+      this.state.searchResults = arr;
+      return arr;
     });
-    //this.setState({searchResults: [... this.searchResults, this.state.searchTerm]})
-    event.preventDefault();
 }
-  
+
   render()
   {
     return (
@@ -68,10 +68,10 @@ export default class Header extends React.Component
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-          <Form className="form-center" onSubmit={this.search}>
+          <Form className="form-center" onChange={this.search}>
             <FormControl type="text" value = {this.state.searchTerm}  onChange = {this.handleSearchInputChange} placeholder="Search" className="" />
           </Form>
-
+          
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               <Nav.Item><Nav.Link href="/"><b>Home</b></Nav.Link></Nav.Item> 
@@ -80,10 +80,11 @@ export default class Header extends React.Component
               <Nav.Item><Nav.Link href="/cart"><b>Cart</b></Nav.Link></Nav.Item>
             </Nav>
           </Navbar.Collapse>
-        </Navbar>  
-        <SearchDisplay searchResults = {this.state.searchResults}> </SearchDisplay>   
+        </Navbar>
+        <div>
+              {this.state.searchResults.map(name => <Name name = {name}/>)}
+          </div>
       </Styles>
     )
   }
 }
-

@@ -20,9 +20,9 @@ import ReviewsAccount from './components/ReviewsAccount';
 import OrderHistory from './components/OrderHistory';
 import Balance from './components/Balance';
 import SoldList from './components/SoldList';
+import Name from './components/Name';
 
 function App() {
-  // test data passed in for SearchResults page
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -34,7 +34,6 @@ function App() {
   useEffect(() => {
     if(items.length > 0) {
       window.location = `/Search/${searchTerm}`;
-      //alert(items.length);
     }
   }, [items]); 
 
@@ -59,10 +58,7 @@ function App() {
             <Route path="/Items/:Id" component={Item} />
             <Route path="/Reviews" component={ReviewsAccount} />
             <Route path="/Order-History/:Id" component={OrderHistory} />
-            <Route path="/Search/:key"  
-                   render={(props) => (
-                      <SearchResults {...props} key={props.location.pathname} items={items} />
-                   )} />
+            <Route path="/items/:Id" component={Name} />
           </Switch>
       </Router>
     </React.Fragment>
