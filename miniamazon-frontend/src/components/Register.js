@@ -107,12 +107,12 @@ class Register extends React.Component {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
+                name="user_password"
                 label="Password"
                 type="password"
                 value={this.state.credentials.password}
                 onChange={this.valueChanged}
-                id="password"
+                id="user_password"
                 autoComplete='disabled'
               />
             </Grid>
