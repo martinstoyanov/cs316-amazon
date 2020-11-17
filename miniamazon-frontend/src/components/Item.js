@@ -48,12 +48,46 @@ class Items extends React.Component {
                     numRatings = numRatings + 1 
                     this.setState({ reviews: reviews, avgReview: (sumRating / numRatings) })       
                     item.avg_rating = this.state.avgReview
-                    console.log(item)
 
+                    //Sends the average rating to the item
                     axios.put(`${serverURL}/item/${this.state.id}`, item).then(response => {
                     })
                 });
             })
+
+            //Check if avg rating is greater than any of the 3 recommended, if so, replace the lowest one
+            axios.get(`${serverURL}/category/${item.category_name}`).then((response) => {
+                let category = response.data.data
+
+                if (item.avg_rating > category.item1_avg_rating) {
+                    category.item1_id = item._id
+                    category.item1_avg_rating = item.avg_rating
+                    console.log(category)
+                    //Sends the updated recommended id and rating to category
+                    axios.put(`${serverURL}/category/${category._id}`, category).then(response => {
+                        console.log(response)
+                    })
+                }
+                
+                else if (item.avg_rating > category.item2_avg_rating) {
+                    category.item2_id = item._id
+                    category.item2_avg_rating = item.avg_rating
+                    //Sends the updated recommended id and rating to category
+                    axios.put(`${serverURL}/category/${item.category_name}`, category).then(response => {
+                        console.log(response)
+                    })  
+                }
+
+                else if (item.avg_rating > category.item3_avg_rating) {
+                    category.item3_id = item._id
+                    category.item3_avg_rating = item.avg_rating
+
+                    //Sends the updated recommended id and rating to category
+                    axios.put(`${serverURL}/category/${category._id}`, category).then(response => {
+                        console.log(response)
+                    })
+                }
+            });
         });
     }
 

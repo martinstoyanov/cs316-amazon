@@ -10,6 +10,10 @@ import AccountEdit from './components/AccountEdit';
 import Cart from './components/Cart';
 import PostCheckout from './components/PostCheckout';
 import OrdersList from './components/OrdersList';
+import SellerList from './components/SellerList';
+import SellerEdit from './components/SellerEdit';
+import SellerAdd from './components/SellerAdd';
+import SellerDelete from './components/SellerDelete';
 import Item from './components/Item';
 import SearchResults from './components/SearchResults';
 import ReviewsAccount from './components/ReviewsAccount';
@@ -39,12 +43,16 @@ function App() {
         <Header updateItems={updateItems} />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/Account" component={Account} />
+            <Route exact path="/Account" component={Account} />
             <Route path="/Account-Edit" component={AccountEdit} />
             <Route path="/Shop" component={ProductsList} />
             <Route path="/Cart" component={Cart} />
             <Route path="/Thanks" component={PostCheckout} />
             <Route path="/Orders" component={OrdersList} />
+            <Route exact path="/account/seller/products" component={SellerList} />
+            <Route exact path="/account/seller/add-products" component={SellerAdd} />
+            <Route path="/account/seller/delete/:ID" component={SellerDelete} />
+            <Route exact path="/account/seller/edit/:ID" component={SellerEdit} />
             <Route path="/Balance" component={Balance} />
             <Route path="/Sold-Items" component={SoldList} />
             <Route path="/Items/:Id" component={Item} />

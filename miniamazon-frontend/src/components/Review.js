@@ -3,12 +3,12 @@ import React from 'react';
 function Review({review}){    
     return(
         <div>
-            <h2>
-                Review User: {review.user_id} <br/>
-                Rating: {review.review_rating} <br/>
-                Description: {review.review_notes} <br/>
+            <h3>
+                Review User: <b className="blue-font">{review.user_id}</b> <br/>
+                Rating: <b className="blue-font">{review.review_rating}</b> <br/>
+                Description: <b className="blue-font">{review.review_notes}</b> <br/>
                 <br/>
-            </h2> 
+            </h3> 
         </div>
     )
 }
