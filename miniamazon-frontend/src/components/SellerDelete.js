@@ -4,7 +4,7 @@ import SellerProduct from './SellerProduct';
 
 const serverURL = "http://localhost:8888"
 //const userId = "5fab28d3d831520e449fa83e"
-const userId = "5f8b8eee77a1ab596021f8c4"
+const userId = localStorage.getItem('token')
 
 export default class SellerDelete extends React.Component{
     constructor(props) {

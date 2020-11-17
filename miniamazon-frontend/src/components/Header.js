@@ -33,7 +33,8 @@ export default class Header extends React.Component
     super(props);
     this.state = {
       searchTerm: '',
-      searchResults : []
+      searchResults : [],
+      loggedIn: false
     }
     this.search = this.search.bind(this)
     this.handleSearchInputChange = this.handleSearchInputChange.bind(this);
@@ -89,7 +90,10 @@ export default class Header extends React.Component
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               <Nav.Item><Nav.Link href="/"><b>Home</b></Nav.Link></Nav.Item> 
-              <Nav.Item><Nav.Link href="/account"><b>My Account</b></Nav.Link></Nav.Item>
+              {!this.props.loggedIn ? 
+              <div><Nav.Item><Nav.Link href="/register"><b>Register</b></Nav.Link></Nav.Item>
+                  <Nav.Item><Nav.Link href="/login"><b>Login</b></Nav.Link></Nav.Item></div>
+              : <Nav.Item><Nav.Link href="/account"><b>My Account</b></Nav.Link></Nav.Item> }
               <Nav.Item><Nav.Link href="/shop"><b>Shop</b></Nav.Link></Nav.Item>
               <Nav.Item><Nav.Link href="/cart"><b>Cart</b></Nav.Link></Nav.Item>
             </Nav>

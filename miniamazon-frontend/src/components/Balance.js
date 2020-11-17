@@ -3,7 +3,7 @@ import axios from 'axios';
 import NumericInput from 'react-numeric';
 
 const serverURL = "http://localhost:8888"
-const userId = "5f8b8eee77a1ab596021f8c4"
+const userId = localStorage.getItem('token')
 
 export default class Balance extends React.Component{
     constructor(props) {

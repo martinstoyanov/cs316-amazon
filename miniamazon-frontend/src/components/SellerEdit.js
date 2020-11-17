@@ -3,7 +3,7 @@ import axios from 'axios';
 import SellerList from './SellerList'; //should get products from here
     
     const serverURL = "http://localhost:8888"
-    const userId = "5f8b8eee77a173h96021f8y0"
+    const userId = localStorage.getItem('token')
 
     export default class SellerEdit extends React.Component{
         constructor(props) {
