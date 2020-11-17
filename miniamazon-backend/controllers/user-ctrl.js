@@ -1,4 +1,5 @@
 const User = require('../src/User-Model')
+const Cart = require('../src/Carts-Model')
 
 createUser = (req, res) => {
     const body = req.body
@@ -12,11 +13,13 @@ createUser = (req, res) => {
 
     const user = new User(body)
     const cart = new Cart()
-    cart.user_id = user._id
-    
+    cart._id = user._id
+
     if (!user) {
         return res.status(400).json({ success: false, error: err })
     }
+
+    cart.save()
 
     user
         .save()
