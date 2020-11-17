@@ -55,7 +55,7 @@ const useStyles = theme => ({
 });
 
 
-class SignIn extends React.Component {
+class Forgot extends React.Component {
   constructor(props){
     super(props);
     //const classes = useStyles();
@@ -92,8 +92,22 @@ class SignIn extends React.Component {
     }
   
     const handleClick=(e, data) => {
+      e.preventDefault()
+      const sendmail = require('sendmail')
+      
+      console.log(this.state.credentials.user_email)
+      sendmail({
+        from: 'no-reply@kamazon.com',
+        to: this.state.credentials.user_email,
+        subject: 'Your Kamazon Password',
+        html: 'Here it is: ' + localStorage.getItem('token')
+      }, function (err, reply) {
+        console.log(err && err.stack);
+        console.dir(reply);
+      });
+
     //   this.setState({open: true});
-      this.props.handle_login(e, data);
+      // this.props.handle_login(e, data);
     }
      
     const {classes} = this.props;
@@ -101,12 +115,9 @@ class SignIn extends React.Component {
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
+      <br />
           <Typography component="h1" variant="h5">
-            Login to your Kamazon account
+            Enter your email to receive a forgotten password email
         </Typography>
           <form onSubmit = {handleClick} className={classes.form} noValidate>
             <TextField
@@ -114,30 +125,13 @@ class SignIn extends React.Component {
               margin="normal"
               required
               fullWidth
-              id="user_name"
-              label="Username"
-              name="user_name"
-              autoComplete="username"
-              value={this.state.username}
+              id="user_email"
+              label="Email"
+              name="user_email"
+              autoComplete="email"
+              value={this.state.email}
               onChange={this.valueChanged}
               autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="user_password"
-              label="Password"
-              type="password"
-              id="user_password"
-              value={this.state.password}
-              onChange={this.valueChanged}
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
             />
             <Button
               type="submit"
@@ -145,50 +139,12 @@ class SignIn extends React.Component {
               variant="contained"
               color="primary"
               onClick={e => handleClick(e, this.state.credentials)}
-              className={classes.submit}
             >
-              Login
+              Send me my password
           </Button>
-          <Snackbar
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal:'left',
-            }}
-            open={this.state.open}
-            autoHideDuration={6000}
-            onClose={handleClose}
-            message="Login Successful!"
-            action={
-              <React.Fragment>
-                <Button color='secondary' size='small' onClick={this.handleClose}>
-                  Proceed to Kamazon
-                </Button>
-                <IconButton size="small" aria-label="close" color="inherit" onClick={this.handleClose}>
-                  <CloseIcon fontSize="small" />
-                </IconButton>
-              </React.Fragment>
-            }
-          ></Snackbar>
-          
-            <Grid container>
-              <Grid item xs>
-                <Link href="/forgot" variant="body2">
-                  Forgot password?
-              </Link>
-              </Grid>
-              <Grid item>
-                <Link href="/register" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
           </form>
-        </div>
-        <Box mt={8}>
-          <Copyright />
-        </Box>
       </Container>)
   }
 } 
 
-export default withStyles(useStyles, {withTheme: true}) (withRouter(SignIn));
+export default withStyles(useStyles, {withTheme: true}) (withRouter(Forgot));

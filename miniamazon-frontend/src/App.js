@@ -22,6 +22,7 @@ import Balance from './components/Balance';
 import SoldList from './components/SoldList';
 import Name from './components/Name';
 import SignIn from './components/SignIn';
+import Forgot from './components/ForgottenPassword.js';
 import Register from './components/Register';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -149,6 +150,7 @@ function App() {
             <Route path="/Balance" component={Balance} />
             <Route path="/Sold-Items" component={SoldList} />
             <Route path="/Items/:Id" component={Item} />
+          <Route path="/Forgot" component={Forgot} />
             <Route path="/Reviews" component={ReviewsAccount} />
             <Route path="/Order-History/:Id" component={OrderHistory} />
             <Route path="/items/:Id" component={Name} />
