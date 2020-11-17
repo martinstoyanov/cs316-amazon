@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
 import ProductsList from './components/ProductsList';
@@ -26,6 +26,7 @@ import Register from './components/Register';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import Button from '@material-ui/core/Button';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -64,7 +65,7 @@ function App() {
         }
       ).catch(function (error) {
         console.log('User cannot log in.');
-        setMessage('Cannot log in.')
+        setMessage('Invalid username or password.')
         console.log(error);
         // window.location.replace("http://localhost:3000");
       })
@@ -113,16 +114,16 @@ function App() {
           onClose={handleClose}
           autoHideDuration={3000}
           message={message}
-        ><IconButton size="small" aria-label="close" color="inherit" onClick={this.handleClose}>
-            <CloseIcon fontSize="small" />
-          </IconButton></Snackbar>
+        ></Snackbar>
         <Header updateItems={updateItems} />
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" >
+            {localStorage.getItem('token') ?  <Home/> :<Redirect from = '/' to='/login'></Redirect>}
+            </Route>
             <Route exact path="/Account" component={Account} />
             <Route path="/Account-Edit" component={AccountEdit} />
-            <Route path="/Shop" component={ProductsList} />
-            <Route path="/Cart" component={Cart} />
+          <Route path="/Shop">{localStorage.getItem('token') ? <ProductsList /> : <Redirect from='/shop' to='/login'></Redirect>}</Route>
+          <Route path="/Cart">{localStorage.getItem('token') ? <Cart /> : <Redirect from='/cart' to='/login'></Redirect>}</Route>
             <Route path="/Thanks" component={PostCheckout} />
             <Route path="/Orders" component={OrdersList} />
             <Route exact path="/account/seller/products" component={SellerList} />
