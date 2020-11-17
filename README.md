@@ -1,2 +1,3 @@
-# cs316-amazon
-# cs316-amazon
+# Welcome to Kamazon
+
+Kamazon is a mini Amazon clone.
