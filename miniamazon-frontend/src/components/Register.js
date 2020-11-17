@@ -51,7 +51,7 @@ class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      credentials : {username: '', password: '', firstName: '', lastName: ''},
+      credentials : {user_name: '', user_password: '', user_email: ''},
     }
   }
 
@@ -76,44 +76,30 @@ class Register extends React.Component {
         </Typography>
         <form className={classes.form} onSubmit = {this.props.handle_signup} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
+                name="user_name"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="user_name"
+                label="Username"
                 value={this.state.credentials.firstName}
                 onChange={this.valueChanged}
                 autoFocus
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                value={this.state.credentials.lastName}
-                onChange={this.valueChanged}
-                autoComplete="lname"
-              />
-            </Grid>
+            
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                id="username"
+                id="user_email"
                 label="Email Address"
-                name="username"
+                name="user_email"
                 value={this.state.credentials.username}
                 onChange={this.valueChanged}
-                autoComplete="username"
               />
             </Grid>
             <Grid item xs={12}>
@@ -127,7 +113,7 @@ class Register extends React.Component {
                 value={this.state.credentials.password}
                 onChange={this.valueChanged}
                 id="password"
-                autoComplete="current-password"
+                autoComplete='disabled'
               />
             </Grid>
 

@@ -27,6 +27,7 @@ import Register from './components/Register';
 function App() {
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const axios = require('axios');
 
   const updateItems = (newItems, newTerm) => {
     setItems(newItems)
@@ -65,22 +66,20 @@ function App() {
 
   const handle_signup = (e, data) => {
     e.preventDefault();
-    // axios.post('https://whalescale-stagingcicd.herokuapp.com/register/', data)
-    //   .then(
-    //     res => {
-    //       localStorage.setItem('token', res.data.token);
-    //       this.setState({
-    //         logged_in: true,
-    //         username: data.username,
-    //         mytoke: res.data.token
-    //       })
-    //       console.log(res); //debugging purposes
-    //       window.location.replace("http://whalescale-one.vercel.app/");
-    //       // window.history.back();
+    console.log(data)
+    axios.post('http://localhost:8888/user', data)
+      .then(
+        res => {
+          localStorage.setItem('token', res.data.user_id);
+          console.log(res.data.user_id)
+          
+          console.log(res); //debugging purposes
+          // window.location.replace("localhost:3000");
+          // window.history.back();
 
-    //       // <Redirect to="/" />
-    //     }
-    //   )
+          // <Redirect to="/" />
+        }
+      )
   }
 
 
