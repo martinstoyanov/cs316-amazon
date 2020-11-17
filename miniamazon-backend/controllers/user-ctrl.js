@@ -11,7 +11,9 @@ createUser = (req, res) => {
     }
 
     const user = new User(body)
-
+    const cart = new Cart()
+    cart.user_id = user._id
+    
     if (!user) {
         return res.status(400).json({ success: false, error: err })
     }
