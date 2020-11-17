@@ -85,7 +85,8 @@ function App() {
 
 
   const handle_logout = () => {
-    localStorage.remoteItem('token') 
+    localStorage.removeItem('token') 
+    window.history.go()
   }
 
   return (
@@ -115,6 +116,9 @@ function App() {
             </Route>
             <Route path="/register">
               <Register handle_signup={handle_signup} />
+            </Route>
+            <Route path="/logout">
+              <Register handle_signup={handle_logout} />
             </Route>
           </Switch>
       </Router>

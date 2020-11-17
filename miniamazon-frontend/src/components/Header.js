@@ -75,7 +75,10 @@ export default class Header extends React.Component
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               <Nav.Item><Nav.Link href="/"><b>Home</b></Nav.Link></Nav.Item> 
-              <Nav.Item><Nav.Link href="/account"><b>My Account</b></Nav.Link></Nav.Item>
+              {!localStorage.getItem('token') ? 
+              <div><Nav.Item><Nav.Link href="/register"><b>Register</b></Nav.Link></Nav.Item>
+                  <Nav.Item><Nav.Link href="/login"><b>Login</b></Nav.Link></Nav.Item></div>
+              : <Nav.Item><Nav.Link href="/account"><b>My Account</b></Nav.Link></Nav.Item> }
               <Nav.Item><Nav.Link href="/shop"><b>Shop</b></Nav.Link></Nav.Item>
               <Nav.Item><Nav.Link href="/cart"><b>Cart</b></Nav.Link></Nav.Item>
             </Nav>
