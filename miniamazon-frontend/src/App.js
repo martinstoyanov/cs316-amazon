@@ -50,6 +50,8 @@ function App() {
 
   const handle_login = (e, data) => {
     e.preventDefault();
+    console.log(data)
+    if (data.user_name && data.user_password) {
     axios.post(API_URL + '/login', data)
       .then(
         res => {
@@ -69,15 +71,19 @@ function App() {
         console.log(error);
         // window.location.replace("http://localhost:3000");
       })
+    } else {
+      setMessage('Please fill out all fields!!!!')
+    }
   }
 
   const handle_signup = (e, data) => {
     e.preventDefault();
     console.log(data)
+    if (data.user_name.length > 0 && data.user_password.length > 0 && data.user_email.length > 0) {
     axios.post(API_URL + '/user', data)
       .then(
         res => {
-          setMessage(res.message)
+          setMessage(res.data.message)
           localStorage.setItem('token', res.data.user_id);
           console.log(res.data.user_id)
           
@@ -88,6 +94,9 @@ function App() {
           // <Redirect to="/" />
         }
       )
+    } else {
+      setMessage('Please fill out all fields!!!!')
+    }
   }
 
 
