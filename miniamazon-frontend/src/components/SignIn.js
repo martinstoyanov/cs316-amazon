@@ -114,9 +114,9 @@ class SignIn extends React.Component {
               margin="normal"
               required
               fullWidth
-              id="username"
+              id="user_name"
               label="Username"
-              name="username"
+              name="user_name"
               autoComplete="username"
               value={this.state.username}
               onChange={this.valueChanged}
@@ -127,10 +127,10 @@ class SignIn extends React.Component {
               margin="normal"
               required
               fullWidth
-              name="password"
+              name="user_password"
               label="Password"
               type="password"
-              id="password"
+              id="user_password"
               value={this.state.password}
               onChange={this.valueChanged}
               autoComplete="current-password"

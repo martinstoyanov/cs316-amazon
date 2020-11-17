@@ -23,10 +23,13 @@ import SoldList from './components/SoldList';
 import Name from './components/Name';
 import SignIn from './components/SignIn';
 import Register from './components/Register';
+import Snackbar from '@material-ui/core/Snackbar';
 
 function App() {
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [message, setMessage] = useState('');
+
   const axios = require('axios');
 
   const updateItems = (newItems, newTerm) => {
@@ -40,36 +43,36 @@ function App() {
     }
   }, [items]); 
 
+  const API_URL = 'http://localhost:8888'
+
   const handle_login = (e, data) => {
     e.preventDefault();
-    // axios.post('https://whalescale-stagingcicd.herokuapp.com/login/', data)
-    //   .then(
-    //     res => {
+    axios.post(API_URL + '/login', data)
+      .then(
+        res => {
+          setMessage(res.message)
+          if (res.data.user_id) {
+            localStorage.setItem('token', res.data.user_id);
+          }
+          console.log(res); //debugging purposes
+          // <Redirect to="/" /> 
+          // window.history.back();
 
-    //       localStorage.setItem('token', res.data.token);
-    //       this.setState({
-    //         logged_in: true,
-    //         username: data.username,
-    //         mytoke: res.data.token
-    //       })
-    //       console.log(res); //debugging purposes
-    //       // <Redirect to="/" /> 
-    //       // window.history.back();
-
-    //       window.location.replace("http://whalescale-one.vercel.app/");
-    //     }
-    //   ).catch(function (error) {
-    //     console.log('User cannot log in.');
-    //     console.log(error);
-    //   })
+          // window.location.replace("http://whalescale-one.vercel.app/");
+        }
+      ).catch(function (error) {
+        console.log('User cannot log in.');
+        console.log(error);
+      })
   }
 
   const handle_signup = (e, data) => {
     e.preventDefault();
     console.log(data)
-    axios.post('http://localhost:8888/user', data)
+    axios.post(API_URL + '/user', data)
       .then(
         res => {
+          setMessage(res.message)
           localStorage.setItem('token', res.data.user_id);
           console.log(res.data.user_id)
           
@@ -91,6 +94,15 @@ function App() {
   return (
     <React.Fragment>
       <Router>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={(message)}
+          autoHideDuration={6000}
+          message={message}
+        ></Snackbar>
         <Header updateItems={updateItems} />
           <Switch>
             <Route exact path="/" component={Home} />
