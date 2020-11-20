@@ -4,7 +4,7 @@ import SellerProduct from './SellerProduct';
 //import SellerEdit from '.SellerEdit';
 //this is not specific to one seller's products. must fix
     
-    const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
     const userId = localStorage.getItem('token')
 
     export default class SellerList extends React.Component{

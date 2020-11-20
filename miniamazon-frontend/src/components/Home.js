@@ -3,7 +3,7 @@ import axios from 'axios';
 import Category from './Category';
 
 
-const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
 
 export default class Home extends React.Component{
 

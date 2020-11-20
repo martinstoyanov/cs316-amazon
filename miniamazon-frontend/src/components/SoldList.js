@@ -2,7 +2,7 @@ import React from 'react';
 import ProductHistory from './ProductHistory';
 import axios from 'axios';
 
-const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
 //const userId = "5f8b8eee77a1ab596021f8c4"
 const userId = localStorage.getItem('token')
 

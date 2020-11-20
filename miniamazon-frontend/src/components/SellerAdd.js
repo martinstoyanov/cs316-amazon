@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 //import SellerEdit from '.SellerEdit';
 //this is not specific to one seller's products. must fix
     
-    const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
     //const userId = "5fab28d3d831520e449fa83e"
     const userId = localStorage.getItem('token')
 

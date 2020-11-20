@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import NumericInput from 'react-numeric';
 
-const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
 const userId = localStorage.getItem('token')
 
 export default class Balance extends React.Component{

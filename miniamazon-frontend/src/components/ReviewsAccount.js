@@ -3,7 +3,7 @@ import '../App.css';
 import axios from 'axios';
 import ReviewEdit from './ReviewEdit';
 
-const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
 const userId = localStorage.getItem('token')
 
 export default class ReviewsAccount extends React.Component{

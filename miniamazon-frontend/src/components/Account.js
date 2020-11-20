@@ -8,7 +8,7 @@ var userEmail = "john_appleseed123@gmail.com";
 var userPassword = "goduke123";
 var accountType = "Buyer";
 
-const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
 //const userId = "5f8b8eee77a1ab596021f8c4"
 const userId = localStorage.getItem('token')
 

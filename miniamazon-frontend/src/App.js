@@ -48,7 +48,7 @@ function App() {
     }
   }, [items]); 
 
-  const API_URL = 'http://localhost:8888'
+  const API_URL = 'https://miniamazon-sp9m9.ondigitalocean.app'
 
   const handle_login = (e, data) => {
     e.preventDefault();

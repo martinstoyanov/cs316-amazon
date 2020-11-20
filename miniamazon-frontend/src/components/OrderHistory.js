@@ -3,7 +3,7 @@ import Order from './Order';
 import ProductHistory from './ProductHistory';
 import axios from 'axios';
 
-const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
 
 export default class OrderHistory extends React.Component{
     constructor(props) {

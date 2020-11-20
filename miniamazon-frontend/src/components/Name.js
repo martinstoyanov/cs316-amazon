@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Linking, Text } from 'react';
 
-const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
 
 class Name extends Component {
     render() {

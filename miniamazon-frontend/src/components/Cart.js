@@ -3,7 +3,7 @@ import axios from 'axios';
 import ProductCart from './ProductCart';
 import { useAlert } from 'react-alert'
     
-const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
 const userId = localStorage.getItem('token')
 //const alert = useAlert()
 

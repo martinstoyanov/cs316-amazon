@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Product from './Product';
 
-const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
 
 export default class Category extends React.Component{
     constructor(props) {

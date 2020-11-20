@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal';
 import Rating from '@material-ui/lab/Rating';
 
-const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
 const userId = localStorage.getItem('token')
 
 function ReviewModal({product}) {

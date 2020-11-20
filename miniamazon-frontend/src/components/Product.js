@@ -6,7 +6,7 @@ import { useAlert } from 'react-alert'
 
 function Product({product}){
 
-    const serverURL = "http://localhost:8888"
+    const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
     const userId = localStorage.getItem('token')
     const alert = useAlert()
 

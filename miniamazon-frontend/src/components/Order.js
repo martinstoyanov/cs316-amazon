@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
 
 export default class Order extends React.Component{
     constructor(props) {

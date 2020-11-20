@@ -4,7 +4,7 @@ import ReviewModal from './ReviewModal';
 import Rating from '@material-ui/lab/Rating';
 import Review from './Review';
 
-const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
 
 class Items extends React.Component {
 

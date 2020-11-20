@@ -5,7 +5,7 @@ import axios from 'axios';
 import SearchContainer from './SearchContainer.jsx'
 import Name from './Name'
 
-const serverURL = "http://localhost:8888"
+const serverURL = "https://miniamazon-sp9m9.ondigitalocean.app"
 const Styles = styled.div`
   .navbar { background-color: #222; }
   a, .navbar-nav, .navbar-light .nav-link {
